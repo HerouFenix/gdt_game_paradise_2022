@@ -11,9 +11,9 @@ public class InvestigationCard : ScriptableObject
     private bool onReserve;
     private bool onHand;
 
-    enum Type { Number, Suit, Color, DoubleD, Even };
-    enum Suit { Work, Love, Money, Fame, None };
-    enum Color { Red, White, Black, None };
+    public enum Type { Number, Suit, Color, DoubleD, Even };
+    public enum Suit { Work, Love, Money, Fame, None };
+    public enum Color { Red, White, Black, None };
 
     [SerializeField] private Type _type;
     [SerializeField] private int _number;
@@ -22,6 +22,8 @@ public class InvestigationCard : ScriptableObject
     //[SerializeField] private Color _color;
 
     public int number { get => _number; set => _number = value; }
+
+    public Type type { get => _type; set => _type = value; }
 
     public Sprite image { get => _image; set => _image = value; }
 }

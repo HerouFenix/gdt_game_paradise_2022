@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class IClientCard : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public abstract class IClientCard : MonoBehaviour
     private Animator _animator;
     public bool _interactible = false;
     private bool _hovered = false;
+
+    public event Action<GameObject> Played;
 
     private void Start()
     {
@@ -120,7 +123,7 @@ public abstract class IClientCard : MonoBehaviour
         }
         transform.position = targetPosition;
 
-        StartCoroutine(_cardManager.RemoveClientCard(this.gameObject));
+        Played?.Invoke(this.gameObject);
     }
 
 }

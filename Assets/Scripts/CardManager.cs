@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CardManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _possibleClientCards = new List<GameObject>();
-    [SerializeField] private List<GameObject> _possibleInteractionCards = new List<GameObject>();
 
     //Tunes
     [SerializeField] private List<InvestigationCard> _deckCards;
     private List<InvestigationCard> _handCards = new List<InvestigationCard>();
     private List<InvestigationCard> _reserveCards = new List<InvestigationCard>();
+    private List<InvestigationCard> _playedCards = new List<InvestigationCard>();
 
     private List<GameObject> _currentClientCards = new List<GameObject>();
     private List<GameObject> _currentInteractionCards = new List<GameObject>();
@@ -18,33 +19,26 @@ public class CardManager : MonoBehaviour
     [SerializeField] private Vector3 _spawnPosition = new Vector3(0,0,0);
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
+    //TempFix
+    [SerializeField] public int clientNumber;
+
     public void Start()
     {
-        DrawDailyInvCards();
+        DrawReserveCards();
     }
 
     //Vai buscar as cartas de investigação diárias, para a mão e para a reserva
-    public void DrawDailyInvCards()
+    public void DrawReserveCards()
     {
-        for (int i = 7; i > 0; i--)
+        for (int i = 17; i > 0; i--)
         {
-            int cardIndex = Random.Range(0, _deckCards.Count);
-            Debug.Log("Saiu carta de mão " + _deckCards[cardIndex].number);
-
-            _handCards.Add(_deckCards[cardIndex]);
-            _deckCards.Remove(_deckCards[cardIndex]);
-            Debug.Log("Restam" + _deckCards.Count + "cartas");
-        }
-
-        for (int i = 10; i > 0; i--)
-        {
-            int cardIndex = Random.Range(0, _deckCards.Count);
-            Debug.Log(_deckCards[cardIndex].number);
-            Debug.Log("Saiu carta de reserva" + _deckCards[cardIndex].number);
+            int cardIndex = UnityEngine.Random.Range(0, _deckCards.Count);
+            //Debug.Log(_deckCards[cardIndex].number);
+            //Debug.Log("Saiu carta de reserva" + _deckCards[cardIndex].number);
 
             _reserveCards.Add(_deckCards[cardIndex]);
             _deckCards.Remove(_deckCards[cardIndex]);
-            Debug.Log("Restam" + _deckCards.Count + "cartas");
+            //Debug.Log("Restam" + _deckCards.Count + "cartas");
         }
     }
 
@@ -59,30 +53,56 @@ public class CardManager : MonoBehaviour
     {
         WaitForSeconds wait = new WaitForSeconds(.85f);
 
-        for (int i = 0; i < amount; i++)
+        if (amount < _reserveCards.Count)
         {
-            DrawClientCard();
-            yield return wait;
+            for (int i = 0; i < amount; i++)
+            {
+                DrawClientCard();
+                yield return wait;
+            }
         }
+        else
+        {
+            for (int i = 0; i < _reserveCards.Count; i++)
+            {
+                Debug.Log(i);
+                DrawClientCard();
+                yield return wait;
+            }
+        }
+        
 
     }
 
     public void DrawClientCard()
     {
-        int randomCard = Random.Range(0, _handCards.Count);
+        int randomCard = UnityEngine.Random.Range(0, _reserveCards.Count);
 
-        _possibleClientCards[0].GetComponent<IClientCard>()._invCard = _handCards[randomCard];
+        _possibleClientCards[0].GetComponent<IClientCard>()._invCard = _reserveCards[randomCard];
 
         GameObject newCard = Instantiate(_possibleClientCards[0], _spawnPosition, Quaternion.identity);
+
+        _handCards.Add(newCard.GetComponent<IClientCard>()._invCard);
+        _reserveCards.Remove(newCard.GetComponent<IClientCard>()._invCard);
 
         IClientCard newCardScript = newCard.GetComponent<IClientCard>();
 
         newCardScript.SetIndex(_currentClientCards.Count, true);
+        newCardScript.Played += RemoveClientCard;
 
         _currentClientCards.Add(newCard);
     }
 
-    public IEnumerator RemoveClientCard(GameObject card)
+    public void RemoveClientCard(GameObject card)
+    {
+        InvestigationCard _card = card.GetComponent<IClientCard>()._invCard;
+        ApplyEffect(_card);
+        _playedCards.Add(_card);
+        _handCards.Remove(_card);
+        StartCoroutine(RemoveClientCardI(card));
+    }
+
+    public IEnumerator RemoveClientCardI(GameObject card)
     {
         int cardIndex = card.GetComponent<IClientCard>().GetIndex();
         this._currentClientCards.Remove(card);
@@ -99,6 +119,25 @@ public class CardManager : MonoBehaviour
         }
 
         Destroy(card);
+    }
+
+    public void ApplyEffect(InvestigationCard card)
+    {
+        if(card.type == InvestigationCard.Type.Number)
+        {
+            if(card.number < clientNumber)
+            {
+                Debug.Log("Numero Abaixo");
+            }
+            else if(card.number > clientNumber)
+            {
+                Debug.Log("Numero Acima");
+            }
+            else
+            {
+                Debug.Log("Numero Correto");
+            }
+        }
     }
 
     #region Singleton
