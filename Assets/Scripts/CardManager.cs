@@ -7,11 +7,46 @@ public class CardManager : MonoBehaviour
     [SerializeField] private List<GameObject> _possibleClientCards = new List<GameObject>();
     [SerializeField] private List<GameObject> _possibleInteractionCards = new List<GameObject>();
 
+    //Tunes
+    [SerializeField] private List<InvestigationCard> _deckCards;
+    private List<InvestigationCard> _handCards = new List<InvestigationCard>();
+    private List<InvestigationCard> _reserveCards = new List<InvestigationCard>();
+
     private List<GameObject> _currentClientCards = new List<GameObject>();
     private List<GameObject> _currentInteractionCards = new List<GameObject>();
 
     [SerializeField] private Vector3 _spawnPosition = new Vector3(0,0,0);
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
+
+    public void Start()
+    {
+        DrawDailyInvCards();
+    }
+
+    //Vai buscar as cartas de investigação diárias, para a mão e para a reserva
+    public void DrawDailyInvCards()
+    {
+        for (int i = 7; i > 0; i--)
+        {
+            int cardIndex = Random.Range(0, _deckCards.Count);
+            Debug.Log("Saiu carta de mão " + _deckCards[cardIndex].number);
+
+            _handCards.Add(_deckCards[cardIndex]);
+            _deckCards.Remove(_deckCards[cardIndex]);
+            Debug.Log("Restam" + _deckCards.Count + "cartas");
+        }
+
+        for (int i = 10; i > 0; i--)
+        {
+            int cardIndex = Random.Range(0, _deckCards.Count);
+            Debug.Log(_deckCards[cardIndex].number);
+            Debug.Log("Saiu carta de reserva" + _deckCards[cardIndex].number);
+
+            _reserveCards.Add(_deckCards[cardIndex]);
+            _deckCards.Remove(_deckCards[cardIndex]);
+            Debug.Log("Restam" + _deckCards.Count + "cartas");
+        }
+    }
 
 
     /* Client Card Methods */
@@ -34,14 +69,15 @@ public class CardManager : MonoBehaviour
 
     public void DrawClientCard()
     {
-        int randomCard = Random.Range(0, _possibleClientCards.Count);
+        int randomCard = Random.Range(0, _handCards.Count);
 
-        GameObject newCard = Instantiate(_possibleClientCards[randomCard], _spawnPosition, Quaternion.identity);
+        _possibleClientCards[0].GetComponent<IClientCard>()._invCard = _handCards[randomCard];
+
+        GameObject newCard = Instantiate(_possibleClientCards[0], _spawnPosition, Quaternion.identity);
 
         IClientCard newCardScript = newCard.GetComponent<IClientCard>();
 
         newCardScript.SetIndex(_currentClientCards.Count, true);
-        newCardScript.cardManager = this;
 
         _currentClientCards.Add(newCard);
     }
@@ -64,6 +100,21 @@ public class CardManager : MonoBehaviour
 
         Destroy(card);
     }
+
+    #region Singleton
+
+    private static CardManager _instance;
+
+    public static CardManager Instance
+    {
+        get
+        {
+            if (_instance == null) _instance = FindObjectOfType<CardManager>();
+            return _instance;
+        }
+    }
+
+    #endregion
 
     /* ************************ */
 }

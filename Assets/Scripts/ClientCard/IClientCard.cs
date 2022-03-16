@@ -5,12 +5,15 @@ using UnityEngine;
 public abstract class IClientCard : MonoBehaviour
 {
     /* Abstract class which all client cards inherit from */
-    [SerializeField] public int value;
+    /*[SerializeField] public int value;
     [SerializeField] public int suit;
-    [SerializeField] public Color color;
+    [SerializeField] public Color color;*/
+    public InvestigationCard _invCard;
+    [SerializeField] public GameObject _front;
+    [SerializeField] private GameObject _back;
 
     [HideInInspector] protected int positionIndex;
-    [HideInInspector] public CardManager cardManager;
+    private CardManager _cardManager;
 
     private Animator _animator;
     public bool _interactible = false;
@@ -19,6 +22,8 @@ public abstract class IClientCard : MonoBehaviour
     private void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
+        _cardManager = CardManager.Instance;
+        _front.GetComponent<SpriteRenderer>().sprite = _invCard.image;
     }
 
     private void Update()
@@ -115,7 +120,7 @@ public abstract class IClientCard : MonoBehaviour
         }
         transform.position = targetPosition;
 
-        StartCoroutine(cardManager.RemoveClientCard(this.gameObject));
+        StartCoroutine(_cardManager.RemoveClientCard(this.gameObject));
     }
 
 }
