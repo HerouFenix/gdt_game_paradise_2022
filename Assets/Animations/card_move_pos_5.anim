@@ -29,16 +29,16 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.3
-        value: {x: 2.3, y: -2.8, z: -0.1}
-        inSlope: {x: -3.5294113, y: -2.9411774, z: 0}
-        outSlope: {x: -3.5294113, y: -2.9411774, z: 0}
+        value: {x: 2.3, y: -2.2, z: -0.1}
+        inSlope: {x: -7.514706, y: -2.4999998, z: 0}
+        outSlope: {x: -7.514706, y: -2.4999998, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.68
-        value: {x: 1.7, y: -3.3, z: -0.1}
+        value: {x: -1, y: -2.85, z: -0.14}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -72,7 +72,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.7
+    m_StopTime: 0.68
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -103,15 +103,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: 2.3
-        inSlope: -3.5294113
-        outSlope: -3.5294113
+        inSlope: -7.514706
+        outSlope: -7.514706
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.68
-        value: 1.7
+        value: -1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -139,16 +139,16 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.3
-        value: -2.8
-        inSlope: -2.9411774
-        outSlope: -2.9411774
+        value: -2.2
+        inSlope: -2.4999998
+        outSlope: -2.4999998
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.68
-        value: -3.3
+        value: -2.85
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -185,7 +185,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.68
-        value: -0.1
+        value: -0.14
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -203,8 +203,8 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.7
-    functionName: DetachFromAnimator
+  - time: 0.68
+    functionName: SetPosition
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
