@@ -16,18 +16,38 @@ public class Client : MonoBehaviour
     private bool _clickable;
     private bool _hovered;
 
+    [HideInInspector] public DailyManager manager;
+
     private void Start()
     {
+        _clickable = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         StartCoroutine(TypeSentence("Hello!"));
     }
 
     private void Update()
     {
-     if(_clickable && _hovered)
+        if (_clickable && _hovered)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                switch (manager.GetPhase())
+                {
+                    case -1:
+                        manager.SwapPhase(0);
+                        break;
+                    case 0:
+                        manager.SwapPhase(1);
+                        break;
 
-        }   
+                }
+            }
+        }
+    }
+
+    public void ToggleTextBubble()
+    {
+        _textBubble.SetActive(!_textBubble.activeSelf);
     }
 
     IEnumerator TypeSentence(string sentence)

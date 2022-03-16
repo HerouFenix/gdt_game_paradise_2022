@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 2896912386846034450}
   - component: {fileID: 2896912386846034451}
   - component: {fileID: 2896912386846034449}
+  - component: {fileID: 3491463714001396434}
   m_Layer: 0
   m_Name: Client_Example
   m_TagString: Untagged
@@ -392,3 +393,16 @@ MonoBehaviour:
   lines: []
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
+--- !u!65 &3491463714001396434
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896912386846034444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.02, y: 2.7, z: 0.2}
+  m_Center: {x: 1.37, y: 0.36, z: 0}
