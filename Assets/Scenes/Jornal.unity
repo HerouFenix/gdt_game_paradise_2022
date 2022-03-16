@@ -355,8 +355,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -196.69719, y: -61.5}
-  m_SizeDelta: {x: 77.0274, y: 83.5724}
+  m_AnchoredPosition: {x: -195.22093, y: -64.94455}
+  m_SizeDelta: {x: 72.1067, y: 76.6833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716403944
 MonoBehaviour:
@@ -405,14 +405,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.59
-  m_fontSizeBase: 18.59
+  m_fontSize: 9.41
+  m_fontSizeBase: 9.41
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -851,9 +851,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WB_list:
   - {fileID: 11400000, guid: 26bb83b774dbe4f4c924a3fc90c6c188, type: 2}
-  - {fileID: 0}
-  _image: {fileID: 1408008992}
-  _text: {fileID: 0}
+  - {fileID: 11400000, guid: 10e1684ba74224543b5491bd6ce75b82, type: 2}
+  - {fileID: 11400000, guid: fab677a97dc7a1243a5553fb451ec1fc, type: 2}
+  - {fileID: 11400000, guid: a19d67212c12e384b928c87a0d652681, type: 2}
+  - {fileID: 11400000, guid: 20b394ef0fb37bb46a5d1cc21d70d13d, type: 2}
+  - {fileID: 11400000, guid: 20b394ef0fb37bb46a5d1cc21d70d13d, type: 2}
+  Deaths_list:
+  - {fileID: 11400000, guid: c1d163357d9db4e4085f80c765a23ebf, type: 2}
+  Cops_list: []
+  Deaths_image: {fileID: 1408008992}
+  Cops_image: {fileID: 0}
+  _Deaths_text: {fileID: 1775786675}
+  _Cops_text: {fileID: 911618571}
+  _WB_text: {fileID: 716403944}
 --- !u!114 &1578009846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,14 +1009,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: Death
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1024,12 +1034,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: -99
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1040,17 +1050,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
+  m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
   m_verticalMapping: 0
