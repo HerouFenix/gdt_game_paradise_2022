@@ -380,8 +380,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: World building
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
+  m_sharedMaterial: {fileID: -5452201309963769846, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -515,8 +515,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wanted level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
+  m_sharedMaterial: {fileID: -5452201309963769846, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -540,8 +540,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.1
-  m_fontSizeBase: 19.1
+  m_fontSize: 12.46
+  m_fontSizeBase: 12.46
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 6.249298, z: 11.605774, w: -16.069649}
+  m_margin: {x: 0, y: 13.388748, z: 11.605774, w: -16.069649}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -858,9 +858,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20b394ef0fb37bb46a5d1cc21d70d13d, type: 2}
   Deaths_list:
   - {fileID: 11400000, guid: c1d163357d9db4e4085f80c765a23ebf, type: 2}
-  Cops_list: []
+  Cops_list:
+  - {fileID: 11400000, guid: ae61c95dda918b84695d35e4b3525f82, type: 2}
   Deaths_image: {fileID: 1408008992}
-  Cops_image: {fileID: 0}
   _Deaths_text: {fileID: 1775786675}
   _Cops_text: {fileID: 911618571}
   _WB_text: {fileID: 716403944}
@@ -1009,8 +1009,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Death
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
+  m_sharedMaterial: {fileID: -5452201309963769846, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
