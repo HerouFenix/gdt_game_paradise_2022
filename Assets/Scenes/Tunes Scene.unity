@@ -152,9 +152,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7433783477853a84da871c590b53b8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _possibleClientCards:
-  - {fileID: 7797010437465436642, guid: 0a034e89d1212c44887cbb786ff40c87, type: 3}
-  _possibleInteractionCards: []
+  _baseInvestigationCard: {fileID: 7797010437465436642, guid: 0a034e89d1212c44887cbb786ff40c87, type: 3}
+  _deckCards:
+  - {fileID: 11400000, guid: 13d2c2576d14b5043a8dd6d4154630b4, type: 2}
+  - {fileID: 11400000, guid: 6e148a2b6c51bef4685f29bca958c96d, type: 2}
+  - {fileID: 11400000, guid: dd964ee4b8e9a7d489bc011990eab8c8, type: 2}
+  - {fileID: 11400000, guid: 7ac8378619d7bcf4ab6e0a761edd484d, type: 2}
+  - {fileID: 11400000, guid: 202cc9dfcffc0f84abbeacb007f316f4, type: 2}
+  - {fileID: 11400000, guid: 4f83aad4d9ac30a4fad5127efada7d5f, type: 2}
+  - {fileID: 11400000, guid: d7c79846bead89c4d9a80ddf4ba2076e, type: 2}
+  - {fileID: 11400000, guid: a0ced3451bdca2c42be98a66ef84836c, type: 2}
+  - {fileID: 11400000, guid: 7fda45c5ce7140742b7bbdbdc4259a9a, type: 2}
+  - {fileID: 11400000, guid: 9f978eaabd110d641b99d33a37e624c8, type: 2}
+  - {fileID: 11400000, guid: 6dc77c2077ad2084ba586c5e8a8207f5, type: 2}
+  - {fileID: 11400000, guid: 9baab71e142508843836aa08987a3955, type: 2}
+  - {fileID: 11400000, guid: be8bc41478461804c825d9d3c59efb92, type: 2}
+  - {fileID: 11400000, guid: 7d10383176947d54fb15ff9045f2ae7f, type: 2}
+  - {fileID: 11400000, guid: 07bdac2478a3f774f88a96154f7ed1e4, type: 2}
+  - {fileID: 11400000, guid: 99f517c6edff47f46b227afa3c66fcaf, type: 2}
+  - {fileID: 11400000, guid: 73213b4c4b62fff4686eeff46524f82a, type: 2}
+  - {fileID: 11400000, guid: 6695037349eb2df47b6f21f3445e710a, type: 2}
+  - {fileID: 11400000, guid: 6487bf0ed1b24e143846a432dd8e52da, type: 2}
+  - {fileID: 11400000, guid: 3592d80b1dfa1f847b2431d11d8495d4, type: 2}
+  - {fileID: 11400000, guid: b0839dff444c11143b818f5a2fc6c329, type: 2}
   _spawnPosition: {x: 4.11, y: -1.15, z: -0.1}
   cardPositions:
   - {x: -4.8, y: -3.3, z: -0.1}
@@ -164,6 +184,7 @@ MonoBehaviour:
   - {x: 0.4, y: -3.3, z: -0.1}
   - {x: 1.7, y: -3.3, z: -0.1}
   - {x: 3, y: -3.3, z: -0.1}
+  clientNumber: 10
 --- !u!4 &892848936
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +379,7 @@ Transform:
   m_GameObject: {fileID: 1093148285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.21, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -775,7 +796,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 892848935}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: DrawClientCards
+        m_MethodName: DrawInvestigationCard
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

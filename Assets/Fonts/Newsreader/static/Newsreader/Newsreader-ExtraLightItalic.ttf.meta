@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: db245ba997f28c94b9d143c26eca8291
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Newsreader
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c69eb97f59c903d4991900afa3658f9a, type: 3}
+  - {fileID: 12800000, guid: ca166d5e5de52274581ea9afc7b4002b, type: 3}
+  - {fileID: 12800000, guid: c898e754ffd961a49b06113e07ae284f, type: 3}
+  - {fileID: 12800000, guid: 45eea77bc814da14caed69a8cf24d26c, type: 3}
+  - {fileID: 12800000, guid: 30f788a15784b86449ec581e0535811a, type: 3}
+  - {fileID: 12800000, guid: 84d760dd1d5366947b377a5b3a0f840b, type: 3}
+  - {fileID: 12800000, guid: 94f5223fbf6352042807e67376038b5d, type: 3}
+  - {fileID: 12800000, guid: 54d9bdbde98fdf74f9ef3355cd034d2d, type: 3}
+  - {fileID: 12800000, guid: e591cba0d46c9104385fdbf81510ce29, type: 3}
+  - {fileID: 12800000, guid: b58d3ccf68530cd49a9176c57ea017f7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -15,7 +15,7 @@ public class CardManager : MonoBehaviour
 
     private List<GameObject> _currentInvestigationCards = new List<GameObject>();
 
-    [SerializeField] private Vector3 _spawnPosition = new Vector3(0,0,0);
+    [SerializeField] private Vector3 _spawnPosition = new Vector3(0, 0, 0);
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
     //TempFix
@@ -52,24 +52,17 @@ public class CardManager : MonoBehaviour
     {
         WaitForSeconds wait = new WaitForSeconds(.85f);
 
-        if (amount < _reserveCards.Count)
+        if (amount > _reserveCards.Count)
         {
-            for (int i = 0; i < amount; i++)
-            {
-                DrawInvestigationCard();
-                yield return wait;
-            }
+            amount = _reserveCards.Count;
         }
-        else
+
+        for (int i = 0; i < amount; i++)
         {
-            for (int i = 0; i < _reserveCards.Count; i++)
-            {
-                Debug.Log(i);
-                DrawInvestigationCard();
-                yield return wait;
-            }
+            DrawInvestigationCard();
+            yield return wait;
         }
-        
+
 
     }
 
@@ -122,13 +115,13 @@ public class CardManager : MonoBehaviour
 
     public void ApplyEffect(InvestigationCardProperties card)
     {
-        if(card.type == InvestigationCardProperties.Type.Number)
+        if (card.type == InvestigationCardProperties.Type.Number)
         {
-            if(card.number < clientNumber)
+            if (card.number < clientNumber)
             {
                 Debug.Log("Numero Abaixo");
             }
-            else if(card.number > clientNumber)
+            else if (card.number > clientNumber)
             {
                 Debug.Log("Numero Acima");
             }

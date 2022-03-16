@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 84d760dd1d5366947b377a5b3a0f840b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Newsreader
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 30f788a15784b86449ec581e0535811a, type: 3}
+  - {fileID: 12800000, guid: 54d9bdbde98fdf74f9ef3355cd034d2d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

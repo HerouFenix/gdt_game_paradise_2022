@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: WB_1
   m_EditorClassIdentifier: 
-  _text: gajo morre atingido por meteorito
+  _sprite: {fileID: 0}
+  _text: '"The solar eclipse may change absolutely nothing" - Famous scientist says.'
