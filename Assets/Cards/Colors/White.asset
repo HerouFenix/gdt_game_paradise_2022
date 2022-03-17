@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc602387d9e078247aa764c61967c1b6, type: 3}
-  m_Name: Even
+  m_Name: White
   m_EditorClassIdentifier: 
-  _type: 4
+  _type: 2
   _number: 0
-  _image: {fileID: 21300000, guid: 49e1aa9c0e4cb584cbf90463fe49abb5, type: 3}
+  _image: {fileID: 21300000, guid: 058162ca26be2b640b81d19a7529716b, type: 3}
   _suit: 0
-  _color: 0
+  _color: 2
