@@ -134,7 +134,7 @@ public class Phase1Manager : MonoBehaviour
         _handCards.Remove(_card);
         StartCoroutine(RemoveInvestigationCardCor(card));
 
-        DrawInvestigationCardCor(1);
+        StartCoroutine(DrawInvestigationCardCor(1));
 
     }
 
