@@ -24,6 +24,8 @@ public class PhaseOneManager : MonoBehaviour
 
     [HideInInspector] public int phaseIndex = -1; // -1 = Inactive ; 0 = Just started ; 1 = Going on
 
+    private bool _cardsDrawn = false;
+
     private void Start()
     {
         this.DrawReserveCards();
@@ -31,19 +33,43 @@ public class PhaseOneManager : MonoBehaviour
 
     private void Update()
     {
-        if (phaseIndex == -1)
+        if (phaseIndex == 0)
         {
+            if (_cardsDrawn)
+                this.HideInvestigationCards();
+
             return;
         }
-        else if (phaseIndex == 0)
+        else if (phaseIndex == 1)
         {
             client.ToggleTextBubble();
-            DrawInvestigationCards(7);
-            phaseIndex = 1;
-        }
-        else
-        {
 
+            if (!_cardsDrawn)
+                DrawInvestigationCards(7);
+            else
+                ShowInvestigationCards();
+
+            phaseIndex = 1;
+
+            client.ToggleShowClientCard();
+
+            phaseIndex = 2;
+        }
+    }
+
+    public void HideInvestigationCards()
+    {
+        for(int i = 0; i < _currentInvestigationCards.Count; i++)
+        {
+            _currentInvestigationCards[i].SetActive(false);
+        }
+    }
+
+    public void ShowInvestigationCards()
+    {
+        for (int i = 0; i < _currentInvestigationCards.Count; i++)
+        {
+            _currentInvestigationCards[i].SetActive(true);
         }
     }
 
@@ -62,15 +88,17 @@ public class PhaseOneManager : MonoBehaviour
         }
     }
 
-
     /* Investigation Card Methods */
     public void DrawInvestigationCards(int amount)
     {
+        _cardsDrawn = true;
         StartCoroutine(DrawInvestigationCardCor(amount));
     }
 
     private IEnumerator DrawInvestigationCardCor(int amount)
     {
+        client.SetClickable(false);
+
         WaitForSeconds wait = new WaitForSeconds(.85f);
 
         if (amount < _reserveCards.Count)
@@ -91,7 +119,7 @@ public class PhaseOneManager : MonoBehaviour
             }
         }
 
-
+        client.SetClickable(true);
     }
 
     public void DrawInvestigationCard()

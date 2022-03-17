@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class ClientCard : MonoBehaviour
 {
-    enum Suit { None, Work, Love, Money, Fame };
-    enum Color { None, Red, White, Black};
+    private int _number;
+    public int Number { get => _number; set => _number = value; }
 
-    [SerializeField] private int _number;
-    public int Number { get => _number; }
-    [SerializeField] private Suit _suit;
-    [SerializeField] private Color _color;
+    private ESuit _suit;
+    private EColor _color;
 
     private int _currentNumber = 0;
-    private Suit _currentSuit = Suit.None;
-    private Color _currentColor = Color.None;
+    private ESuit _currentSuit = ESuit.None;
+    private EColor _currentColor = EColor.None;
 
     private SpriteRenderer _numberSprite;
     private SpriteRenderer _suitSprite;
@@ -25,6 +23,13 @@ public class ClientCard : MonoBehaviour
         _numberSprite = this.gameObject.transform.Find("number").GetComponent<SpriteRenderer>();
         _suitSprite = this.gameObject.transform.Find("suit").GetComponent<SpriteRenderer>();
         _colorSprite = this.gameObject.transform.Find("color").GetComponent<SpriteRenderer>();
+
+    }
+    public void SetClientValues(int number, ESuit suit, EColor color)
+    {
+        this._number = number;
+        this._suit = suit;
+        this._color = color;
 
     }
 
@@ -40,20 +45,20 @@ public class ClientCard : MonoBehaviour
     {
         switch (_currentSuit)
         {
-            case Suit.None:
-                _currentSuit = Suit.Work;
+            case ESuit.None:
+                _currentSuit = ESuit.Work;
                 break;
-            case Suit.Work:
-                _currentSuit = Suit.Love;
+            case ESuit.Work:
+                _currentSuit = ESuit.Love;
                 break;
-            case Suit.Love:
-                _currentSuit = Suit.Money;
+            case ESuit.Love:
+                _currentSuit = ESuit.Money;
                 break;
-            case Suit.Money:
-                _currentSuit = Suit.Fame;
+            case ESuit.Money:
+                _currentSuit = ESuit.Fame;
                 break;
-            case Suit.Fame:
-                _currentSuit = Suit.None;
+            case ESuit.Fame:
+                _currentSuit = ESuit.None;
                 break;
         }
 
@@ -64,17 +69,17 @@ public class ClientCard : MonoBehaviour
     {
         switch (_currentColor)
         {
-            case Color.None:
-                _currentColor = Color.Red;
+            case EColor.None:
+                _currentColor = EColor.Red;
                 break;
-            case Color.Red:
-                _currentColor = Color.White;
+            case EColor.Red:
+                _currentColor = EColor.White;
                 break;
-            case Color.White:
-                _currentColor = Color.Black;
+            case EColor.White:
+                _currentColor = EColor.Black;
                 break;
-            case Color.Black:
-                _currentColor = Color.None;
+            case EColor.Black:
+                _currentColor = EColor.None;
                 break;
         }
 

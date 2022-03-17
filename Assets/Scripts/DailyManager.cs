@@ -19,7 +19,7 @@ public class DailyManager : MonoBehaviour
     private PhaseOneManager _phaseOneManager;
     private PhaseTwoManager _phaseTwoManager;
 
-    private int currentPhase = -1;
+    private int currentPhase = 0;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class DailyManager : MonoBehaviour
         PickClients(1);
 
         /* Have client show up */
-        _currentClient = Instantiate(_currentClients[_nextClientIndex]).GetComponent<Client>();
+        _currentClient = Instantiate(_currentClients[_nextClientIndex], new Vector3(3f, 0.12f, -0.1f), Quaternion.identity).GetComponent<Client>();
         _currentClient.manager = this;
         _nextClientIndex++;
 
@@ -65,15 +65,15 @@ public class DailyManager : MonoBehaviour
         this.currentPhase = nextPhase;
         switch (this.currentPhase)
         {
-            case -1:
-
-                break;
             case 0:
-                this._phaseOneManager.client = _currentClient;
-                this._phaseOneManager.phaseIndex = 0;
                 break;
             case 1:
-                this._phaseOneManager.phaseIndex = -1; // Deactivate Phase One Manager
+                this._phaseOneManager.client = _currentClient;
+                this._phaseOneManager.phaseIndex = 1;
+                break;
+            case 2:
+                this._phaseOneManager.phaseIndex = 0; // Deactivate Phase One Manager
+
                 break;
         } 
     }

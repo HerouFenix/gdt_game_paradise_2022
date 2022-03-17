@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &932392514
 Transform:
   m_ObjectHideFlags: 0
@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932392513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -17.84, y: 1.3, z: -0.1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1623618586}
@@ -317,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 2896912386846034444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: -1.05, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 932392514}
@@ -365,8 +365,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8c01da56e94178a4cb75a8b7f5670fb5, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -388,11 +388,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b0139739cc1d244be0225c724742a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 5567893869498757437, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
-  sprite: {fileID: 21300000, guid: 8c01da56e94178a4cb75a8b7f5670fb5, type: 3}
+  _number: 0
+  _suit: 0
+  _color: 0
+  cardObject: {fileID: 932243105463971845, guid: 1ed3ea37c8744424da65ed4c793c0c4b, type: 3}
+  sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
   lines: []
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
+  manager: {fileID: 0}
 --- !u!65 &3491463714001396434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -404,5 +408,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.02, y: 2.7, z: 0.2}
-  m_Center: {x: 1.37, y: 0.36, z: 0}
+  m_Size: {x: 7.4164343, y: 14.830124, z: 0.2}
+  m_Center: {x: 0.27828836, y: -0.24650574, z: 0}

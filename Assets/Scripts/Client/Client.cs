@@ -5,23 +5,34 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
-    [SerializeField] private ClientCard card;
+    [SerializeField] private int _number;
+    [SerializeField] private ESuit _suit;
+    [SerializeField] private EColor _color;
+
+    [SerializeField] private GameObject cardObject;
+    private ClientCard clientCard;
     [SerializeField] private Sprite sprite;
     [SerializeField] private List<string> lines = new List<string>();
 
     [SerializeField] private GameObject _textBubble;
     [SerializeField] private TextMeshPro _textBubbleText;
 
-
     private bool _clickable;
     private bool _hovered;
 
     [HideInInspector] public DailyManager manager;
 
+    private bool _textRunning = false;
+
     private void Start()
     {
         _clickable = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+
+        clientCard = Instantiate(cardObject, new Vector3(-2.45f, 0.4f, -0.1f), Quaternion.identity).GetComponent<ClientCard>();
+        clientCard.gameObject.SetActive(false);
+        clientCard.SetClientValues(_number, _suit, _color);
+
         StartCoroutine(TypeSentence("Hello!"));
     }
 
@@ -31,17 +42,19 @@ public class Client : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log(manager.GetPhase());
                 switch (manager.GetPhase())
                 {
-                    case -1:
-                        manager.SwapPhase(0);
-                        break;
                     case 0:
                         manager.SwapPhase(1);
+                        break;
+                    case 1:
+                        manager.SwapPhase(2);
                         break;
 
                 }
             }
+            
         }
     }
 
@@ -50,22 +63,59 @@ public class Client : MonoBehaviour
         _textBubble.SetActive(!_textBubble.activeSelf);
     }
 
+    public void ToggleShowClientCard()
+    {
+        clientCard.gameObject.SetActive(!clientCard.gameObject.activeSelf);
+    }
+
     IEnumerator TypeSentence(string sentence)
     {
+        if (!_textBubble.activeSelf)
+            this.ToggleTextBubble();
+
         _textBubbleText.text = "";
+
+        _textRunning = true;
         foreach (char letter in sentence.ToCharArray())
         {
             _textBubbleText.text += letter;
             yield return new WaitForSeconds(0.02f);
         }
+        _textRunning = false;
     }
 
     private void OnMouseEnter()
     {
-        _hovered = true;
+        if (_clickable)
+        {
+            _hovered = true;
+
+            switch (manager.GetPhase())
+            {
+                case 1:
+                    StopAllCoroutines();
+                    StartCoroutine(TypeSentence("Are you done with the reading?"));
+                    break;
+            }
+        }
     }
+
     private void OnMouseExit()
     {
         _hovered = false;
+        switch (manager.GetPhase())
+        {
+            case 1:
+                if (_textBubble.activeSelf)
+                    this.ToggleTextBubble();
+                break;
+        }
+    }
+
+    public void SetClickable(bool clickable)
+    {
+        this._clickable = clickable;
+        if (!this._clickable)
+            this._hovered = false;
     }
 }
