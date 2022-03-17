@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380935271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 2.14, y: -0.61, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -858,6 +858,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20b394ef0fb37bb46a5d1cc21d70d13d, type: 2}
   Deaths_list:
   - {fileID: 11400000, guid: c1d163357d9db4e4085f80c765a23ebf, type: 2}
+  - {fileID: 11400000, guid: 155a2d5b0f48bb241a0865e4af2949e0, type: 2}
+  - {fileID: 11400000, guid: f351bb083a2d48643ab58f61cf24c344, type: 2}
+  - {fileID: 11400000, guid: 3fdeb72724e32d346b932623eba1e57c, type: 2}
+  - {fileID: 11400000, guid: f1ab574b084804846857bfdb27b2d7c9, type: 2}
   Cops_list:
   - {fileID: 11400000, guid: ae61c95dda918b84695d35e4b3525f82, type: 2}
   Deaths_image: {fileID: 1408008992}
