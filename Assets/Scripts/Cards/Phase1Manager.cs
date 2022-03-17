@@ -22,12 +22,13 @@ public class Phase1Manager : MonoBehaviour
     //TempFix
     //[SerializeField] public ClientCard clientCard;
     private Client client;
-    [HideInInspector] public ClientCard _clientCard;
-    private DailyManager _dailyManager;
+    public ClientCard _clientCard;
+    private GameManager _GameManager;
 
     //Actions
     public event Action StartDayEvent;
     public event Action GuessCard;
+
 
     #region Singleton
 
@@ -49,8 +50,8 @@ public class Phase1Manager : MonoBehaviour
 
     public void Start()
     {
-        _dailyManager = DailyManager.Instance;
-        _dailyManager.StartPhase1 += ReceiveClient;
+        _GameManager = GameManager.Instance;
+        _GameManager.StartPhase1 += ReceiveClient;
 
         DrawReserveCards();
     }
@@ -58,7 +59,7 @@ public class Phase1Manager : MonoBehaviour
     public void ReceiveClient(Client _dailyClient)
     {
         client = _dailyClient;
-        _clientCard = client.GetClientCard();
+        _clientCard.ResetClientCard();
     }
 
     //Vai buscar as cartas de investigação diárias, para a mão e para a reserva

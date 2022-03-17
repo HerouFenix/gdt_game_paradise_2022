@@ -83,7 +83,7 @@ public class PhaseTwoManager : MonoBehaviour
         }
 
 
-        for(int i = daysClients.Count; i < 6; i++)
+        for(int i = daysClients.Count; i < 1; i++)
         {
             int randomCard = UnityEngine.Random.Range(0, allToolCards.Count);
             _possibleToolCards.Add(allToolCards[randomCard].gameObject);

@@ -12,6 +12,7 @@ public class PhaseOneManager : MonoBehaviour
     private List<InvestigationCardProperties> _handCards = new List<InvestigationCardProperties>();
     private List<InvestigationCardProperties> _reserveCards = new List<InvestigationCardProperties>();
     private List<InvestigationCardProperties> _playedCards = new List<InvestigationCardProperties>();
+    [SerializeField] private CardEffects _cardEffects;
 
     private List<GameObject> _currentInvestigationCards = new List<GameObject>();
 
@@ -19,58 +20,29 @@ public class PhaseOneManager : MonoBehaviour
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
     //TempFix
-    [SerializeField] public int clientNumber;
-    [HideInInspector] public Client client;
+    //[SerializeField] public ClientCard clientCard;
+    private Client client;
+    [HideInInspector] public ClientCard _clientCard;
+    private GameManager _GameManager;
 
-    [HideInInspector] public int phaseIndex = -1; // -1 = Inactive ; 0 = Just started ; 1 = Going on
+    //Actions
+    public event Action StartDayEvent;
+    public event Action GuessCard;
 
-    private bool _cardsDrawn = false;
 
-    private void Start()
+
+    public void Start()
     {
-        this.DrawReserveCards();
+        _GameManager = GameManager.Instance;
+        _GameManager.StartPhase1 += ReceiveClient;
+
+        DrawReserveCards();
     }
 
-    private void Update()
+    public void ReceiveClient(Client _dailyClient)
     {
-        if (phaseIndex == 0)
-        {
-            if (_cardsDrawn)
-                this.HideInvestigationCards();
-
-            return;
-        }
-        else if (phaseIndex == 1)
-        {
-            client.ToggleTextBubble();
-
-            if (!_cardsDrawn)
-                DrawInvestigationCards(7);
-            else
-                ShowInvestigationCards();
-
-            phaseIndex = 1;
-
-            client.ToggleShowClientCard();
-
-            phaseIndex = 2;
-        }
-    }
-
-    public void HideInvestigationCards()
-    {
-        for(int i = 0; i < _currentInvestigationCards.Count; i++)
-        {
-            _currentInvestigationCards[i].SetActive(false);
-        }
-    }
-
-    public void ShowInvestigationCards()
-    {
-        for (int i = 0; i < _currentInvestigationCards.Count; i++)
-        {
-            _currentInvestigationCards[i].SetActive(true);
-        }
+        client = _dailyClient;
+        //_clientCard = client.GetClientCard();
     }
 
     //Vai buscar as cartas de investigação diárias, para a mão e para a reserva
@@ -88,38 +60,31 @@ public class PhaseOneManager : MonoBehaviour
         }
     }
 
-    /* Investigation Card Methods */
-    public void DrawInvestigationCards(int amount)
+
+    #region DrawCard
+
+    public void StartDay()
     {
-        _cardsDrawn = true;
-        StartCoroutine(DrawInvestigationCardCor(amount));
+        StartDayEvent?.Invoke();
+        StartCoroutine(DrawInvestigationCardCor(7));
     }
 
     private IEnumerator DrawInvestigationCardCor(int amount)
     {
-        client.SetClickable(false);
-
         WaitForSeconds wait = new WaitForSeconds(.85f);
 
-        if (amount < _reserveCards.Count)
+        if (amount > _reserveCards.Count)
         {
-            for (int i = 0; i < amount; i++)
-            {
-                DrawInvestigationCard();
-                yield return wait;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < _reserveCards.Count; i++)
-            {
-                Debug.Log(i);
-                DrawInvestigationCard();
-                yield return wait;
-            }
+            amount = _reserveCards.Count;
         }
 
-        client.SetClickable(true);
+        for (int i = 0; i < amount; i++)
+        {
+            DrawInvestigationCard();
+            yield return wait;
+        }
+
+
     }
 
     public void DrawInvestigationCard()
@@ -141,6 +106,10 @@ public class PhaseOneManager : MonoBehaviour
         _currentInvestigationCards.Add(newCard);
     }
 
+    #endregion
+
+    #region RemoveCard
+
     public void RemoveInvestigationCard(GameObject card)
     {
         InvestigationCardProperties _card = card.GetComponent<InvestigationCard>()._invCard;
@@ -148,6 +117,9 @@ public class PhaseOneManager : MonoBehaviour
         _playedCards.Add(_card);
         _handCards.Remove(_card);
         StartCoroutine(RemoveInvestigationCardCor(card));
+
+        StartCoroutine(DrawInvestigationCardCor(1));
+
     }
 
     public IEnumerator RemoveInvestigationCardCor(GameObject card)
@@ -169,39 +141,43 @@ public class PhaseOneManager : MonoBehaviour
         Destroy(card);
     }
 
-    public void ApplyEffect(InvestigationCardProperties card)
-    {
-        if (card.type == InvestigationCardProperties.Type.Number)
-        {
-            if (card.number < clientNumber)
-            {
-                Debug.Log("Numero Abaixo");
-            }
-            else if (card.number > clientNumber)
-            {
-                Debug.Log("Numero Acima");
-            }
-            else
-            {
-                Debug.Log("Numero Correto");
-            }
-        }
-    }
-
-    #region Singleton
-
-    private static PhaseOneManager _instance;
-
-    public static PhaseOneManager Instance
-    {
-        get
-        {
-            if (_instance == null) _instance = FindObjectOfType<PhaseOneManager>();
-            return _instance;
-        }
-    }
-
     #endregion
 
-    /* ************************ */
+    public void ApplyEffect(InvestigationCardProperties card)
+    {
+        InvestigationCardProperties.Type type = card.type;
+
+        switch (type)
+        {
+            case InvestigationCardProperties.Type.Number:
+                _cardEffects.NumberCardEffect(card, _clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.Even:
+                _cardEffects.EvenCardEffect(_clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.DoubleD:
+                _cardEffects.DoubleDCardEffect(_clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.Suit:
+                _cardEffects.SuitCardEffect(card, _clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.Color:
+                _cardEffects.ColorCardEffect(card, _clientCard);
+                break;
+        }
+    }
+
+    public void PressGuessCard()
+    {
+        GuessCard?.Invoke();
+        foreach (GameObject obj in this._currentInvestigationCards)
+        {
+            InvestigationCard card = obj.GetComponent<InvestigationCard>();
+            card.HideCard();
+        }
+    }
 }

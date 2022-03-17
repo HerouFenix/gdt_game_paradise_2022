@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class DailyManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     private int _souls;
     private int _police;
@@ -28,8 +28,8 @@ public class DailyManager : MonoBehaviour
 
     #region Singleton
 
-    private static DailyManager _instance;
-    public static DailyManager Instance { get { return _instance; } }
+    private static GameManager _instance;
+    public static GameManager Instance { get { return _instance; } }
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -99,7 +99,7 @@ public class DailyManager : MonoBehaviour
                 //this._phaseOneManager.phaseIndex = 1;
                 break;
             case 2:
-                this._phaseOneManager.phaseIndex = 0; // Deactivate Phase One Manager
+                //this._phaseOneManager.phaseIndex = 0; // Deactivate Phase One Manager
 
                 break;
         } 

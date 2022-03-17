@@ -21,7 +21,7 @@ public class Client : MonoBehaviour
     private bool _clickable;
     private bool _hovered;
 
-    [HideInInspector] public DailyManager manager;
+    [HideInInspector] public GameManager manager;
 
     private bool _textRunning = false;
 
@@ -29,9 +29,6 @@ public class Client : MonoBehaviour
     {
         _clickable = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-
-        clientCard = Instantiate(cardObject, new Vector3(-2.45f, 0.4f, -0.1f), Quaternion.identity).GetComponent<ClientCard>();
-        clientCard.gameObject.SetActive(false);
 
         StartCoroutine(TypeSentence("Hello!"));
     }
@@ -117,10 +114,5 @@ public class Client : MonoBehaviour
         this._clickable = clickable;
         if (!this._clickable)
             this._hovered = false;
-    }
-
-    public ClientCard GetClientCard()
-    {
-        return this.clientCard;
     }
 }

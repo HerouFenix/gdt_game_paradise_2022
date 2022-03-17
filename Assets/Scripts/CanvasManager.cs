@@ -11,12 +11,12 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject _ClientCard;
     [SerializeField] private GameObject _Journal;
     private Phase1Manager _phase1Manager;
-    private DailyManager _dailyManager;
+    private GameManager _GameManager;
 
     void Start()
     {
-        _dailyManager = DailyManager.Instance;
-        _dailyManager.StartPhase1 += CloseJournal;
+        _GameManager = GameManager.Instance;
+        _GameManager.StartPhase1 += CloseJournal;
 
         _phase1Manager = Phase1Manager.Instance;
         _phase1Manager.StartDayEvent += StartDay;

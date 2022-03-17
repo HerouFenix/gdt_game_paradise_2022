@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ClientCard : MonoBehaviour
 {
-    private int _number;
-    private ESuit _suit;
-    private EColor _color;
+    // TODO: Remove serialize field //
+    [SerializeField] private int _number;
+    [SerializeField] private ESuit _suit;
+    [SerializeField] private EColor _color;
     public int Number { get => _number; set => _number = value; }
 
     public ESuit Suit { get => _suit; set => _suit = value; }
 
     public EColor Color { get => _color; set => _color = value; }
-
 
     private int _currentNumber = 0;
     private ESuit _currentSuit = ESuit.None;
@@ -28,11 +28,14 @@ public class ClientCard : MonoBehaviour
         _suitSprite = this.gameObject.transform.Find("suit").GetComponent<SpriteRenderer>();
         _colorSprite = this.gameObject.transform.Find("color").GetComponent<SpriteRenderer>();
 
+    }
 
+    public void ResetClientCard()
+    {
         /* Pick random values */
         this._number = Random.Range(0, 21);
-        this._suit = (ESuit) Random.Range(0,5);
-        this._color = (EColor) Random.Range(0, 4);
+        this._suit = (ESuit)Random.Range(0, 5);
+        this._color = (EColor)Random.Range(0, 4);
     }
 
     /* Change Current Values */
