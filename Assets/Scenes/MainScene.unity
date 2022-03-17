@@ -766,6 +766,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2336690767633733819, guid: 6fdf62322b847e245826f0ffedabce84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282448894775036206, guid: 6fdf62322b847e245826f0ffedabce84, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -813,10 +817,6 @@ PrefabInstance:
     - target: {fileID: 7216925257061037841, guid: 6fdf62322b847e245826f0ffedabce84, type: 3}
       propertyPath: m_Name
       value: ClientCard_DS
-      objectReference: {fileID: 0}
-    - target: {fileID: 7216925257061037841, guid: 6fdf62322b847e245826f0ffedabce84, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fdf62322b847e245826f0ffedabce84, type: 3}
