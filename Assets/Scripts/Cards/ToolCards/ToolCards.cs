@@ -11,7 +11,7 @@ public class ToolCards : MonoBehaviour
     [SerializeField] private Sprite _image;
 
     [HideInInspector] protected int positionIndex;
-    private PhaseTwoManager _phase2Manager;
+    private Phase2Manager _phase2Manager;
 
     private Animator _animator;
     public bool _interactible = false;
@@ -22,7 +22,7 @@ public class ToolCards : MonoBehaviour
     private void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
-        _phase2Manager = PhaseTwoManager.Instance;
+        _phase2Manager = Phase2Manager.Instance;
         _front.GetComponent<SpriteRenderer>().sprite = _image;
     }
 

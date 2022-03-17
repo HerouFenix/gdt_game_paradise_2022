@@ -17,10 +17,9 @@ public class GameManager : MonoBehaviour
     private int _nextClientIndex;
     private Client _currentClient;
 
-    private PhaseOneManager _phaseOneManager;
-    private PhaseTwoManager _phaseTwoManager;
-    //Tunes
+
     private Phase1Manager _phase1Manager;
+    private Phase2Manager _phase2Manager;
     public event Action<Client> StartPhase1;
     
 
@@ -46,10 +45,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _phaseOneManager = this.GetComponent<PhaseOneManager>();
         //Tunes
         _phase1Manager = this.GetComponent<Phase1Manager>();
-        _phaseTwoManager = this.GetComponent<PhaseTwoManager>();
+        _phase2Manager = this.GetComponent<Phase2Manager>();
 
 
         /* 1st Pick 3 clients*/

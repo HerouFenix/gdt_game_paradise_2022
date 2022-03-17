@@ -128,13 +128,13 @@ public class Phase2Manager : MonoBehaviour
 
     #region Singleton
 
-    private static PhaseTwoManager _instance;
+    private static Phase2Manager _instance;
 
-    public static PhaseTwoManager Instance
+    public static Phase2Manager Instance
     {
         get
         {
-            if (_instance == null) _instance = FindObjectOfType<PhaseTwoManager>();
+            if (_instance == null) _instance = FindObjectOfType<Phase2Manager>();
             return _instance;
         }
     }
