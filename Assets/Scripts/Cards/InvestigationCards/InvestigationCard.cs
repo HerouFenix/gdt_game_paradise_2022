@@ -14,7 +14,7 @@ public class InvestigationCard : MonoBehaviour
     [SerializeField] private GameObject _back;
 
     [HideInInspector] protected int positionIndex;
-    private CardManager _cardManager;
+    private Phase1Manager _phase1Manager;
 
     private Animator _animator;
     public bool _interactible = false;
@@ -25,7 +25,7 @@ public class InvestigationCard : MonoBehaviour
     private void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
-        _cardManager = CardManager.Instance;
+        _phase1Manager = Phase1Manager.Instance;
         _front.GetComponent<SpriteRenderer>().sprite = _invCard.image;
     }
 
@@ -57,6 +57,11 @@ public class InvestigationCard : MonoBehaviour
     public void MoveCard(Vector3 position)
     {
         StartCoroutine(LerpPosition(position, .1f, true));
+    }
+
+    public void HideCard()
+    {
+        StartCoroutine(SlideOff(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
     }
 
 
@@ -91,7 +96,7 @@ public class InvestigationCard : MonoBehaviour
     {
         if (_interactible)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.85f, this._cardManager.cardPositions[this.positionIndex].z), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .1f));
             _hovered = false;
         }
     }
@@ -133,6 +138,20 @@ public class InvestigationCard : MonoBehaviour
         transform.position = targetPosition;
 
         Played?.Invoke(this.gameObject);
+    }
+
+    IEnumerator SlideOff(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = transform.position;
+        while (time < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+        Destroy(gameObject);
     }
 
 }

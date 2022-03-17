@@ -162,13 +162,13 @@ public class PhaseOneManager : MonoBehaviour
 
     #region Singleton
 
-    private static CardManager _instance;
+    private static PhaseOneManager _instance;
 
-    public static CardManager Instance
+    public static PhaseOneManager Instance
     {
         get
         {
-            if (_instance == null) _instance = FindObjectOfType<CardManager>();
+            if (_instance == null) _instance = FindObjectOfType<PhaseOneManager>();
             return _instance;
         }
     }

@@ -8,6 +8,7 @@ public class ClientCard : MonoBehaviour
     enum Color { None, Red, White, Black};
 
     [SerializeField] private int _number;
+    public int Number { get => _number; }
     [SerializeField] private Suit _suit;
     [SerializeField] private Color _color;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeValue : MonoBehaviour
 {
-    enum Type { Number, Suit, Color };
+    enum Type { Number, Suit, Color, Confirm };
 
     [SerializeField] private Type type;
     private bool _hovered = false;
@@ -49,6 +49,10 @@ public class ChangeValue : MonoBehaviour
 
             case Type.Suit:
                 card.ChangeCurrentSuit();
+                break;
+
+            case Type.Confirm:
+                card.RevealAll();
                 break;
         }
     }

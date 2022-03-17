@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc602387d9e078247aa764c61967c1b6, type: 3}
   m_Name: Even
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 4
   _number: 0
+  _image: {fileID: 21300000, guid: d0b7ee1170ff88744834b7ad5bfdeb36, type: 3}

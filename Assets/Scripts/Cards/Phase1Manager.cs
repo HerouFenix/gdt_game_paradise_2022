@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CardManager : MonoBehaviour
+public class Phase1Manager : MonoBehaviour
 {
     [SerializeField] private GameObject _baseInvestigationCard;
 
@@ -12,6 +12,7 @@ public class CardManager : MonoBehaviour
     private List<InvestigationCardProperties> _handCards = new List<InvestigationCardProperties>();
     private List<InvestigationCardProperties> _reserveCards = new List<InvestigationCardProperties>();
     private List<InvestigationCardProperties> _playedCards = new List<InvestigationCardProperties>();
+    [SerializeField] private CardEffects _cardEffects;
 
     private List<GameObject> _currentInvestigationCards = new List<GameObject>();
 
@@ -19,7 +20,29 @@ public class CardManager : MonoBehaviour
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
     //TempFix
-    [SerializeField] public int clientNumber;
+    [SerializeField] public ClientCard clientCard;
+
+    //Actions
+    public event Action StartDay;
+    public event Action GuessCard;
+
+    #region Singleton
+
+    private static Phase1Manager _instance;
+    public static Phase1Manager Instance { get { return _instance; } }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
+    #endregion
 
     public void Start()
     {
@@ -45,6 +68,7 @@ public class CardManager : MonoBehaviour
     /* Investigation Card Methods */
     public void DrawInvestigationCard(int amount)
     {
+        StartDay?.Invoke();
         StartCoroutine(DrawInvestigationCardCor(amount));
     }
 
@@ -92,6 +116,9 @@ public class CardManager : MonoBehaviour
         _playedCards.Add(_card);
         _handCards.Remove(_card);
         StartCoroutine(RemoveInvestigationCardCor(card));
+
+        DrawInvestigationCard(1);
+
     }
 
     public IEnumerator RemoveInvestigationCardCor(GameObject card)
@@ -115,37 +142,39 @@ public class CardManager : MonoBehaviour
 
     public void ApplyEffect(InvestigationCardProperties card)
     {
-        if (card.type == InvestigationCardProperties.Type.Number)
+        InvestigationCardProperties.Type type = card.type;
+
+        switch (type)
         {
-            if (card.number < clientNumber)
-            {
-                Debug.Log("Numero Abaixo");
-            }
-            else if (card.number > clientNumber)
-            {
-                Debug.Log("Numero Acima");
-            }
-            else
-            {
-                Debug.Log("Numero Correto");
-            }
+            case InvestigationCardProperties.Type.Number:
+                _cardEffects.NumberCardEffect(card, clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.Even:
+                _cardEffects.EvenCardEffect(clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.DoubleD:
+                _cardEffects.DoubleDCardEffect(clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.Suit:
+                _cardEffects.SuitCardEffect(clientCard);
+                break;
+
+            case InvestigationCardProperties.Type.Color:
+                _cardEffects.ColorCardEffect(clientCard);
+                break;
         }
     }
 
-    #region Singleton
-
-    private static CardManager _instance;
-
-    public static CardManager Instance
+    public void PressGuessCard()
     {
-        get
+        GuessCard?.Invoke();
+        foreach(GameObject obj in this._currentInvestigationCards)
         {
-            if (_instance == null) _instance = FindObjectOfType<CardManager>();
-            return _instance;
+            InvestigationCard card = obj.GetComponent<InvestigationCard>();
+            card.HideCard();
         }
     }
-
-    #endregion
-
-    /* ************************ */
 }
