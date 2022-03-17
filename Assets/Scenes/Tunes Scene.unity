@@ -128,17 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 932243105463971845, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
   m_PrefabInstance: {fileID: 613582623}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &307384559 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5567893869498757437, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
-  m_PrefabInstance: {fileID: 613582623}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307384558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085a26d58b553a54c9a9fb92659adb16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &613582623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,15 +201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5567893869498757437, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
       propertyPath: _suit
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5567893869498757437, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
       propertyPath: _color
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5567893869498757437, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
       propertyPath: _number
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
@@ -235,6 +224,7 @@ GameObject:
   - component: {fileID: 892848936}
   - component: {fileID: 892848935}
   - component: {fileID: 892848937}
+  - component: {fileID: 892848938}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -279,6 +269,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0839dff444c11143b818f5a2fc6c329, type: 2}
   - {fileID: 11400000, guid: d2da0df0a95a2b44cbaf985262d38609, type: 2}
   - {fileID: 11400000, guid: d2da0df0a95a2b44cbaf985262d38609, type: 2}
+  _cardEffects: {fileID: 892848937}
   _spawnPosition: {x: 4.11, y: -1.15, z: -0.1}
   cardPositions:
   - {x: -4.5, y: -2.85, z: -0.19}
@@ -289,7 +280,7 @@ MonoBehaviour:
   - {x: -1, y: -2.85, z: -0.14}
   - {x: -0.3, y: -2.85, z: -0.13}
   - {x: 0.4, y: -2.85, z: -0.12}
-  clientCard: {fileID: 307384559}
+  _clientCard: {fileID: 0}
 --- !u!4 &892848936
 Transform:
   m_ObjectHideFlags: 0
@@ -317,6 +308,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7aa006780551e4ba8b9a3cfee1e4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &892848938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892848934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b624c224fa5b58e4da647f0b5e1a8a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _possibleClients:
+  - {fileID: 2896912386846034444, guid: 24f69594d7ca58046932b261e53647e3, type: 3}
+  - {fileID: 2896912386846034444, guid: d63ddfbaeba8cd941bde87da80b868b3, type: 3}
 --- !u!1 &1004136024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,8 +1203,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 892848938}
+        m_TargetAssemblyTypeName: DailyManager, Assembly-CSharp
+        m_MethodName: SwapPhase
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 892848935}
-        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Phase1Manager, Assembly-CSharp
         m_MethodName: DrawInvestigationCard
         m_Mode: 3
         m_Arguments:

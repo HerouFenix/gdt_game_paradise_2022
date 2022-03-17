@@ -5,10 +5,14 @@ using UnityEngine;
 public class ClientCard : MonoBehaviour
 {
     private int _number;
-    public int Number { get => _number; set => _number = value; }
-
     private ESuit _suit;
     private EColor _color;
+    public int Number { get => _number; set => _number = value; }
+
+    public ESuit Suit { get => _suit; set => _suit = value; }
+
+    public EColor Color { get => _color; set => _color = value; }
+
 
     private int _currentNumber = 0;
     private ESuit _currentSuit = ESuit.None;
@@ -89,9 +93,33 @@ public class ClientCard : MonoBehaviour
     /* Reveal Real Values */
     public void RevealAll()
     {
+        if(_currentSuit == _suit)
+        {
+            Debug.Log("Acertou no naipe");
+        }
+        else
+        {
+            Debug.Log("Naipe errado");
+        }
+
+        if(_currentColor == _color)
+        {
+            Debug.Log("Acertou na cor");
+        }
+        else
+        {
+            Debug.Log("Cor errada");
+        }
+
+        int difNumber = Mathf.Abs(_currentNumber - _number);
+
+        Debug.Log("falhou por " + difNumber);
+
+        /*
         this.RevealNumber();
         this.RevealSuit();
         this.RevealColor();
+        */
     }
 
     public void RevealNumber()

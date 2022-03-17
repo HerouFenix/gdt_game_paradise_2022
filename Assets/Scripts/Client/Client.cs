@@ -39,7 +39,7 @@ public class Client : MonoBehaviour
 
     private void Update()
     {
-        if (_clickable && _hovered)
+        /*if (_clickable && _hovered)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -56,7 +56,7 @@ public class Client : MonoBehaviour
                 }
             }
             
-        }
+        }*/
     }
 
     public void ToggleTextBubble()
@@ -118,5 +118,10 @@ public class Client : MonoBehaviour
         this._clickable = clickable;
         if (!this._clickable)
             this._hovered = false;
+    }
+
+    public ClientCard GetClientCard()
+    {
+        return this.clientCard;
     }
 }

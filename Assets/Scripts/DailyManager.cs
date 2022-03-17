@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DailyManager : MonoBehaviour
 {
@@ -18,12 +19,36 @@ public class DailyManager : MonoBehaviour
 
     private PhaseOneManager _phaseOneManager;
     private PhaseTwoManager _phaseTwoManager;
+    //Tunes
+    private Phase1Manager _phase1Manager;
+    public event Action<Client> StartPhase1;
+    
 
     private int currentPhase = 0;
+
+    #region Singleton
+
+    private static DailyManager _instance;
+    public static DailyManager Instance { get { return _instance; } }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
+    #endregion
 
     void Start()
     {
         _phaseOneManager = this.GetComponent<PhaseOneManager>();
+        //Tunes
+        _phase1Manager = this.GetComponent<Phase1Manager>();
         _phaseTwoManager = this.GetComponent<PhaseTwoManager>();
 
 
@@ -31,6 +56,7 @@ public class DailyManager : MonoBehaviour
         PickClients(1);
 
         /* Have client show up */
+        /*Vai passar para o CanvasManager*/
         _currentClient = Instantiate(_currentClients[_nextClientIndex], new Vector3(3f, 0.12f, -0.1f), Quaternion.identity).GetComponent<Client>();
         _currentClient.manager = this;
         _nextClientIndex++;
@@ -68,8 +94,9 @@ public class DailyManager : MonoBehaviour
             case 0:
                 break;
             case 1:
-                this._phaseOneManager.client = _currentClient;
-                this._phaseOneManager.phaseIndex = 1;
+                StartPhase1?.Invoke(_currentClient);
+                //this._phaseOneManager.client = _currentClient;
+                //this._phaseOneManager.phaseIndex = 1;
                 break;
             case 2:
                 this._phaseOneManager.phaseIndex = 0; // Deactivate Phase One Manager

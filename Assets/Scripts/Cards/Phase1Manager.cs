@@ -20,10 +20,13 @@ public class Phase1Manager : MonoBehaviour
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
     //TempFix
-    [SerializeField] public ClientCard clientCard;
+    //[SerializeField] public ClientCard clientCard;
+    private Client client;
+    [HideInInspector] public ClientCard _clientCard;
+    private DailyManager _dailyManager;
 
     //Actions
-    public event Action StartDay;
+    public event Action StartDayEvent;
     public event Action GuessCard;
 
     #region Singleton
@@ -46,7 +49,16 @@ public class Phase1Manager : MonoBehaviour
 
     public void Start()
     {
+        _dailyManager = DailyManager.Instance;
+        _dailyManager.StartPhase1 += ReceiveClient;
+
         DrawReserveCards();
+    }
+
+    public void ReceiveClient(Client _dailyClient)
+    {
+        client = _dailyClient;
+        _clientCard = client.GetClientCard();
     }
 
     //Vai buscar as cartas de investigação diárias, para a mão e para a reserva
@@ -65,11 +77,12 @@ public class Phase1Manager : MonoBehaviour
     }
 
 
-    /* Investigation Card Methods */
-    public void DrawInvestigationCard(int amount)
+    #region DrawCard
+
+    public void StartDay()
     {
-        StartDay?.Invoke();
-        StartCoroutine(DrawInvestigationCardCor(amount));
+        StartDayEvent?.Invoke();
+        StartCoroutine(DrawInvestigationCardCor(7));
     }
 
     private IEnumerator DrawInvestigationCardCor(int amount)
@@ -109,6 +122,10 @@ public class Phase1Manager : MonoBehaviour
         _currentInvestigationCards.Add(newCard);
     }
 
+    #endregion
+
+    #region RemoveCard
+
     public void RemoveInvestigationCard(GameObject card)
     {
         InvestigationCardProperties _card = card.GetComponent<InvestigationCard>()._invCard;
@@ -117,7 +134,7 @@ public class Phase1Manager : MonoBehaviour
         _handCards.Remove(_card);
         StartCoroutine(RemoveInvestigationCardCor(card));
 
-        DrawInvestigationCard(1);
+        DrawInvestigationCardCor(1);
 
     }
 
@@ -140,6 +157,8 @@ public class Phase1Manager : MonoBehaviour
         Destroy(card);
     }
 
+    #endregion
+
     public void ApplyEffect(InvestigationCardProperties card)
     {
         InvestigationCardProperties.Type type = card.type;
@@ -147,23 +166,23 @@ public class Phase1Manager : MonoBehaviour
         switch (type)
         {
             case InvestigationCardProperties.Type.Number:
-                _cardEffects.NumberCardEffect(card, clientCard);
+                _cardEffects.NumberCardEffect(card, _clientCard);
                 break;
 
             case InvestigationCardProperties.Type.Even:
-                _cardEffects.EvenCardEffect(clientCard);
+                _cardEffects.EvenCardEffect(_clientCard);
                 break;
 
             case InvestigationCardProperties.Type.DoubleD:
-                _cardEffects.DoubleDCardEffect(clientCard);
+                _cardEffects.DoubleDCardEffect(_clientCard);
                 break;
 
             case InvestigationCardProperties.Type.Suit:
-                _cardEffects.SuitCardEffect(clientCard);
+                _cardEffects.SuitCardEffect(card, _clientCard);
                 break;
 
             case InvestigationCardProperties.Type.Color:
-                _cardEffects.ColorCardEffect(clientCard);
+                _cardEffects.ColorCardEffect(card, _clientCard);
                 break;
         }
     }

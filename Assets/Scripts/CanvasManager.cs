@@ -9,12 +9,17 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject _buttonStartDay;
     [SerializeField] private GameObject _buttonGuess;
     [SerializeField] private GameObject _ClientCard;
+    [SerializeField] private GameObject _Journal;
     private Phase1Manager _phase1Manager;
+    private DailyManager _dailyManager;
 
     void Start()
     {
-        Phase1Manager _phase1Manager = Phase1Manager.Instance;
-        _phase1Manager.StartDay += StartDay;
+        _dailyManager = DailyManager.Instance;
+        _dailyManager.StartPhase1 += CloseJournal;
+
+        _phase1Manager = Phase1Manager.Instance;
+        _phase1Manager.StartDayEvent += StartDay;
         _phase1Manager.GuessCard += GuessCard;
     }
 
@@ -22,6 +27,12 @@ public class CanvasManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CloseJournal(Client c)
+    {
+        _Journal.SetActive(false);
+        _buttonStartDay.SetActive(true);
     }
 
     public void StartDay()
