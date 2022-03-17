@@ -27,6 +27,7 @@ public class Phase1Manager : MonoBehaviour
 
     //Actions
     public event Action StartDayEvent;
+    public event Action PlayInvCard;
     public event Action Guessing;
     public event Action Guess;
 
@@ -69,12 +70,9 @@ public class Phase1Manager : MonoBehaviour
         for (int i = 17; i > 0; i--)
         {
             int cardIndex = UnityEngine.Random.Range(0, _deckCards.Count);
-            //Debug.Log(_deckCards[cardIndex].number);
-            //Debug.Log("Saiu carta de reserva" + _deckCards[cardIndex].number);
 
             _reserveCards.Add(_deckCards[cardIndex]);
             _deckCards.Remove(_deckCards[cardIndex]);
-            //Debug.Log("Restam" + _deckCards.Count + "cartas");
         }
     }
 
@@ -164,6 +162,7 @@ public class Phase1Manager : MonoBehaviour
     public void ApplyEffect(InvestigationCardProperties card)
     {
         InvestigationCardProperties.Type type = card.type;
+        PlayInvCard?.Invoke();
 
         switch (type)
         {

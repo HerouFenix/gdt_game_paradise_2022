@@ -16,4 +16,4 @@ MonoBehaviour:
   _number: 0
   _image: {fileID: 21300000, guid: 01f78a2242ca94043843d2f26c6c8526, type: 3}
   _suit: 0
-  _color: 1
+  _color: 0

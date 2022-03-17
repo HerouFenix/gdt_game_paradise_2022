@@ -25,6 +25,7 @@ public class CanvasManager : MonoBehaviour
         _phase1Manager.StartDayEvent += StartDay;
         _phase1Manager.Guessing += GuessingCard;
         _phase1Manager.Guess += GuessCard;
+        _phase1Manager.PlayInvCard += FlipClientCard360;
 
         _clientCardAnimator = _ClientCard.GetComponent<Animator>();
     }
@@ -45,12 +46,12 @@ public class CanvasManager : MonoBehaviour
     {
         _buttonStartDay.SetActive(false);
         _buttonGuess.SetActive(true);
+        _ClientCard.SetActive(true);
     }
 
     public void GuessingCard()
     {
         _buttonGuess.SetActive(false);
-        _ClientCard.SetActive(true);
     }
 
     public void GuessCard()
