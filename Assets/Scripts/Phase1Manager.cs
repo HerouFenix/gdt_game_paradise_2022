@@ -27,7 +27,8 @@ public class Phase1Manager : MonoBehaviour
 
     //Actions
     public event Action StartDayEvent;
-    public event Action GuessCard;
+    public event Action Guessing;
+    public event Action Guess;
 
 
     #region Singleton
@@ -190,11 +191,21 @@ public class Phase1Manager : MonoBehaviour
 
     public void PressGuessCard()
     {
-        GuessCard?.Invoke();
+        Guessing?.Invoke();
         foreach(GameObject obj in this._currentInvestigationCards)
         {
             InvestigationCard card = obj.GetComponent<InvestigationCard>();
             card.HideCard();
         }
+    }
+
+    public void GuessCard()
+    {
+        Guess?.Invoke();
+        List<int> _resultsList;
+        _resultsList = _clientCard.RevealAll();
+        Debug.Log("cor " + _resultsList[0]);
+        Debug.Log("naipe " + _resultsList[1]);
+        Debug.Log("nº " + _resultsList[2]);
     }
 }

@@ -10,6 +10,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject _buttonGuess;
     [SerializeField] private GameObject _ClientCard;
     [SerializeField] private GameObject _Journal;
+    [SerializeField] private GameObject _clientDiary;
+
     private Phase1Manager _phase1Manager;
     private GameManager _GameManager;
 
@@ -20,7 +22,8 @@ public class CanvasManager : MonoBehaviour
 
         _phase1Manager = Phase1Manager.Instance;
         _phase1Manager.StartDayEvent += StartDay;
-        _phase1Manager.GuessCard += GuessCard;
+        _phase1Manager.Guessing += GuessingCard;
+        _phase1Manager.Guess += GuessCard;
     }
 
     // Update is called once per frame
@@ -41,9 +44,15 @@ public class CanvasManager : MonoBehaviour
         _buttonGuess.SetActive(true);
     }
 
-    public void GuessCard()
+    public void GuessingCard()
     {
         _buttonGuess.SetActive(false);
         _ClientCard.SetActive(true);
+    }
+
+    public void GuessCard()
+    {
+        _ClientCard.SetActive(false);
+        _Journal.SetActive(true);
     }
 }
