@@ -52,7 +52,7 @@ public class ChangeValue : MonoBehaviour
                 break;
 
             case Type.Confirm:
-                card.RevealAll();
+                Phase1Manager.Instance.GuessCard();
                 break;
         }
     }

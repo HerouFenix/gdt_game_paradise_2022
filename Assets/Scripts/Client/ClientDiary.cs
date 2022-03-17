@@ -11,4 +11,10 @@ public class ClientDiary : MonoBehaviour
     {
         _animator = this.gameObject.GetComponent<Animator>(); 
     }
+
+
+    public void FlipAndStay()
+    {
+
+    }
 }

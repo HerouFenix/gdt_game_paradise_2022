@@ -36,6 +36,10 @@ public class ClientCard : MonoBehaviour
         this._number = Random.Range(0, 21);
         this._suit = (ESuit)Random.Range(0, 5);
         this._color = (EColor)Random.Range(0, 4);
+
+        _currentNumber = 0;
+        _currentSuit = ESuit.None;
+        _currentColor = EColor.None;
     }
 
     /* Change Current Values */
@@ -92,29 +96,34 @@ public class ClientCard : MonoBehaviour
     }
 
     /* Reveal Real Values */
-    public void RevealAll()
+    public List<int> RevealAll()
     {
-        if(_currentSuit == _suit)
+        var _list = new List<int> { 0, 0, 0 };
+
+        if (_currentColor == _color)
+        {
+            Debug.Log("Acertou na cor");
+            _list[0] = 1;
+        }
+        else
+        {
+            Debug.Log("Cor errada");
+        }
+        if (_currentSuit == _suit)
         {
             Debug.Log("Acertou no naipe");
+            _list[1] = 1;
         }
         else
         {
             Debug.Log("Naipe errado");
         }
 
-        if(_currentColor == _color)
-        {
-            Debug.Log("Acertou na cor");
-        }
-        else
-        {
-            Debug.Log("Cor errada");
-        }
-
         int difNumber = Mathf.Abs(_currentNumber - _number);
+        _list[2] = difNumber;
 
         Debug.Log("falhou por " + difNumber);
+        return _list;
 
         /*
         this.RevealNumber();
