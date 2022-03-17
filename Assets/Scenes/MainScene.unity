@@ -538,6 +538,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6196d3230789f724496108651711bba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allToolCards: []
+  _spawnPosition: {x: 4.11, y: -1.15, z: -0.1}
+  cardPositions:
+  - {x: -4.5, y: -2.85, z: -0.19}
+  - {x: -3.8, y: -2.85, z: -0.18}
+  - {x: -3.1, y: -2.85, z: -0.17}
+  - {x: -2.4, y: -2.85, z: -0.16}
+  - {x: -1.7, y: -2.85, z: -0.15}
+  - {x: -1, y: -2.85, z: -0.14}
+  - {x: -0.3, y: -2.85, z: -0.13}
+  - {x: 0.4, y: -2.85, z: -0.12}
+  daysClients: []
+  client: {fileID: 0}
+  phaseIndex: -1
 --- !u!114 &1614648663
 MonoBehaviour:
   m_ObjectHideFlags: 0
