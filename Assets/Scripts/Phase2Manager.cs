@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaseTwoManager : MonoBehaviour
+public class Phase2Manager : MonoBehaviour
 {
     public List<ToolCards> allToolCards;
 

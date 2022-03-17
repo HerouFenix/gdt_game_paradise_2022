@@ -10,7 +10,6 @@ public class Client : MonoBehaviour
     [SerializeField] private int _police_value;
     [SerializeField] private int _soul_value;
 
-    [SerializeField] private GameObject cardObject;
     private ClientCard clientCard;
     [SerializeField] private Sprite sprite;
     [SerializeField] private List<string> lines = new List<string>();
