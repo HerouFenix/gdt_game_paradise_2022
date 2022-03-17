@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
+    public int ClientID = 0;
     [SerializeField] private int _number;
     [SerializeField] private ESuit _suit;
     [SerializeField] private EColor _color;
