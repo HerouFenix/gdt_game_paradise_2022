@@ -28,13 +28,11 @@ public class ClientCard : MonoBehaviour
         _suitSprite = this.gameObject.transform.Find("suit").GetComponent<SpriteRenderer>();
         _colorSprite = this.gameObject.transform.Find("color").GetComponent<SpriteRenderer>();
 
-    }
-    public void SetClientValues(int number, ESuit suit, EColor color)
-    {
-        this._number = number;
-        this._suit = suit;
-        this._color = color;
 
+        /* Pick random values */
+        this._number = Random.Range(0, 21);
+        this._suit = (ESuit) Random.Range(0,5);
+        this._color = (EColor) Random.Range(0, 4);
     }
 
     /* Change Current Values */

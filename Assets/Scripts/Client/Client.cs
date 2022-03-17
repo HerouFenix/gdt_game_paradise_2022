@@ -6,9 +6,9 @@ using UnityEngine;
 public class Client : MonoBehaviour
 {
     public int ClientID = 0;
-    [SerializeField] private int _number;
-    [SerializeField] private ESuit _suit;
-    [SerializeField] private EColor _color;
+    [SerializeField] private List<string> _hints = new List<string>();
+    [SerializeField] private int _police_value;
+    [SerializeField] private int _soul_value;
 
     [SerializeField] private GameObject cardObject;
     private ClientCard clientCard;
@@ -32,7 +32,6 @@ public class Client : MonoBehaviour
 
         clientCard = Instantiate(cardObject, new Vector3(-2.45f, 0.4f, -0.1f), Quaternion.identity).GetComponent<ClientCard>();
         clientCard.gameObject.SetActive(false);
-        clientCard.SetClientValues(_number, _suit, _color);
 
         StartCoroutine(TypeSentence("Hello!"));
     }
