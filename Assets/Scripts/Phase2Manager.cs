@@ -1,196 +1,144 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Phase2Manager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _clientSpecificCards;
-    [SerializeField] private List<GameObject> _clientAgnosticCards;
+    public List<ToolCards> allToolCards;
 
+    private List<GameObject> _possibleToolCards = new List<GameObject>();
     private List<GameObject> _currentToolCards = new List<GameObject>();
 
     [SerializeField] private Vector3 _spawnPosition = new Vector3(0, 0, 0);
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
+    [HideInInspector] public List<Client> daysClients;
     [HideInInspector] public Client client;
-    public ClientCard _clientCard;
-    private GameManager _GameManager;
 
-    [HideInInspector] public List<GameObject> todaysClients = new List<GameObject>();
-
-    //Actions
-    public event Action PickCard;
+    [HideInInspector] public int phaseIndex = -1;
 
     private bool _cardsDrawn = false;
 
-    private List<int> currentResults;
-
-
-    #region Singleton
-
-    private static Phase2Manager _instance;
-    public static Phase2Manager Instance { get { return _instance; } }
-    private void Awake()
+    private void Start()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
+        this.DrawPossibleToolCards();
     }
 
-    #endregion
-
-    public void Start()
+    private void Update()
     {
-        _GameManager = GameManager.Instance;
-        _GameManager.StartPhase2 += DrawToolCards;
-        _GameManager.StartPhase2 += SetCurrentResults;
-    }
-
-    public void SetTodaysClients(List<GameObject> clients)
-    {
-        todaysClients = clients;
-    }
-
-    public void DrawToolCards(List<int> l)
-    {
-        if (!_cardsDrawn)
+        if (phaseIndex == 0)
         {
-            StartCoroutine(DrawToolCardCor());
-            _cardsDrawn = true;
+            if (_cardsDrawn)
+                this.HideToolCards();
+
+            return;
         }
-        else
+        else if (phaseIndex == 1)
         {
-            StartCoroutine(ShowCards());
+            client.ToggleTextBubble();
+
+            if (!_cardsDrawn)
+                DrawToolCards(1);
+            else
+                ShowToolCards();
+
+            phaseIndex = 1;
+
+            client.ToggleShowClientCard();
+
+            phaseIndex = 2;
         }
     }
 
-    public void SetCurrentResults(List<int> results)
+    public void HideToolCards()
     {
-        currentResults = results;
+        for (int i = 0; i < _currentToolCards.Count; i++)
+        {
+            _currentToolCards[i].SetActive(false);
+        }
     }
 
-    public void ChooseCurrentToolCards(int amount)
+    public void ShowToolCards()
     {
-        for (int i = 0; i < todaysClients.Count; i++)
+        for (int i = 0; i < _currentToolCards.Count; i++)
         {
-            Client thisClient = todaysClients[i].GetComponent<Client>();
-            for (int j = 0; j < _clientSpecificCards.Count; j++)
+            _currentToolCards[i].SetActive(true);
+        }
+    }
+
+    //Build today's tool deck by getting each of the client's items + 3 others
+    public void DrawPossibleToolCards()
+    {
+        for (int i = 0; i < daysClients.Count ; i++)
+        {
+            for(int j = 0; j < allToolCards.Count; j++)
             {
-                if (_clientSpecificCards[j].GetComponent<ToolCards>().ClientID == thisClient.ClientID)
+                if(allToolCards[j].ClientID == daysClients[i].ClientID)
                 {
-                    _currentToolCards.Add(_clientSpecificCards[j]);
-                    _clientSpecificCards.RemoveAt(j);
+                    _possibleToolCards.Add(allToolCards[j].gameObject);
+                    allToolCards.RemoveAt(j);
                     break;
                 }
             }
         }
 
-        /* Add random cards */
-        for (int i = _currentToolCards.Count; i < amount; i++)
-        {
-            int cardIndex = UnityEngine.Random.Range(0, _clientAgnosticCards.Count);
 
-            _currentToolCards.Add(_clientAgnosticCards[cardIndex]);
-        }
-
-        /* Shuffle */
-        for (int i = 0; i < _currentToolCards.Count; i++)
+        for(int i = daysClients.Count; i < 1; i++)
         {
-            GameObject temp = _currentToolCards[i];
-            int randomIndex = UnityEngine.Random.Range(i, _currentToolCards.Count);
-            _currentToolCards[i] = _currentToolCards[randomIndex];
-            _currentToolCards[randomIndex] = temp;
+            int randomCard = UnityEngine.Random.Range(0, allToolCards.Count);
+            _possibleToolCards.Add(allToolCards[randomCard].gameObject);
+            allToolCards.RemoveAt(randomCard);
         }
     }
 
-
-    #region DrawCard
-
-    private IEnumerator DrawToolCardCor()
+    /* Tool Card Methods */
+    public void DrawToolCards(int amount)
     {
+        _cardsDrawn = true;
+        StartCoroutine(DrawToolCardCor(amount));
+    }
+
+    private IEnumerator DrawToolCardCor(int amount)
+    {
+        client.SetClickable(false);
+
         WaitForSeconds wait = new WaitForSeconds(.85f);
 
-        for (int i = 0; i < _currentToolCards.Count; i++)
+        for (int i = 0; i < amount; i++)
         {
-            ToolCards newCard = Instantiate(_currentToolCards[i], _spawnPosition, Quaternion.identity).GetComponent<ToolCards>();
-            newCard.SetIndex(i, true);
-            newCard.Played += RemoveToolCard;
-            _currentToolCards[i] = newCard.gameObject;
+            DrawToolCard();
             yield return wait;
+        }
+
+        client.SetClickable(true);
+    }
+
+    public void DrawToolCard()
+    {
+        int randomCard = UnityEngine.Random.Range(0, _possibleToolCards.Count);
+
+        GameObject newCard = Instantiate(_possibleToolCards[randomCard], _spawnPosition, Quaternion.identity);
+
+        newCard.GetComponent<ToolCards>().SetIndex(_currentToolCards.Count, true);
+
+        _currentToolCards.Add(newCard);
+        _possibleToolCards.RemoveAt(randomCard);
+    }
+
+
+    #region Singleton
+
+    private static Phase2Manager _instance;
+
+    public static Phase2Manager Instance
+    {
+        get
+        {
+            if (_instance == null) _instance = FindObjectOfType<Phase2Manager>();
+            return _instance;
         }
     }
 
     #endregion
-
-    #region RemoveCard
-
-    public void RemoveToolCard(GameObject card)
-    {
-        _currentToolCards.Remove(card);
-        StartCoroutine(HideCards());
-        ToolCards toolCard = card.GetComponent<ToolCards>();
-
-        int soul = 0;
-        int police = 0;
-
-        if(toolCard.ClientID == client.ClientID)
-        {// Right tool
-            soul = client._soul_value;
-            police = client._police_value;
-        }
-        else
-        {
-            int number = UnityEngine.Random.Range(0, 100);
-            if(number <= toolCard.probabilityOfKilling)
-            {
-                soul = client._soul_value;
-                police = client._police_value;
-            }
-        }
-
-        _GameManager.IncrementValues(soul, police);
-        _GameManager.SwapPhase(0);
-    }
-
-    public IEnumerator RemoveToolCardCor(GameObject card)
-    {
-        WaitForSeconds wait = new WaitForSeconds(.05f);
-
-        yield return wait;
-    }
-
-    #endregion
-
-    public IEnumerator HideCards()
-    {
-        WaitForSeconds wait = new WaitForSeconds(.08f);
-
-        foreach (GameObject obj in this._currentToolCards)
-        {
-            ToolCards card = obj.GetComponent<ToolCards>();
-            card.HideCard();
-
-            yield return wait;
-        }
-    }
-
-    public IEnumerator ShowCards()
-    {
-        WaitForSeconds wait = new WaitForSeconds(.08f);
-
-        foreach (GameObject obj in this._currentToolCards)
-        {
-            ToolCards card = obj.GetComponent<ToolCards>();
-            card.ShowCard();
-
-            yield return wait;
-        }
-    }
 
 }

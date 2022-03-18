@@ -24,15 +24,11 @@ public class Phase1Manager : MonoBehaviour
     private Client client;
     public ClientCard _clientCard;
     private GameManager _GameManager;
-    List<int> _currentResultsList;
-
 
     //Actions
     public event Action StartDayEvent;
-    public event Action PlayInvCard;
+    public event Action Guessing;
     public event Action Guess;
-
-    private bool _cardsDrawn = false;
 
 
     #region Singleton
@@ -57,45 +53,13 @@ public class Phase1Manager : MonoBehaviour
     {
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase1 += ReceiveClient;
-        //_GameManager.EndPhase1 += ResetManager;
-
 
         DrawReserveCards();
     }
 
-    public void StartDay()
+    public void ReceiveClient(Client _dailyClient)
     {
-        StartDayEvent?.Invoke();
-        _GameManager.SwapPhase(1);
-    }
-
-    public void DrawCards()
-    {
-        _clientCard.gameObject.SetActive(true);
-
-        if (!_cardsDrawn)
-        {
-            StartCoroutine(DrawInvestigationCardCor(7));
-            _cardsDrawn = true;
-        }
-        else
-        {
-            StartCoroutine(ShowCards());
-        }
-    }
-
-    public void ResetManager()
-    {
-
-    }
-
-    public void ReceiveClient(GameObject _newClient)
-    {
-        client = Instantiate(_newClient, new Vector3(3f, -0.001f, -0.1f), Quaternion.identity).GetComponent<Client>();
-        client.manager = this.gameObject.GetComponent<GameManager>();
-        client.manager1 = this;
-        client.manager2 = this.gameObject.GetComponent<Phase2Manager>();
-
+        client = _dailyClient;
         _clientCard.ResetClientCard();
     }
 
@@ -105,14 +69,23 @@ public class Phase1Manager : MonoBehaviour
         for (int i = 17; i > 0; i--)
         {
             int cardIndex = UnityEngine.Random.Range(0, _deckCards.Count);
+            //Debug.Log(_deckCards[cardIndex].number);
+            //Debug.Log("Saiu carta de reserva" + _deckCards[cardIndex].number);
 
             _reserveCards.Add(_deckCards[cardIndex]);
             _deckCards.Remove(_deckCards[cardIndex]);
+            //Debug.Log("Restam" + _deckCards.Count + "cartas");
         }
     }
 
 
     #region DrawCard
+
+    public void StartDay()
+    {
+        StartDayEvent?.Invoke();
+        StartCoroutine(DrawInvestigationCardCor(7));
+    }
 
     private IEnumerator DrawInvestigationCardCor(int amount)
     {
@@ -129,7 +102,7 @@ public class Phase1Manager : MonoBehaviour
             yield return wait;
         }
 
-        client._canGuess = true;
+
     }
 
     public void DrawInvestigationCard()
@@ -191,7 +164,6 @@ public class Phase1Manager : MonoBehaviour
     public void ApplyEffect(InvestigationCardProperties card)
     {
         InvestigationCardProperties.Type type = card.type;
-        PlayInvCard?.Invoke();
 
         switch (type)
         {
@@ -217,52 +189,23 @@ public class Phase1Manager : MonoBehaviour
         }
     }
 
-    public IEnumerator HideCards()
+    public void PressGuessCard()
     {
-        WaitForSeconds wait = new WaitForSeconds(.08f);
-
-        foreach (GameObject obj in this._currentInvestigationCards)
+        Guessing?.Invoke();
+        foreach(GameObject obj in this._currentInvestigationCards)
         {
             InvestigationCard card = obj.GetComponent<InvestigationCard>();
             card.HideCard();
-
-            yield return wait;
         }
-    }
-
-    public IEnumerator ShowCards()
-    {
-        WaitForSeconds wait = new WaitForSeconds(.08f);
-
-        foreach (GameObject obj in this._currentInvestigationCards)
-        {
-            InvestigationCard card = obj.GetComponent<InvestigationCard>();
-            card.ShowCard();
-
-            yield return wait;
-        }
-
-        client._canGuess = true;
     }
 
     public void GuessCard()
     {
-        StartCoroutine(HideCards());
-
         Guess?.Invoke();
-        _currentResultsList = _clientCard.RevealAll();
-
-        _GameManager.SwapPhase(2);
-
-        //Debug.Log("cor " + _resultsList[0]);
-        //Debug.Log("naipe " + _resultsList[1]);
-        //Debug.Log("nº " + _resultsList[2]);
-    }
-
-    public List<int> ReturnResults()
-    {
-        client._canGuess = false;
-        client.ToggleTextBubble();
-        return _currentResultsList;
+        List<int> _resultsList;
+        _resultsList = _clientCard.RevealAll();
+        Debug.Log("cor " + _resultsList[0]);
+        Debug.Log("naipe " + _resultsList[1]);
+        Debug.Log("nº " + _resultsList[2]);
     }
 }

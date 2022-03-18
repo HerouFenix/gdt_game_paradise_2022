@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: WB_5
   m_EditorClassIdentifier: 
+  _characterID: 0
+  _police: 0
+  _weight: 9
+  _type: 0
   _sprite: {fileID: 0}
   _text: Invisible man turns down a job offer because he couldn't see himself doing
     it.

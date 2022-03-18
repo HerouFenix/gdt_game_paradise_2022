@@ -11,21 +11,17 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private List<GameObject> _possibleClients = new List<GameObject>();
+    private List<GameObject> _usedClients = new List<GameObject>(); // List of clients that have already been used (to prevent using them again)
     private List<GameObject> _currentClients = new List<GameObject>();
 
     private int _nextClientIndex;
+    private Client _currentClient;
 
-    [HideInInspector] public Phase1Manager _phase1Manager;
-    [HideInInspector] public Phase2Manager _phase2Manager;
 
-    public event Action StartPhase0;
-
-    public event Action<GameObject> StartPhase1;
-    public event Action EndPhase1;
-
-    public event Action<List<int>> StartPhase2;
-    public event Action EndPhase2;
-
+    private Phase1Manager _phase1Manager;
+    private Phase2Manager _phase2Manager;
+    public event Action<Client> StartPhase1;
+    
 
     private int currentPhase = 0;
 
@@ -49,20 +45,20 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //Tunes
         _phase1Manager = this.GetComponent<Phase1Manager>();
         _phase2Manager = this.GetComponent<Phase2Manager>();
 
-        _souls = 0;
-        _police = 0;
-        _day = 1;
-
 
         /* 1st Pick 3 clients*/
-        PickClients(2);
+        PickClients(1);
 
-        /* Get Today's tool cards */
-        _phase2Manager.todaysClients = _currentClients;
-        _phase2Manager.ChooseCurrentToolCards(3);
+        /* Have client show up */
+        /*Vai passar para o CanvasManager*/
+        _currentClient = Instantiate(_currentClients[_nextClientIndex], new Vector3(3f, 0.12f, -0.1f), Quaternion.identity).GetComponent<Client>();
+        _currentClient.manager = this;
+        _nextClientIndex++;
+
     }
 
     void PickClients(int amount)
@@ -72,15 +68,15 @@ public class GameManager : MonoBehaviour
             int clientIndex = UnityEngine.Random.Range(0, _possibleClients.Count);
             GameObject client = _possibleClients[clientIndex];
 
-            _currentClients.Add(client);
-            _possibleClients.RemoveAt(clientIndex);
-        }
-    }
+            while (_usedClients.Contains(client))
+            { // Repeat until we get a client that is not yet been added to the used clients list
+                clientIndex = UnityEngine.Random.Range(0, _possibleClients.Count);
+                client = _possibleClients[clientIndex];
+            }
 
-    public void IncrementValues(int souls, int police)
-    {
-        _souls += souls;
-        _police += police;
+            _currentClients.Add(client);
+            _usedClients.Add(client);
+        }
     }
 
     public int GetPhase()
@@ -94,44 +90,22 @@ public class GameManager : MonoBehaviour
         switch (this.currentPhase)
         {
             case 0:
-                Debug.Log("Start phase 0");
-                EndPhase2?.Invoke();
-
-                StartPhase0?.Invoke();
-                _nextClientIndex++;
-
-                if(_nextClientIndex >= _currentClients.Count)
-                { // No more clients ; End Day
-                    Debug.Log("End the day");
-                }
-                else
-                { // There are more clients ; Continue
-                    StartCoroutine(WaitForNextClient());
-                }
-                
                 break;
-            
             case 1:
-                Debug.Log("Start phase 1");
-                StartPhase1?.Invoke(_currentClients[_nextClientIndex]);
-                
+                StartPhase1?.Invoke(_currentClient);
+                //this._phaseOneManager.client = _currentClient;
+                //this._phaseOneManager.phaseIndex = 1;
                 break;
-            
             case 2:
-                Debug.Log("Start phase2");
-                EndPhase1?.Invoke();
-                
-                StartPhase2?.Invoke(_phase1Manager.ReturnResults());
-                _phase2Manager.client = _currentClients[_nextClientIndex].GetComponent<Client>();
-                
+                //this._phaseOneManager.phaseIndex = 0; // Deactivate Phase One Manager
+
                 break;
         } 
     }
 
-    IEnumerator WaitForNextClient()
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log("Waiting for the next client");
-        yield return new WaitForSeconds(UnityEngine.Random.Range(5, 8));
-        this.SwapPhase(1);
+
     }
 }

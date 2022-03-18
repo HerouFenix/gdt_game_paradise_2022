@@ -61,12 +61,7 @@ public class InvestigationCard : MonoBehaviour
 
     public void HideCard()
     {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
-    }
-
-    public void ShowCard()
-    {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
+        StartCoroutine(SlideOff(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
     }
 
 
@@ -81,7 +76,7 @@ public class InvestigationCard : MonoBehaviour
     {
         if (_interactible)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.2f), .1f));
             _hovered = true;
 
         }
@@ -91,7 +86,7 @@ public class InvestigationCard : MonoBehaviour
     {
         if (_interactible && !_hovered)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.2f), .1f));
             _hovered = true;
 
         }
@@ -108,7 +103,7 @@ public class InvestigationCard : MonoBehaviour
 
     private void SelectCard()
     {
-        StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, -6f, -0.5f), .2f));
+        StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, 6f, -0.2f), .2f));
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration, bool lockInteraction=false)
@@ -143,11 +138,9 @@ public class InvestigationCard : MonoBehaviour
         transform.position = targetPosition;
 
         Played?.Invoke(this.gameObject);
-
-        Destroy(this.gameObject);
     }
 
-    IEnumerator Slide(Vector3 targetPosition, float duration)
+    IEnumerator SlideOff(Vector3 targetPosition, float duration)
     {
         float time = 0;
         Vector3 startPosition = transform.position;
@@ -158,7 +151,7 @@ public class InvestigationCard : MonoBehaviour
             yield return null;
         }
         transform.position = targetPosition;
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 }

@@ -2,4 +2,4 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EColor { Red, White, Black };
+public enum EColor { None, Red, White, Black };

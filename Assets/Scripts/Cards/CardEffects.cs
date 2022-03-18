@@ -6,47 +6,41 @@ public class CardEffects : MonoBehaviour
 {
     private Phase1Manager _phase1Manager = Phase1Manager.Instance;
 
-    [SerializeField] private SpriteRenderer _feedbackImage;
-    [SerializeField] private Sprite[] _sprites;
-
-    public enum Sprites
-    {
-        Wrong = 0,
-        Correct = 1,
-        Up = 2,
-        Down = 3
-    }
-
-    public void NumberCardEffect(InvestigationCardProperties invCard, ClientCard clientCard)
+    public int NumberCardEffect(InvestigationCardProperties invCard, ClientCard clientCard)
     {
         int invCardNumber = invCard.number;
         int clientNumber = clientCard.Number;
 
         if (invCardNumber < clientNumber)
         {
-            ChangeImage(Sprites.Up);
+            Debug.Log("Numero Abaixo");
+            return -1;
         }
         else if (invCardNumber > clientNumber)
         {
-            ChangeImage(Sprites.Down);
+            Debug.Log("Numero Acima");
+            return 1;
         }
         else
         {
-            ChangeImage(Sprites.Correct);
+            Debug.Log("Numero Correto");
+            return 0;
         }
     }
 
-    public void EvenCardEffect(ClientCard clientCard)
+    public int EvenCardEffect(ClientCard clientCard)
     {
         int clientNumber = clientCard.Number;
 
         if (clientNumber % 2 == 0)
         {
-            ChangeImage(Sprites.Correct);
+            Debug.Log("É par");
+            return -1;
         }
         else
         {
-            ChangeImage(Sprites.Wrong);
+            Debug.Log("Não é par");
+            return 0;
         }
     }
 
@@ -57,11 +51,11 @@ public class CardEffects : MonoBehaviour
 
         if(invCardSuit == clienCardSuit)
         {
-            ChangeImage(Sprites.Correct);
+            Debug.Log("Naipe Correto");
         }
         else
         {
-            ChangeImage(Sprites.Wrong);
+            Debug.Log("Naipe Errado");
         }
     }
 
@@ -72,32 +66,17 @@ public class CardEffects : MonoBehaviour
 
         if (invCardColor == clienCardColor)
         {
-            ChangeImage(Sprites.Correct);
+            Debug.Log("Cor Correta");
         }
         else
         {
-            ChangeImage(Sprites.Wrong);
+            Debug.Log("Cor Errada");
         }
     }
 
     public void DoubleDCardEffect(ClientCard clientCard)
     {
-        int clientNumber = clientCard.Number;
 
-        if (clientNumber > 9)
-        {
-            ChangeImage(Sprites.Correct);
-        }
-        else
-        {
-            ChangeImage(Sprites.Wrong);
-        }
-    }
-
-    public void ChangeImage(Sprites sprit)
-    {
-        var i = (int)sprit;
-        _feedbackImage.sprite = _sprites[i];
     }
 
 }

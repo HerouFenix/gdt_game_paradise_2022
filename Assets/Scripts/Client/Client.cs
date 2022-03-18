@@ -6,9 +6,9 @@ using UnityEngine;
 public class Client : MonoBehaviour
 {
     public int ClientID = 0;
-    public List<string> _hints = new List<string>();
-    public int _police_value;
-    public int _soul_value;
+    [SerializeField] private List<string> _hints = new List<string>();
+    [SerializeField] private int _police_value;
+    [SerializeField] private int _soul_value;
 
     private ClientCard clientCard;
     [SerializeField] private Sprite sprite;
@@ -17,25 +17,15 @@ public class Client : MonoBehaviour
     [SerializeField] private GameObject _textBubble;
     [SerializeField] private TextMeshPro _textBubbleText;
 
-    [HideInInspector] public bool _canGuess = false;
-
     private bool _clickable;
     private bool _hovered;
 
-    public GameObject outline;
-
     [HideInInspector] public GameManager manager;
-    [HideInInspector] public Phase1Manager manager1;
-    [HideInInspector] public Phase2Manager manager2;
-
-    Animator _animator;
-
 
     private bool _textRunning = false;
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
         _clickable = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
 
@@ -44,24 +34,24 @@ public class Client : MonoBehaviour
 
     private void Update()
     {
-        if (_clickable && _hovered)
+        /*if (_clickable && _hovered)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (!_canGuess && manager.GetPhase() == 1)
+                Debug.Log(manager.GetPhase());
+                switch (manager.GetPhase())
                 {
-                    manager1.DrawCards();
-                    ToggleTextBubble();
+                    case 0:
+                        manager.SwapPhase(1);
+                        break;
+                    case 1:
+                        manager.SwapPhase(2);
+                        break;
 
                 }
-                else if(manager.GetPhase() == 1)
-                {
-                    manager1.GuessCard();
-                }
-
             }
-
-        }
+            
+        }*/
     }
 
     public void ToggleTextBubble()
@@ -90,45 +80,18 @@ public class Client : MonoBehaviour
         _textRunning = false;
     }
 
-    public IEnumerator FadeAway()
-    {
-        string sentence = "Goodbye";
-
-        if (!_textBubble.activeSelf)
-            this.ToggleTextBubble();
-
-        _textBubbleText.text = "";
-
-        _textRunning = true;
-        foreach (char letter in sentence.ToCharArray())
-        {
-            _textBubbleText.text += letter;
-            yield return new WaitForSeconds(0.02f);
-        }
-        _textRunning = false;
-
-        if(_animator == null)
-            _animator = GetComponent<Animator>();
-
-        _animator.SetTrigger("fadeAway");
-    }
-
-    private void DestroySelf()
-    {
-        Destroy(this.gameObject);
-    }
-
     private void OnMouseEnter()
     {
         if (_clickable)
         {
-            outline.SetActive(true);
             _hovered = true;
 
-            if (_canGuess)
+            switch (manager.GetPhase())
             {
-                StopAllCoroutines();
-                StartCoroutine(TypeSentence("Are you done with the reading?"));
+                case 1:
+                    StopAllCoroutines();
+                    StartCoroutine(TypeSentence("Are you done with the reading?"));
+                    break;
             }
         }
     }
@@ -136,13 +99,13 @@ public class Client : MonoBehaviour
     private void OnMouseExit()
     {
         _hovered = false;
-        outline.SetActive(false);
-        if (_canGuess)
+        switch (manager.GetPhase())
         {
-            if (_textBubble.activeSelf)
-                this.ToggleTextBubble();
+            case 1:
+                if (_textBubble.activeSelf)
+                    this.ToggleTextBubble();
+                break;
         }
-
     }
 
     public void SetClickable(bool clickable)
