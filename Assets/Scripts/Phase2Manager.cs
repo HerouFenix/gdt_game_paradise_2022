@@ -13,7 +13,7 @@ public class Phase2Manager : MonoBehaviour
     [SerializeField] private Vector3 _spawnPosition = new Vector3(0, 0, 0);
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
-    private Client client;
+    [HideInInspector] public Client client;
     public ClientCard _clientCard;
     private GameManager _GameManager;
 
@@ -112,6 +112,8 @@ public class Phase2Manager : MonoBehaviour
         {
             ToolCards newCard = Instantiate(_currentToolCards[i], _spawnPosition, Quaternion.identity).GetComponent<ToolCards>();
             newCard.SetIndex(i, true);
+            newCard.Played += RemoveToolCard;
+            _currentToolCards[i] = newCard.gameObject;
             yield return wait;
         }
     }
@@ -122,7 +124,30 @@ public class Phase2Manager : MonoBehaviour
 
     public void RemoveToolCard(GameObject card)
     {
+        _currentToolCards.Remove(card);
+        StartCoroutine(HideCards());
+        ToolCards toolCard = card.GetComponent<ToolCards>();
 
+        int soul = 0;
+        int police = 0;
+
+        if(toolCard.ClientID == client.ClientID)
+        {// Right tool
+            soul = client._soul_value;
+            police = client._police_value;
+        }
+        else
+        {
+            int number = UnityEngine.Random.Range(0, 100);
+            if(number <= toolCard.probabilityOfKilling)
+            {
+                soul = client._soul_value;
+                police = client._police_value;
+            }
+        }
+
+        _GameManager.IncrementValues(soul, police);
+        _GameManager.SwapPhase(0);
     }
 
     public IEnumerator RemoveToolCardCor(GameObject card)
@@ -140,7 +165,7 @@ public class Phase2Manager : MonoBehaviour
 
         foreach (GameObject obj in this._currentToolCards)
         {
-            InvestigationCard card = obj.GetComponent<InvestigationCard>();
+            ToolCards card = obj.GetComponent<ToolCards>();
             card.HideCard();
 
             yield return wait;

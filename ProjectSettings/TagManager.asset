@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - client_card
+  - client
   layers:
   - Default
   - TransparentFX

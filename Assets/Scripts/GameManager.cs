@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Phase1Manager _phase1Manager;
     [HideInInspector] public Phase2Manager _phase2Manager;
 
+    public event Action StartPhase0;
+
     public event Action<GameObject> StartPhase1;
     public event Action EndPhase1;
 
@@ -47,9 +49,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //Tunes
         _phase1Manager = this.GetComponent<Phase1Manager>();
         _phase2Manager = this.GetComponent<Phase2Manager>();
+
+        _souls = 0;
+        _police = 0;
+        _day = 1;
 
 
         /* 1st Pick 3 clients*/
@@ -72,6 +77,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void IncrementValues(int souls, int police)
+    {
+        _souls += souls;
+        _police += police;
+    }
+
     public int GetPhase()
     {
         return this.currentPhase;
@@ -83,17 +94,27 @@ public class GameManager : MonoBehaviour
         switch (this.currentPhase)
         {
             case 0:
+                Debug.Log("Start phase 0");
+                EndPhase2?.Invoke();
+
+                StartPhase0?.Invoke();
+                _nextClientIndex++;
+                
                 break;
+            
             case 1:
                 Debug.Log("Start phase 1");
                 StartPhase1?.Invoke(_currentClients[_nextClientIndex]);
-                _nextClientIndex++;
+                
                 break;
+            
             case 2:
                 Debug.Log("Start phase2");
-                StartPhase2?.Invoke(_phase1Manager.ReturnResults());
-
                 EndPhase1?.Invoke();
+                
+                StartPhase2?.Invoke(_phase1Manager.ReturnResults());
+                _phase2Manager.client = _currentClients[_nextClientIndex].GetComponent<Client>();
+                
                 break;
         } 
     }

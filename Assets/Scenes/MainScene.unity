@@ -666,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 932243105463971845, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2415990068569099834, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
       propertyPath: m_RootOrder
@@ -722,6 +722,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2415990068569099834, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663430447658572732, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5567893869498757437, guid: ecc52470d7bf9b84e8a8c09204d316ad, type: 3}
@@ -1172,6 +1176,7 @@ MonoBehaviour:
   - {x: -1, y: -2.85, z: -0.14}
   - {x: -0.3, y: -2.85, z: -0.13}
   - {x: 0.4, y: -2.85, z: -0.12}
+  client: {fileID: 0}
   _clientCard: {fileID: 307384559}
   todaysClients: []
 --- !u!212 &911236025 stripped
@@ -1299,7 +1304,6 @@ MonoBehaviour:
   _buttonStartDay: {fileID: 2132507747}
   _ClientCard: {fileID: 307384558}
   _Journal: {fileID: 281927062}
-  _clientDiary: {fileID: 0}
 --- !u!114 &1004136030
 MonoBehaviour:
   m_ObjectHideFlags: 0

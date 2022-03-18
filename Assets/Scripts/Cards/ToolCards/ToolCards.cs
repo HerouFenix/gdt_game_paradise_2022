@@ -6,6 +6,8 @@ using System;
 public class ToolCards : MonoBehaviour
 {
     [SerializeField] public int ClientID = 0;
+    [SerializeField] public int probabilityOfKilling = 0;
+
 
     [SerializeField] public GameObject _front;
     [SerializeField] private Sprite _image;
@@ -105,6 +107,7 @@ public class ToolCards : MonoBehaviour
 
     private void SelectCard()
     {
+
         StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, 6f, -0.2f), .2f));
     }
 

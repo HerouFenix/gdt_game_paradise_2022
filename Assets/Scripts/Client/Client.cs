@@ -26,11 +26,14 @@ public class Client : MonoBehaviour
     [HideInInspector] public Phase1Manager manager1;
     [HideInInspector] public Phase2Manager manager2;
 
+    Animator _animator;
+
 
     private bool _textRunning = false;
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _clickable = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
 
@@ -43,13 +46,13 @@ public class Client : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (!_canGuess)
+                if (!_canGuess && manager.GetPhase() == 1)
                 {
                     manager1.DrawCards();
                     ToggleTextBubble();
 
                 }
-                else
+                else if(manager.GetPhase() == 1)
                 {
                     manager1.GuessCard();
                 }
@@ -83,6 +86,35 @@ public class Client : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         _textRunning = false;
+    }
+
+    public IEnumerator FadeAway()
+    {
+        Debug.Log("hi");
+        string sentence = "Goodbye";
+
+        if (!_textBubble.activeSelf)
+            this.ToggleTextBubble();
+
+        _textBubbleText.text = "";
+
+        _textRunning = true;
+        foreach (char letter in sentence.ToCharArray())
+        {
+            _textBubbleText.text += letter;
+            yield return new WaitForSeconds(0.02f);
+        }
+        _textRunning = false;
+
+        if(_animator == null)
+            _animator = GetComponent<Animator>();
+
+        _animator.SetTrigger("fadeAway");
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 
     private void OnMouseEnter()

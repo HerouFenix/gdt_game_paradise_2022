@@ -10,17 +10,15 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject _ClientCard;
     private Animator _clientCardAnimator;
     [SerializeField] private GameObject _Journal;
-    [SerializeField] private GameObject _clientDiary;
 
     private Phase1Manager _phase1Manager;
     private GameManager _GameManager;
 
-    [HideInInspector] GameObject currentClient;
 
     void Start()
     {
         _GameManager = GameManager.Instance;
-        _GameManager.StartPhase1 += SetCurrentClient;
+        _GameManager.StartPhase0 += RemoveCurrentClient;
 
         _phase1Manager = Phase1Manager.Instance;
         _phase1Manager.StartDayEvent += StartDay;
@@ -31,9 +29,10 @@ public class CanvasManager : MonoBehaviour
         _GameManager.StartPhase2 += RevealResultsOnClientCard;
     }
 
-    public void SetCurrentClient(GameObject client)
+    public void RemoveCurrentClient()
     {
-        currentClient = client;
+        StartCoroutine(GameObject.FindGameObjectWithTag("client").GetComponent<Client>().FadeAway());
+        _ClientCard.SetActive(false);
     }
     
     public void CloseJournal()
@@ -52,24 +51,24 @@ public class CanvasManager : MonoBehaviour
     public void RevealResultsOnClientCard(List<int> l)
     {
         ClientCard card = _ClientCard.GetComponent<ClientCard>();
-        Client client = currentClient.GetComponent<Client>();
+        Client client = GameObject.FindGameObjectWithTag("client").GetComponent<Client>();
 
-        List<string> hints = client._hints;
+        List<string> hints = new List<string>(client._hints);
         int police = client._police_value;
         int soul = client._soul_value;
 
-        if (l[2] > 0)
+        if (l[2] > 8)
         { // Pretty right, remove 1 hint
             hints.RemoveAt(2);
+            hints.RemoveAt(1);
+            hints.RemoveAt(0);
         }else if(l[2] > 5)
         { // Kind of right, remove 2 hints
             hints.RemoveAt(2);
             hints.RemoveAt(1);
-        }else if(l[2] > 8)
+        }else if(l[2] > 0)
         { // Entirely wrong, remove all hints
             hints.RemoveAt(2);
-            hints.RemoveAt(1);
-            hints.RemoveAt(0);
         }
 
         if(l[1] == 0)

@@ -165,7 +165,7 @@ public class ClientCard : MonoBehaviour
                     }
                     break;
                 case "hint2_hidden":
-                    if (hints.Count == 1)
+                    if (hints.Count <= 1)
                     {
                         child.gameObject.SetActive(true);
                     }
@@ -178,7 +178,7 @@ public class ClientCard : MonoBehaviour
                     }
                     break;
                 case "hint3_hidden":
-                    if (hints.Count == 2)
+                    if (hints.Count <= 2)
                     {
                         child.gameObject.SetActive(true);
                     }
@@ -213,8 +213,6 @@ public class ClientCard : MonoBehaviour
                     break;
             }
         }
-
-        results.SetActive(true);
     }
 
 }

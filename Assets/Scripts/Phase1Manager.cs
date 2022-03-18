@@ -245,6 +245,8 @@ public class Phase1Manager : MonoBehaviour
 
     public List<int> ReturnResults()
     {
+        client._canGuess = false;
+        client.ToggleTextBubble();
         return _currentResultsList;
     }
 }
