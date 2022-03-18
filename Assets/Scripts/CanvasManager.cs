@@ -19,6 +19,7 @@ public class CanvasManager : MonoBehaviour
     {
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase0 += RemoveCurrentClient;
+        _GameManager.StartPhase0 += ResetClientCard;
 
         _phase1Manager = Phase1Manager.Instance;
         _phase1Manager.StartDayEvent += StartDay;
@@ -44,7 +45,6 @@ public class CanvasManager : MonoBehaviour
     public void StartDay()
     {
         _buttonStartDay.SetActive(false);
-        _ClientCard.SetActive(true);
     }
 
 
@@ -97,6 +97,7 @@ public class CanvasManager : MonoBehaviour
 
     public void ResetClientCard()
     {
+        _ClientCard.GetComponent<ClientCard>().ResetClientCard();
         _clientCardAnimator.SetTrigger("reset");
     }
 }

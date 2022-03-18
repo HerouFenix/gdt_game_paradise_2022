@@ -33,6 +33,11 @@ public class ClientCard : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        //gameObject.GetComponent<Animator>().SetTrigger();
+    }
+
     public void ResetClientCard()
     {
         /* Pick random values */
@@ -41,8 +46,11 @@ public class ClientCard : MonoBehaviour
         this._color = (EColor)Random.Range(0, 3);
 
         _currentNumber = 0;
+        _numberSprite.sprite = Resources.Load<Sprite>("ClientCard/Numbers/" + _currentNumber);
         _currentSuit = ESuit.Work;
+        _suitSprite.sprite = Resources.Load<Sprite>("ClientCard/Suits/" + _currentSuit);
         _currentColor = EColor.Black;
+        _colorSprite.sprite = Resources.Load<Sprite>("ClientCard/Colors/" + _currentColor);
     }
 
     /* Change Current Values */
@@ -150,11 +158,19 @@ public class ClientCard : MonoBehaviour
                         child.gameObject.SetActive(true);
                         child.GetComponent<TextMeshPro>().text = hints[0];
                     }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                     break;
                 case "hint1_hidden":
                     if (hints.Count == 0)
                     {
                         child.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
                     }
                     break;
                 case "hint2":
@@ -163,11 +179,19 @@ public class ClientCard : MonoBehaviour
                         child.gameObject.SetActive(true);
                         child.GetComponent<TextMeshPro>().text = hints[1];
                     }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                     break;
                 case "hint2_hidden":
                     if (hints.Count <= 1)
                     {
                         child.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
                     }
                     break;
                 case "hint3":
@@ -176,11 +200,19 @@ public class ClientCard : MonoBehaviour
                         child.gameObject.SetActive(true);
                         child.GetComponent<TextMeshPro>().text = hints[2];
                     }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                     break;
                 case "hint3_hidden":
                     if (hints.Count <= 2)
                     {
                         child.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
                     }
                     break;
 
@@ -190,11 +222,19 @@ public class ClientCard : MonoBehaviour
                         child.gameObject.SetActive(true);
                         child.GetComponent<TextMeshPro>().text = "Souls: " + souls;
                     }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                     break;
                 case "souls_hidden":
                     if (souls == -1)
                     {
                         child.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
                     }
                     break;
 
@@ -204,11 +244,19 @@ public class ClientCard : MonoBehaviour
                         child.gameObject.SetActive(true);
                         child.GetComponent<TextMeshPro>().text = "Police: " + police;
                     }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                     break;
                 case "police_hidden":
                     if (police == -1)
                     {
                         child.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
                     }
                     break;
             }

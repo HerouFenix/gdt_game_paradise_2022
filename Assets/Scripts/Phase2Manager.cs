@@ -59,7 +59,15 @@ public class Phase2Manager : MonoBehaviour
 
     public void DrawToolCards(List<int> l)
     {
-        StartCoroutine(DrawToolCardCor());
+        if (!_cardsDrawn)
+        {
+            StartCoroutine(DrawToolCardCor());
+            _cardsDrawn = true;
+        }
+        else
+        {
+            StartCoroutine(ShowCards());
+        }
     }
 
     public void SetCurrentResults(List<int> results)
@@ -178,7 +186,7 @@ public class Phase2Manager : MonoBehaviour
 
         foreach (GameObject obj in this._currentToolCards)
         {
-            InvestigationCard card = obj.GetComponent<InvestigationCard>();
+            ToolCards card = obj.GetComponent<ToolCards>();
             card.ShowCard();
 
             yield return wait;

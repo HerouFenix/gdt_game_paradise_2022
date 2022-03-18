@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
 
         /* 1st Pick 3 clients*/
-        PickClients(1);
+        PickClients(2);
 
         /* Get Today's tool cards */
         _phase2Manager.todaysClients = _currentClients;
@@ -99,6 +99,15 @@ public class GameManager : MonoBehaviour
 
                 StartPhase0?.Invoke();
                 _nextClientIndex++;
+
+                if(_nextClientIndex >= _currentClients.Count)
+                { // No more clients ; End Day
+                    Debug.Log("End the day");
+                }
+                else
+                { // There are more clients ; Continue
+                    StartCoroutine(WaitForNextClient());
+                }
                 
                 break;
             
@@ -119,9 +128,10 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator WaitForNextClient()
     {
-
+        Debug.Log("Waiting for the next client");
+        yield return new WaitForSeconds(UnityEngine.Random.Range(5, 8));
+        this.SwapPhase(1);
     }
 }

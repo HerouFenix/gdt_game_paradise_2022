@@ -22,6 +22,8 @@ public class Client : MonoBehaviour
     private bool _clickable;
     private bool _hovered;
 
+    public GameObject outline;
+
     [HideInInspector] public GameManager manager;
     [HideInInspector] public Phase1Manager manager1;
     [HideInInspector] public Phase2Manager manager2;
@@ -90,7 +92,6 @@ public class Client : MonoBehaviour
 
     public IEnumerator FadeAway()
     {
-        Debug.Log("hi");
         string sentence = "Goodbye";
 
         if (!_textBubble.activeSelf)
@@ -121,6 +122,7 @@ public class Client : MonoBehaviour
     {
         if (_clickable)
         {
+            outline.SetActive(true);
             _hovered = true;
 
             if (_canGuess)
@@ -134,7 +136,7 @@ public class Client : MonoBehaviour
     private void OnMouseExit()
     {
         _hovered = false;
-
+        outline.SetActive(false);
         if (_canGuess)
         {
             if (_textBubble.activeSelf)

@@ -60,7 +60,7 @@ public class ToolCards : MonoBehaviour
 
     public void HideCard()
     {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
+        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, -0.5f), .4f));
     }
 
     public void ShowCard()
@@ -80,7 +80,7 @@ public class ToolCards : MonoBehaviour
     {
         if (_interactible)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.2f), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
             _hovered = true;
 
         }
@@ -90,7 +90,7 @@ public class ToolCards : MonoBehaviour
     {
         if (_interactible && !_hovered)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.2f), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
             _hovered = true;
 
         }
@@ -108,7 +108,7 @@ public class ToolCards : MonoBehaviour
     private void SelectCard()
     {
 
-        StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, 6f, -0.2f), .2f));
+        StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, -6f, -0.5f), .2f));
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration, bool lockInteraction=false)
@@ -143,6 +143,8 @@ public class ToolCards : MonoBehaviour
         transform.position = targetPosition;
 
         Played?.Invoke(this.gameObject);
+
+        Destroy(this.gameObject);
     }
 
     IEnumerator Slide(Vector3 targetPosition, float duration)

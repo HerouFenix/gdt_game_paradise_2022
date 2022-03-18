@@ -57,7 +57,7 @@ public class Phase1Manager : MonoBehaviour
     {
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase1 += ReceiveClient;
-        //_GameManager.EndPhase1 += ReturnResults;
+        //_GameManager.EndPhase1 += ResetManager;
 
 
         DrawReserveCards();
@@ -71,18 +71,32 @@ public class Phase1Manager : MonoBehaviour
 
     public void DrawCards()
     {
-        StartCoroutine(DrawInvestigationCardCor(7));
+        _clientCard.gameObject.SetActive(true);
+
+        if (!_cardsDrawn)
+        {
+            StartCoroutine(DrawInvestigationCardCor(7));
+            _cardsDrawn = true;
+        }
+        else
+        {
+            StartCoroutine(ShowCards());
+        }
+    }
+
+    public void ResetManager()
+    {
+
     }
 
     public void ReceiveClient(GameObject _newClient)
     {
-        client = Instantiate(_newClient, new Vector3(3f, 0.12f, -0.1f), Quaternion.identity).GetComponent<Client>();
+        client = Instantiate(_newClient, new Vector3(3f, -0.001f, -0.1f), Quaternion.identity).GetComponent<Client>();
         client.manager = this.gameObject.GetComponent<GameManager>();
         client.manager1 = this;
         client.manager2 = this.gameObject.GetComponent<Phase2Manager>();
 
         _clientCard.ResetClientCard();
-        _clientCard.gameObject.SetActive(true);
     }
 
     //Vai buscar as cartas de investigação diárias, para a mão e para a reserva
@@ -227,6 +241,8 @@ public class Phase1Manager : MonoBehaviour
 
             yield return wait;
         }
+
+        client._canGuess = true;
     }
 
     public void GuessCard()
