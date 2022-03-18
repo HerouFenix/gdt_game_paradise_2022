@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: WB_3
   m_EditorClassIdentifier: 
+  _characterID: 0
+  _police: 0
+  _weight: 4
+  _type: 0
   _sprite: {fileID: 0}
   _text: 'A claustrophobic astronaut finally tells why he wanted to go to space:
     "I just needed a little space."'

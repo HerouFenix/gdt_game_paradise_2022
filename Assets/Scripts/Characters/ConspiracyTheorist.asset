@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
-  m_Name: WantedLevel_3
+  m_Script: {fileID: 11500000, guid: d3c703277cb8f244aab7d10b542d27be, type: 3}
+  m_Name: ConspiracyTheorist
   m_EditorClassIdentifier: 
-  _characterID: 0
-  _police: 3
-  _weight: 0
-  _type: 2
   _sprite: {fileID: 0}
-  _text: Local police suspicious of "organized stupid deaths".
+  _death_text: 
+  _soul_level: 0

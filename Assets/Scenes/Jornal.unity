@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18197416}
   m_Layer: 5
-  m_Name: Cops
+  m_Name: News3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 483736644}
   - component: {fileID: 483736645}
   m_Layer: 5
-  m_Name: Deaths
+  m_Name: News1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523334360}
   m_Layer: 5
-  m_Name: WorldBuilding
+  m_Name: News2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: World building
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
   m_sharedMaterial: {fileID: -5452201309963769846, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
@@ -405,10 +405,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.41
+  m_fontSize: 72
   m_fontSizeBase: 9.41
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wanted level
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
   m_sharedMaterial: {fileID: -5452201309963769846, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
@@ -540,10 +540,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.46
+  m_fontSize: 72
   m_fontSizeBase: 12.46
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -849,25 +849,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae84a7c1a072eb044b114db4cf7a6291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WB_list:
+  Daily_list:
   - {fileID: 11400000, guid: 26bb83b774dbe4f4c924a3fc90c6c188, type: 2}
   - {fileID: 11400000, guid: 10e1684ba74224543b5491bd6ce75b82, type: 2}
   - {fileID: 11400000, guid: fab677a97dc7a1243a5553fb451ec1fc, type: 2}
   - {fileID: 11400000, guid: a19d67212c12e384b928c87a0d652681, type: 2}
   - {fileID: 11400000, guid: 20b394ef0fb37bb46a5d1cc21d70d13d, type: 2}
-  - {fileID: 11400000, guid: 20b394ef0fb37bb46a5d1cc21d70d13d, type: 2}
-  Deaths_list:
-  - {fileID: 11400000, guid: c1d163357d9db4e4085f80c765a23ebf, type: 2}
-  - {fileID: 11400000, guid: 155a2d5b0f48bb241a0865e4af2949e0, type: 2}
-  - {fileID: 11400000, guid: f351bb083a2d48643ab58f61cf24c344, type: 2}
-  - {fileID: 11400000, guid: 3fdeb72724e32d346b932623eba1e57c, type: 2}
-  - {fileID: 11400000, guid: f1ab574b084804846857bfdb27b2d7c9, type: 2}
+  DeadCharacters_list:
+  - {fileID: 11400000, guid: 4578c031dbad7aa4fa196ea7c2e44a04, type: 2}
+  - {fileID: 11400000, guid: 288f8a2bf9414a340bb1692c0898c2a8, type: 2}
+  - {fileID: 11400000, guid: 9b91e518853fb7946ab0260637f8d71e, type: 2}
+  - {fileID: 11400000, guid: 671156b50a66cc7439775a7e1b38b514, type: 2}
+  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
+  Final_News: []
+  Backup: []
+  currentWantedLevel: 0
+  WantedLevelChanged: 0
   Cops_list:
+  - {fileID: 11400000, guid: a68a8df23f5037f4aac41f3fc4dd516f, type: 2}
+  - {fileID: 11400000, guid: e2069e1c60c1e2c48b30ab5c1fe0556c, type: 2}
+  - {fileID: 11400000, guid: d0d46c8eaf09fef45a91483baf207033, type: 2}
+  - {fileID: 11400000, guid: f5ee370dfb8f46a49ba8520ca44ed5f0, type: 2}
   - {fileID: 11400000, guid: ae61c95dda918b84695d35e4b3525f82, type: 2}
-  Deaths_image: {fileID: 1408008992}
-  _Deaths_text: {fileID: 1775786675}
-  _Cops_text: {fileID: 911618571}
-  _WB_text: {fileID: 716403944}
+  News_image: {fileID: 1408008992}
+  _News1_text: {fileID: 1775786675}
+  _News2_text: {fileID: 716403944}
+  _News3_text: {fileID: 911618571}
 --- !u!114 &1578009846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Death
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
   m_sharedMaterial: {fileID: -5452201309963769846, guid: 18239ac244a47844bbb33b3b745064c8, type: 2}
@@ -1038,10 +1045,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 72
+  m_fontSizeBase: 13
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

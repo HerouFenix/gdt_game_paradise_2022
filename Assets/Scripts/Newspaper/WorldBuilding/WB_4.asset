@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: WB_4
   m_EditorClassIdentifier: 
+  _characterID: 0
+  _police: 0
+  _weight: 6
+  _type: 0
   _sprite: {fileID: 0}
   _text: New tree that can fit in one hand founded. Scientists called it "Palm tree".
