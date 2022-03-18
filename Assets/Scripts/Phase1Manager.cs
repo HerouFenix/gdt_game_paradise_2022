@@ -24,12 +24,15 @@ public class Phase1Manager : MonoBehaviour
     private Client client;
     public ClientCard _clientCard;
     private GameManager _GameManager;
+    List<int> _currentResultsList;
+
 
     //Actions
     public event Action StartDayEvent;
     public event Action PlayInvCard;
-    public event Action Guessing;
     public event Action Guess;
+
+    private bool _cardsDrawn = false;
 
 
     #region Singleton
@@ -54,14 +57,32 @@ public class Phase1Manager : MonoBehaviour
     {
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase1 += ReceiveClient;
+        //_GameManager.EndPhase1 += ReturnResults;
+
 
         DrawReserveCards();
     }
 
-    public void ReceiveClient(Client _dailyClient)
+    public void StartDay()
     {
-        client = _dailyClient;
+        StartDayEvent?.Invoke();
+        _GameManager.SwapPhase(1);
+    }
+
+    public void DrawCards()
+    {
+        StartCoroutine(DrawInvestigationCardCor(7));
+    }
+
+    public void ReceiveClient(GameObject _newClient)
+    {
+        client = Instantiate(_newClient, new Vector3(3f, 0.12f, -0.1f), Quaternion.identity).GetComponent<Client>();
+        client.manager = this.gameObject.GetComponent<GameManager>();
+        client.manager1 = this;
+        client.manager2 = this.gameObject.GetComponent<Phase2Manager>();
+
         _clientCard.ResetClientCard();
+        _clientCard.gameObject.SetActive(true);
     }
 
     //Vai buscar as cartas de investigação diárias, para a mão e para a reserva
@@ -79,12 +100,6 @@ public class Phase1Manager : MonoBehaviour
 
     #region DrawCard
 
-    public void StartDay()
-    {
-        StartDayEvent?.Invoke();
-        StartCoroutine(DrawInvestigationCardCor(7));
-    }
-
     private IEnumerator DrawInvestigationCardCor(int amount)
     {
         WaitForSeconds wait = new WaitForSeconds(.85f);
@@ -100,7 +115,7 @@ public class Phase1Manager : MonoBehaviour
             yield return wait;
         }
 
-
+        client._canGuess = true;
     }
 
     public void DrawInvestigationCard()
@@ -188,23 +203,48 @@ public class Phase1Manager : MonoBehaviour
         }
     }
 
-    public void PressGuessCard()
+    public IEnumerator HideCards()
     {
-        Guessing?.Invoke();
-        foreach(GameObject obj in this._currentInvestigationCards)
+        WaitForSeconds wait = new WaitForSeconds(.08f);
+
+        foreach (GameObject obj in this._currentInvestigationCards)
         {
             InvestigationCard card = obj.GetComponent<InvestigationCard>();
             card.HideCard();
+
+            yield return wait;
+        }
+    }
+
+    public IEnumerator ShowCards()
+    {
+        WaitForSeconds wait = new WaitForSeconds(.08f);
+
+        foreach (GameObject obj in this._currentInvestigationCards)
+        {
+            InvestigationCard card = obj.GetComponent<InvestigationCard>();
+            card.ShowCard();
+
+            yield return wait;
         }
     }
 
     public void GuessCard()
     {
+        StartCoroutine(HideCards());
+
         Guess?.Invoke();
-        List<int> _resultsList;
-        _resultsList = _clientCard.RevealAll();
-        Debug.Log("cor " + _resultsList[0]);
-        Debug.Log("naipe " + _resultsList[1]);
-        Debug.Log("nº " + _resultsList[2]);
+        _currentResultsList = _clientCard.RevealAll();
+
+        _GameManager.SwapPhase(2);
+
+        //Debug.Log("cor " + _resultsList[0]);
+        //Debug.Log("naipe " + _resultsList[1]);
+        //Debug.Log("nº " + _resultsList[2]);
+    }
+
+    public List<int> ReturnResults()
+    {
+        return _currentResultsList;
     }
 }

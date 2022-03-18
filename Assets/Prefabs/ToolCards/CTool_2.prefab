@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7797010437255768042}
   - component: {fileID: 7797010437255768043}
   m_Layer: 0
-  m_Name: uno_card
+  m_Name: front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,11 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7797010437465436643}
   - component: {fileID: 340968531}
-  - component: {fileID: 4433935740713647244}
   - component: {fileID: 841918484412884599}
   - component: {fileID: 2031997615297986904}
   m_Layer: 0
-  m_Name: BaseToolCard
+  m_Name: CTool_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,22 +140,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4433935740713647244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7797010437465436642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e943eee32a9a3c245b563c04f4f3fe8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _invCard: {fileID: 0}
-  _front: {fileID: 7797010437255768045}
-  _back: {fileID: 7797010438242471333}
-  _interactible: 0
 --- !u!65 &841918484412884599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -182,9 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fefec47477e18449285ca196314112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 0
-  _front: {fileID: 7797010437465436642, guid: 0a034e89d1212c44887cbb786ff40c87, type: 3}
-  _image: {fileID: 0}
+  ClientID: 1
+  _front: {fileID: 7797010437255768045}
+  _image: {fileID: 21300000, guid: 233d063b4a5823342a2198687e060d34, type: 3}
   _interactible: 0
 --- !u!1 &7797010438242471333
 GameObject:
@@ -197,7 +180,7 @@ GameObject:
   - component: {fileID: 7797010438242471330}
   - component: {fileID: 7797010438242471331}
   m_Layer: 0
-  m_Name: uno_back
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

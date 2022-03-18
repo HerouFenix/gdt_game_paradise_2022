@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 2896912386846034449}
   - component: {fileID: 3491463714001396434}
   m_Layer: 0
-  m_Name: Client_Example 1
+  m_Name: Client_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,16 +388,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b0139739cc1d244be0225c724742a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 1
-  _number: 7
-  _suit: 2
-  _color: 1
-  cardObject: {fileID: 932243105463971845, guid: 1ed3ea37c8744424da65ed4c793c0c4b, type: 3}
+  ClientID: 0
+  _hints:
+  - hint 1
+  - hint 2
+  - hint 3
+  _police_value: 1
+  _soul_value: 1
   sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
   lines: []
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
+  _canGuess: 0
   manager: {fileID: 0}
+  manager1: {fileID: 0}
+  manager2: {fileID: 0}
 --- !u!65 &3491463714001396434
 BoxCollider:
   m_ObjectHideFlags: 0

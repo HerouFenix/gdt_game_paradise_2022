@@ -58,7 +58,12 @@ public class ToolCards : MonoBehaviour
 
     public void HideCard()
     {
-        StartCoroutine(SlideOff(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
+        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
+    }
+
+    public void ShowCard()
+    {
+        StartCoroutine(Slide(new Vector3(this.transform.position.x, -2.85f, this._phase2Manager.cardPositions[this.positionIndex].z), .4f));
     }
 
 
@@ -137,7 +142,7 @@ public class ToolCards : MonoBehaviour
         Played?.Invoke(this.gameObject);
     }
 
-    IEnumerator SlideOff(Vector3 targetPosition, float duration)
+    IEnumerator Slide(Vector3 targetPosition, float duration)
     {
         float time = 0;
         Vector3 startPosition = transform.position;
@@ -148,7 +153,6 @@ public class ToolCards : MonoBehaviour
             yield return null;
         }
         transform.position = targetPosition;
-        Destroy(gameObject);
     }
 
 }

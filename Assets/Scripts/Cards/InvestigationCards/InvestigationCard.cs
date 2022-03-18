@@ -61,7 +61,12 @@ public class InvestigationCard : MonoBehaviour
 
     public void HideCard()
     {
-        StartCoroutine(SlideOff(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
+        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, -0.2f), .4f));
+    }
+
+    public void ShowCard()
+    {
+        StartCoroutine(Slide(new Vector3(this.transform.position.x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
     }
 
 
@@ -140,7 +145,7 @@ public class InvestigationCard : MonoBehaviour
         Played?.Invoke(this.gameObject);
     }
 
-    IEnumerator SlideOff(Vector3 targetPosition, float duration)
+    IEnumerator Slide(Vector3 targetPosition, float duration)
     {
         float time = 0;
         Vector3 startPosition = transform.position;
@@ -151,7 +156,7 @@ public class InvestigationCard : MonoBehaviour
             yield return null;
         }
         transform.position = targetPosition;
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
 }
