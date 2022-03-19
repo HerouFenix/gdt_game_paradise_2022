@@ -34,6 +34,11 @@ public class Phase1Manager : MonoBehaviour
 
     private bool _cardsDrawn = false;
 
+    [HideInInspector] public bool locked = false;
+
+    private bool drawCorRunning = false;
+    private bool removeCorRunning = false;
+
 
     #region Singleton
 
@@ -64,6 +69,14 @@ public class Phase1Manager : MonoBehaviour
         DrawReserveCards();
     }
 
+    private void Update()
+    {
+        if (!drawCorRunning && !removeCorRunning)
+        {
+            locked = false;
+        }
+    }
+
     public void StartDay()
     {
         StartDayEvent?.Invoke();
@@ -76,11 +89,15 @@ public class Phase1Manager : MonoBehaviour
 
         if (!_cardsDrawn)
         {
+            locked = true;
+            drawCorRunning = true;
             StartCoroutine(DrawInvestigationCardCor(7));
             _cardsDrawn = true;
         }
         else
         {
+            locked = true;
+            drawCorRunning = true;
             StartCoroutine(ShowCards());
         }
     }
@@ -125,6 +142,8 @@ public class Phase1Manager : MonoBehaviour
 
     private IEnumerator DrawInvestigationCardCor(int amount)
     {
+        client.SetClickable(false);
+
         WaitForSeconds wait = new WaitForSeconds(.85f);
 
         if (amount > _reserveCards.Count)
@@ -139,6 +158,9 @@ public class Phase1Manager : MonoBehaviour
         }
 
         client._canGuess = true;
+        client.SetClickable(true);
+
+        drawCorRunning = false;
     }
 
     public void DrawInvestigationCard()
@@ -166,6 +188,10 @@ public class Phase1Manager : MonoBehaviour
 
     public void RemoveInvestigationCard(GameObject card)
     {
+        locked = true;
+        drawCorRunning = true;
+        removeCorRunning = true;
+
         InvestigationCardProperties _card = card.GetComponent<InvestigationCard>()._invCard;
         ApplyEffect(_card);
         _playedCards.Add(_card);
@@ -193,6 +219,8 @@ public class Phase1Manager : MonoBehaviour
         }
 
         Destroy(card);
+
+        removeCorRunning = false;
     }
 
     #endregion
@@ -237,6 +265,8 @@ public class Phase1Manager : MonoBehaviour
 
             yield return wait;
         }
+
+        drawCorRunning = false;
     }
 
     public IEnumerator ShowCards()
@@ -252,10 +282,13 @@ public class Phase1Manager : MonoBehaviour
         }
 
         client._canGuess = true;
+        drawCorRunning = false;
     }
 
     public void GuessCard()
     {
+        drawCorRunning = true;
+        locked = true;
         StartCoroutine(HideCards());
 
         Guess?.Invoke();

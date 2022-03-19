@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator WaitForNextClient()
     {
         Debug.Log("Waiting for the next client");
-        yield return new WaitForSeconds(UnityEngine.Random.Range(5, 8));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
         this.SwapPhase(1);
     }
 

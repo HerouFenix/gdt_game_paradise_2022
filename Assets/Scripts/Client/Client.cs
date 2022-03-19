@@ -63,6 +63,7 @@ public class Client : MonoBehaviour
                 else if(manager.GetPhase() == 1)
                 {
                     manager1.GuessCard();
+                    _clickable = false;
                 }
 
             }
@@ -159,6 +160,9 @@ public class Client : MonoBehaviour
     {
         this._clickable = clickable;
         if (!this._clickable)
+        {
             this._hovered = false;
+            outline.SetActive(false);
+        }
     }
 }

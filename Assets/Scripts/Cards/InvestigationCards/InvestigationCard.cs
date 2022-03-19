@@ -22,6 +22,8 @@ public class InvestigationCard : MonoBehaviour
 
     public event Action<GameObject> Played;
 
+    private float timeSinceLastHover = 0.0f;
+
     private void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
@@ -31,7 +33,10 @@ public class InvestigationCard : MonoBehaviour
 
     private void Update()
     {
-        if (_interactible && _hovered)
+        if (timeSinceLastHover >= 0.0f)
+            timeSinceLastHover -= Time.deltaTime;
+
+        if (_interactible && _hovered && !_phase1Manager.locked)
         {
             if (Input.GetMouseButtonDown(0))
                 SelectCard();
@@ -61,12 +66,12 @@ public class InvestigationCard : MonoBehaviour
 
     public void HideCard()
     {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
+        StartCoroutine(Slide(new Vector3(this._phase1Manager.cardPositions[this.positionIndex].x, -10f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
     }
 
     public void ShowCard()
     {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
+        StartCoroutine(Slide(new Vector3(this._phase1Manager.cardPositions[this.positionIndex].x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .4f));
     }
 
 
@@ -79,9 +84,10 @@ public class InvestigationCard : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_interactible)
+        if (_interactible && !_phase1Manager.locked && timeSinceLastHover <= 0f)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
+            timeSinceLastHover = .15f;
+            StartCoroutine(LerpPosition(new Vector3(this._phase1Manager.cardPositions[this.positionIndex].x, -2.0f, -0.5f), .1f));
             _hovered = true;
 
         }
@@ -89,9 +95,10 @@ public class InvestigationCard : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (_interactible && !_hovered)
+        if (_interactible && !_hovered && !_phase1Manager.locked && timeSinceLastHover <= 0f)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
+            timeSinceLastHover = .15f;
+            StartCoroutine(LerpPosition(new Vector3(this._phase1Manager.cardPositions[this.positionIndex].x, -2.0f, -0.5f), .1f));
             _hovered = true;
 
         }
@@ -99,16 +106,16 @@ public class InvestigationCard : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (_interactible)
+        if (_interactible || _phase1Manager.locked)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this._phase1Manager.cardPositions[this.positionIndex].x, -2.85f, this._phase1Manager.cardPositions[this.positionIndex].z), .1f));
             _hovered = false;
         }
     }
 
     private void SelectCard()
     {
-        StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, -6f, -0.5f), .2f));
+        StartCoroutine(LerpPositionOffscreen(new Vector3(this._phase1Manager.cardPositions[this.positionIndex].x, -6f, -0.5f), .2f));
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration, bool lockInteraction=false)
