@@ -7,35 +7,36 @@ public class CanvasManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject _buttonStartDay;
-    [SerializeField] private GameObject _buttonGuess;
     [SerializeField] private GameObject _ClientCard;
     private Animator _clientCardAnimator;
     [SerializeField] private GameObject _Journal;
-    [SerializeField] private GameObject _clientDiary;
 
     private Phase1Manager _phase1Manager;
     private GameManager _GameManager;
 
+
     void Start()
     {
         _GameManager = GameManager.Instance;
-        _GameManager.StartPhase1 += CloseJournal;
+        _GameManager.StartPhase0 += RemoveCurrentClient;
+        _GameManager.StartPhase0 += ResetClientCard;
 
         _phase1Manager = Phase1Manager.Instance;
         _phase1Manager.StartDayEvent += StartDay;
-        _phase1Manager.Guessing += GuessingCard;
-        _phase1Manager.Guess += GuessCard;
+        _phase1Manager.PlayInvCard += FlipClientCard360;
 
         _clientCardAnimator = _ClientCard.GetComponent<Animator>();
+
+        _GameManager.StartPhase2 += RevealResultsOnClientCard;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveCurrentClient()
     {
-        
+        StartCoroutine(GameObject.FindGameObjectWithTag("client").GetComponent<Client>().FadeAway());
+        _ClientCard.SetActive(false);
     }
-
-    public void CloseJournal(Client c)
+    
+    public void CloseJournal()
     {
         _Journal.SetActive(false);
         _buttonStartDay.SetActive(true);
@@ -44,19 +45,44 @@ public class CanvasManager : MonoBehaviour
     public void StartDay()
     {
         _buttonStartDay.SetActive(false);
-        _buttonGuess.SetActive(true);
     }
 
-    public void GuessingCard()
-    {
-        _buttonGuess.SetActive(false);
-        _ClientCard.SetActive(true);
-    }
 
-    public void GuessCard()
+    public void RevealResultsOnClientCard(List<int> l)
     {
-        _ClientCard.SetActive(false);
-        _Journal.SetActive(true);
+        ClientCard card = _ClientCard.GetComponent<ClientCard>();
+        Client client = GameObject.FindGameObjectWithTag("client").GetComponent<Client>();
+
+        List<string> hints = new List<string>(client._hints);
+        int police = client._police_value;
+        int soul = client._soul_value;
+
+        if (l[2] > 8)
+        { // Pretty right, remove 1 hint
+            hints.RemoveAt(2);
+            hints.RemoveAt(1);
+            hints.RemoveAt(0);
+        }else if(l[2] > 5)
+        { // Kind of right, remove 2 hints
+            hints.RemoveAt(2);
+            hints.RemoveAt(1);
+        }else if(l[2] > 0)
+        { // Entirely wrong, remove all hints
+            hints.RemoveAt(2);
+        }
+
+        if(l[1] == 0)
+        { // Wrong Suit
+            police = -1;
+        }
+
+        if(l[0] == 0)
+        { // Wrong
+            soul = -1;
+        }
+
+        card.RevealResults(hints, police, soul);
+        FlipClientCard180();
     }
 
     public void FlipClientCard360()
@@ -71,6 +97,7 @@ public class CanvasManager : MonoBehaviour
 
     public void ResetClientCard()
     {
+        _ClientCard.GetComponent<ClientCard>().ResetClientCard();
         _clientCardAnimator.SetTrigger("reset");
     }
 }
