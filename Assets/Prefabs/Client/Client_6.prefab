@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 3491463714001396434}
   - component: {fileID: 5552907599142225123}
   m_Layer: 0
-  m_Name: Client_0
+  m_Name: Client_6
   m_TagString: client
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d85153e5ca6f3143a070fa4a3416a3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -390,14 +390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b0139739cc1d244be0225c724742a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 0
+  ClientID: 6
   _hints:
   - hint 1
   - hint 2
   - hint 3
   _police_value: 1
   _soul_value: 1
-  sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  sprite: {fileID: 21300000, guid: 8d85153e5ca6f3143a070fa4a3416a3e, type: 3}
   lines: []
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
@@ -417,8 +417,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.4164343, y: 14.890453, z: 0.2}
-  m_Center: {x: 0.27828836, y: -0.27667022, z: 0}
+  m_Size: {x: 7.0259466, y: 13.197015, z: 0.2}
+  m_Center: {x: -0.67115355, y: -1.1233897, z: 0}
 --- !u!95 &5552907599142225123
 Animator:
   serializedVersion: 4
@@ -512,7 +512,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 93e17ebe1a84cd549ba822935d44fa57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4794bb3ced6b3544799c026f361aef85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
