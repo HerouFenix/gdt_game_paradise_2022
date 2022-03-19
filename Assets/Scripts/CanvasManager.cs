@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,15 @@ public class CanvasManager : MonoBehaviour
     private Animator _clientCardAnimator;
     [SerializeField] private GameObject _Journal;
 
+    [SerializeField] private GameObject _nextDayScreen;
+    [SerializeField] private TextMeshPro _soulCounter;
+    [SerializeField] private TextMeshPro _dayCounter;
+
+    [SerializeField] private GameObject _WinScreen;
+    [SerializeField] private GameObject _LoseScreenSouls;
+    [SerializeField] private GameObject _LoseScreenCops;
+
+
     private Phase1Manager _phase1Manager;
     private GameManager _GameManager;
 
@@ -20,6 +30,9 @@ public class CanvasManager : MonoBehaviour
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase0 += RemoveCurrentClient;
         _GameManager.StartPhase0 += ResetClientCard;
+        _GameManager.FinishGame += RevealEndScreen;
+
+        _GameManager.NewDay += ShowNewDayScreen;
 
         _phase1Manager = Phase1Manager.Instance;
         _phase1Manager.StartDayEvent += StartDay;
@@ -28,6 +41,14 @@ public class CanvasManager : MonoBehaviour
         _clientCardAnimator = _ClientCard.GetComponent<Animator>();
 
         _GameManager.StartPhase2 += RevealResultsOnClientCard;
+    }
+
+    public void ShowNewDayScreen(int daysLeft, int soulsLeft)
+    {
+        _nextDayScreen.gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = daysLeft + " DAYS UNTIL RECKONING";
+        _nextDayScreen.gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = soulsLeft + " SOULS REQUIRE HARVESTING";
+        _nextDayScreen.SetActive(true);
+        _nextDayScreen.GetComponent<Animator>().SetBool("first", false);
     }
 
     public void RemoveCurrentClient()
@@ -39,7 +60,8 @@ public class CanvasManager : MonoBehaviour
     public void CloseJournal()
     {
         _Journal.SetActive(false);
-        _buttonStartDay.SetActive(true);
+        //_buttonStartDay.SetActive(true);
+        StartCoroutine(_GameManager.WaitForNextClient());
     }
 
     public void StartDay()
@@ -99,5 +121,20 @@ public class CanvasManager : MonoBehaviour
     {
         _ClientCard.GetComponent<ClientCard>().ResetClientCard();
         _clientCardAnimator.SetTrigger("reset");
+    }
+
+    public void RevealEndScreen(int type)
+    {
+        if(type == 0)
+        { // Win
+            _WinScreen.SetActive(true);
+        }else if(type == 1)
+        { // Lose to cops
+            _LoseScreenCops.SetActive(true);
+        }
+        else
+        { // Lose to souls
+            _LoseScreenSouls.SetActive(true);
+        }
     }
 }

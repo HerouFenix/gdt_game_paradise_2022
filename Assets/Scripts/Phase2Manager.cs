@@ -132,14 +132,31 @@ public class Phase2Manager : MonoBehaviour
 
     public void RemoveToolCard(GameObject card)
     {
-        _currentToolCards.Remove(card);
+        StartCoroutine(RemoveToolCardCor(card));
+    }
+
+    public IEnumerator RemoveToolCardCor(GameObject card)
+    {
+        int cardIndex = card.GetComponent<ToolCards>().GetIndex();
+        this._currentToolCards.Remove(card);
+
+        WaitForSeconds wait = new WaitForSeconds(.05f);
+        for (int i = cardIndex; i < this._currentToolCards.Count; i++)
+        {
+            ToolCards curCard = this._currentToolCards[i].GetComponent<ToolCards>();
+
+            curCard.SetIndex(i);
+            curCard.MoveCard(this.cardPositions[i]);
+            yield return wait;
+        }
+
         StartCoroutine(HideCards());
         ToolCards toolCard = card.GetComponent<ToolCards>();
 
         int soul = 0;
         int police = 0;
 
-        if(toolCard.ClientID == client.ClientID)
+        if (toolCard.ClientID == client.ClientID)
         {// Right tool
             soul = client._soul_value;
             police = client._police_value;
@@ -147,7 +164,7 @@ public class Phase2Manager : MonoBehaviour
         else
         {
             int number = UnityEngine.Random.Range(0, 100);
-            if(number <= toolCard.probabilityOfKilling)
+            if (number <= toolCard.probabilityOfKilling)
             {
                 soul = client._soul_value;
                 police = client._police_value;
@@ -156,13 +173,7 @@ public class Phase2Manager : MonoBehaviour
 
         _GameManager.IncrementValues(soul, police);
         _GameManager.SwapPhase(0);
-    }
-
-    public IEnumerator RemoveToolCardCor(GameObject card)
-    {
-        WaitForSeconds wait = new WaitForSeconds(.05f);
-
-        yield return wait;
+        Destroy(card);
     }
 
     #endregion

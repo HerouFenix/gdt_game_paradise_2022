@@ -12,7 +12,9 @@ public class Client : MonoBehaviour
 
     private ClientCard clientCard;
     [SerializeField] private Sprite sprite;
-    [SerializeField] private List<string> lines = new List<string>();
+    [SerializeField] private List<string> startLines = new List<string>();
+    private int nextLine = 0;
+    [SerializeField] private string endLine = "Goodbye";
 
     [SerializeField] private GameObject _textBubble;
     [SerializeField] private TextMeshPro _textBubbleText;
@@ -38,8 +40,6 @@ public class Client : MonoBehaviour
         _animator = GetComponent<Animator>();
         _clickable = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-
-        StartCoroutine(TypeSentence("Hello!"));
     }
 
     private void Update()
@@ -48,7 +48,13 @@ public class Client : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (!_canGuess && manager.GetPhase() == 1)
+                if(nextLine < startLines.Count)
+                {
+                    StopCoroutine(TypeSentence(""));
+                    StartCoroutine(TypeSentence(startLines[nextLine]));
+                    nextLine++;
+                }
+                else if (!_canGuess && manager.GetPhase() == 1)
                 {
                     manager1.DrawCards();
                     ToggleTextBubble();
@@ -74,8 +80,10 @@ public class Client : MonoBehaviour
         clientCard.gameObject.SetActive(!clientCard.gameObject.activeSelf);
     }
 
-    IEnumerator TypeSentence(string sentence)
+    IEnumerator TypeSentence(string sentence, float initialDelay = 0)
     {
+        yield return new WaitForSeconds(initialDelay);
+
         if (!_textBubble.activeSelf)
             this.ToggleTextBubble();
 
@@ -92,7 +100,7 @@ public class Client : MonoBehaviour
 
     public IEnumerator FadeAway()
     {
-        string sentence = "Goodbye";
+        string sentence = endLine;
 
         if (!_textBubble.activeSelf)
             this.ToggleTextBubble();
@@ -106,6 +114,8 @@ public class Client : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         _textRunning = false;
+
+        yield return new WaitForSeconds(1f);
 
         if(_animator == null)
             _animator = GetComponent<Animator>();
@@ -127,7 +137,7 @@ public class Client : MonoBehaviour
 
             if (_canGuess)
             {
-                StopAllCoroutines();
+                StopCoroutine(TypeSentence(""));
                 StartCoroutine(TypeSentence("Are you done with the reading?"));
             }
         }

@@ -144,7 +144,6 @@ public class ToolCards : MonoBehaviour
 
         Played?.Invoke(this.gameObject);
 
-        Destroy(this.gameObject);
     }
 
     IEnumerator Slide(Vector3 targetPosition, float duration)

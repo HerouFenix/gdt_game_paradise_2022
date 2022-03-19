@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     private int _police;
     private int _day;
 
+    public int numberOfDays = 3;
+    public int requiredSouls = 0;
+    public int maxPoliceLevel = 10;
+
+
 
     [SerializeField] private List<GameObject> _possibleClients = new List<GameObject>();
     private List<GameObject> _currentClients = new List<GameObject>();
@@ -17,6 +22,11 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public Phase1Manager _phase1Manager;
     [HideInInspector] public Phase2Manager _phase2Manager;
+
+    public event Action<int, int>  NewDay;
+    public event Action EndDay;
+
+    public event Action<int> FinishGame;
 
     public event Action StartPhase0;
 
@@ -54,15 +64,48 @@ public class GameManager : MonoBehaviour
 
         _souls = 0;
         _police = 0;
-        _day = 1;
+        _day = 0;
 
+        StartNewDay();
+    }
+
+    void StartNewDay()
+    {
+        _day++;
+        /* Check win/lose conditions */
+        if(_day > numberOfDays)
+        {
+            if(_souls >= requiredSouls)
+            {
+                Debug.Log("You win :)");
+                FinishGame?.Invoke(0);
+            }
+            else
+            {
+                Debug.Log("You lose :(");
+                FinishGame?.Invoke(2);
+            }
+        }
+
+        if (_police > maxPoliceLevel)
+        {
+            Debug.Log("You lose :( (police)");
+            FinishGame?.Invoke(1);
+        }
+        else
+        {
+            // Show start day screen
+            NewDay?.Invoke(numberOfDays-_day, requiredSouls-_souls);
+        }
+
+        
 
         /* 1st Pick 3 clients*/
-        PickClients(2);
+        PickClients(3);
 
         /* Get Today's tool cards */
         _phase2Manager.todaysClients = _currentClients;
-        _phase2Manager.ChooseCurrentToolCards(3);
+        _phase2Manager.ChooseCurrentToolCards(6);
     }
 
     void PickClients(int amount)
@@ -103,6 +146,8 @@ public class GameManager : MonoBehaviour
                 if(_nextClientIndex >= _currentClients.Count)
                 { // No more clients ; End Day
                     Debug.Log("End the day");
+                    EndDay?.Invoke();
+                    StartCoroutine(WaitForNewDay());
                 }
                 else
                 { // There are more clients ; Continue
@@ -128,10 +173,16 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    IEnumerator WaitForNextClient()
+    public IEnumerator WaitForNextClient()
     {
         Debug.Log("Waiting for the next client");
         yield return new WaitForSeconds(UnityEngine.Random.Range(5, 8));
         this.SwapPhase(1);
+    }
+
+    public IEnumerator WaitForNewDay()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
+        StartNewDay();
     }
 }

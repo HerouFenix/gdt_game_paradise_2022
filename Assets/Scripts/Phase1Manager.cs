@@ -57,6 +57,7 @@ public class Phase1Manager : MonoBehaviour
     {
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase1 += ReceiveClient;
+        _GameManager.EndDay += ResetManager;
         //_GameManager.EndPhase1 += ResetManager;
 
 
@@ -86,7 +87,15 @@ public class Phase1Manager : MonoBehaviour
 
     public void ResetManager()
     {
+        _cardsDrawn = false;
 
+        // Put Hand and reserve cards back into deck
+        _deckCards.AddRange(_handCards);
+        _deckCards.AddRange(_reserveCards);
+        _handCards = new List<InvestigationCardProperties>();
+        _reserveCards = new List<InvestigationCardProperties>();
+
+        DrawReserveCards();
     }
 
     public void ReceiveClient(GameObject _newClient)
