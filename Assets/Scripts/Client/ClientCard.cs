@@ -15,7 +15,7 @@ public class ClientCard : MonoBehaviour
 
     public EColor Color { get => _color; set => _color = value; }
 
-    private int _currentNumber = 0;
+    private int _currentNumber = 1;
     private ESuit _currentSuit = ESuit.Work;
     private EColor _currentColor = EColor.Black;
 
@@ -41,11 +41,11 @@ public class ClientCard : MonoBehaviour
     public void ResetClientCard()
     {
         /* Pick random values */
-        this._number = Random.Range(0, 21);
+        this._number = Random.Range(1, 21);
         this._suit = (ESuit)Random.Range(0, 4);
         this._color = (EColor)Random.Range(0, 3);
 
-        _currentNumber = 0;
+        _currentNumber = 1;
         _numberSprite.sprite = Resources.Load<Sprite>("ClientCard/Numbers/" + _currentNumber);
         _currentSuit = ESuit.Work;
         _suitSprite.sprite = Resources.Load<Sprite>("ClientCard/Suits/" + _currentSuit);
@@ -58,6 +58,9 @@ public class ClientCard : MonoBehaviour
     {
         _currentNumber += 1;
         _currentNumber = _currentNumber % 21;
+        if (_currentNumber == 0)
+            _currentNumber++;
+
         _numberSprite.sprite = Resources.Load<Sprite>("ClientCard/Numbers/" + _currentNumber);
     }
 

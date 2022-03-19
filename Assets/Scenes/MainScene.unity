@@ -2677,6 +2677,7 @@ MonoBehaviour:
   - {x: -0.3, y: -2.85, z: -0.15}
   - {x: -1.1, y: -2.85, z: -0.1}
   _clientCard: {fileID: 307384559}
+  locked: 0
 --- !u!4 &892848936
 Transform:
   m_ObjectHideFlags: 0

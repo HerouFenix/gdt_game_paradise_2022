@@ -15,3 +15,5 @@ MonoBehaviour:
   _type: 0
   _number: 1
   _image: {fileID: 21300000, guid: 97e571e713bd2b84a9fee29d00ad0bb3, type: 3}
+  _suit: 0
+  _color: 0
