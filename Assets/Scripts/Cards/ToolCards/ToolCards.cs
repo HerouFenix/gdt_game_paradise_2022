@@ -11,6 +11,7 @@ public class ToolCards : MonoBehaviour
 
     [SerializeField] public GameObject _front;
     [SerializeField] private Sprite _image;
+    [SerializeField] private GameObject descriptionSprite;
 
     [HideInInspector] protected int positionIndex;
     private Phase2Manager _phase2Manager;
@@ -82,6 +83,7 @@ public class ToolCards : MonoBehaviour
         {
             StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
             _hovered = true;
+            descriptionSprite.SetActive(true);
 
         }
     }
@@ -92,6 +94,7 @@ public class ToolCards : MonoBehaviour
         {
             StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
             _hovered = true;
+            descriptionSprite.SetActive(true);
 
         }
     }
@@ -102,6 +105,7 @@ public class ToolCards : MonoBehaviour
         {
             StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.85f, this._phase2Manager.cardPositions[this.positionIndex].z), .1f));
             _hovered = false;
+            descriptionSprite.SetActive(false);
         }
     }
 
