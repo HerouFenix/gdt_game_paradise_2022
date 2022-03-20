@@ -339,19 +339,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 7
   _hints:
-  - "I gotta have a bodyguard at all times by my side, including when going in the
-    bathroom... Frank\u2019s cool though."
-  - "Luck isn\u2019t on my side when it comes to technology. My phone shocks my ear
-    from time to time."
-  - At all my speeches my mic fails at the middle of them... So annoying!
+  - So what do you sell here buddy?
+  - "Y\u2019know, there\u2019ve been some people visiting the store recently that\u2019ve
+    gone missing or outright died..."
+  - "I\u2019m gonna discover what you\u2019re hiding, be warned. I\u2019m not gonna
+    let you escape like the other guy from the GDT assassination case... My biggest
+    regret..."
   _police_value: 3
   _soul_value: 15
   startLines:
-  - Oh hi.
-  - Look, I'm very busy, let's hurry this up.
-  - I'm also a mess.
-  - Read my card and you'll see.
-  endLine: Tahnks, bye.
+  - Hey there.
+  - Word has come up you're some kind of a miracle maker?
+  - I'm looking for one, so here's my card.
+  endLine: Eh, you're not gonna get away.
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0
