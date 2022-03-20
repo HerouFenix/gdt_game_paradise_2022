@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public event Action EndPhase2;
 
     private JournalManager _journalManager;
+    private AudioManager _audioManager;
 
 
     private int currentPhase = 0;
@@ -64,13 +65,18 @@ public class GameManager : MonoBehaviour
         _phase1Manager = this.GetComponent<Phase1Manager>();
         _phase2Manager = this.GetComponent<Phase2Manager>();
 
-        _journalManager = JournalManager.Instance;
+        _audioManager = AudioManager.Instance;
 
         _souls = 0;
         _police = 0;
         _day = 0;
 
         StartNewDay();
+    }
+
+    public void SetJournalManager()
+    {
+        _journalManager = JournalManager.Instance;
     }
 
     void StartNewDay()
@@ -132,7 +138,7 @@ public class GameManager : MonoBehaviour
         _souls += souls;
         _police += police;
 
-        Debug.Log(_nextClientIndex);
+        Debug.Log("ID proximo cliente: " + _nextClientIndex);
         clientID =  _currentClients[_nextClientIndex].GetComponent<Client>().ClientID;
 
 
@@ -155,7 +161,6 @@ public class GameManager : MonoBehaviour
         switch (this.currentPhase)
         {
             case 0:
-                Debug.Log("Start phase 0");
                 EndPhase2?.Invoke();
 
                 StartPhase0?.Invoke();
@@ -163,7 +168,6 @@ public class GameManager : MonoBehaviour
 
                 if(_nextClientIndex >= _currentClients.Count)
                 { // No more clients ; End Day
-                    Debug.Log("End the day");
                     EndDay?.Invoke();
                     StartCoroutine(WaitForNewDay());
                 }
@@ -175,13 +179,11 @@ public class GameManager : MonoBehaviour
                 break;
             
             case 1:
-                Debug.Log("Start phase 1");
                 StartPhase1?.Invoke(_currentClients[_nextClientIndex]);
                 
                 break;
             
             case 2:
-                Debug.Log("Start phase2");
                 EndPhase1?.Invoke();
                 
                 StartPhase2?.Invoke(_phase1Manager.ReturnResults());
@@ -195,6 +197,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Waiting for the next client");
         yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
+        _audioManager.PlaySound(AudioManager.soundList.DoorOpen);
         this.SwapPhase(1);
     }
 

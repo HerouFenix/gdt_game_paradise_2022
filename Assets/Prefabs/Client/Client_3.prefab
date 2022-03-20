@@ -372,19 +372,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 3
   _hints:
-  - "Joe: We live with my ma\u2019. It\u2019s good to be at home with her. Cathy:
-    Ye, if only she didn\u2019t have a fart attack every time she went to the bathroom..."
-  - 'Cathy: He can only skate to work, I wish he drove a car... Joe: HEY! I still
-    lend you my bycicle from time to time! '
-  - "Cathy: Even us both having 2 jobs EACH, we can\u2019t afford a studio in Lisbon!
-    What a disgrace..."
+  - His mother is very flatulent, and really, really loud.
+  - They are both horrible cooks. And won't leave the house when it rains.
+  - Even with 2 jobs each they can't affort a studio in Lisbon.
   _police_value: 2
   _soul_value: 10
   startLines:
-  - 'Joe: Hey there bro!'
-  - 'Cathy: Heyoo!'
-  - 'Both: Help us out with a problem please! Do your thing.'
-  endLine: Goodbye
+  - Hey there bro!
+  - Help us out with a problem please!
+  - Do your thing.
+  endLine: Stay cool bro.
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

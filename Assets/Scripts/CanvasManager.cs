@@ -47,6 +47,7 @@ public class CanvasManager : MonoBehaviour
 
     public void ShowNewDayScreen(int daysLeft, int soulsLeft)
     {
+        _audioManager.MusicStop();
         _nextDayScreen.gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = daysLeft + " DAYS UNTIL RECKONING";
         _nextDayScreen.gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = soulsLeft + " SOULS REQUIRE HARVESTING";
         _nextDayScreen.SetActive(true);
@@ -56,6 +57,7 @@ public class CanvasManager : MonoBehaviour
     public void RemoveCurrentClient()
     {
         StartCoroutine(GameObject.FindGameObjectWithTag("client").GetComponent<Client>().FadeAway());
+        _audioManager.PlaySound(AudioManager.soundList.DoorClose);
         _ClientCard.SetActive(false);
     }
     

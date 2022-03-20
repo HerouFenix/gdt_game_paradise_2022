@@ -456,16 +456,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 4
   _hints:
-  - I got no booty! Nowadays be mighty difficult t' plunder 'n be victorious. I jus'
-    wanted some booty.
-  - Me ship sank, now I gotta use a row ship t' plunder...
-  - I be a pirate wit' 2 eyes! How can I be taken seriously wit' 2 eyes 'n no eyepatch!?
+  - He's sad cause he has no booty. Not talking about money.
+  - His ship sank, because he doesn't believe in technology.
+  - His greatest regret is having two eyes. All the other pirates make fun of all
+    his eyeballs.
   _police_value: 1
   _soul_value: 5
   startLines:
   - Ahoy!
   - How fares yer day?
-  - Read me card or I'll plunder yer arse!
+  - Read me card or I'll plunder...
+  - yer arse!
   endLine: Godspeed!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}

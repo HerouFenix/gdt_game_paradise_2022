@@ -339,19 +339,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 6
   _hints:
+<<<<<<< HEAD
   - "I gotta have a bodyguard at all times by my side, including when going in the
     bathroom... Frank\u2019s cool though."
   - "Luck isn\u2019t on my side when it comes to technology. There are normally accidents
     when I'm around it"
   - At all my speeches my mic fails at the middle of them... So annoying!
+=======
+  - He has a bodyguard at all times, including when going to the bathroom.
+  - He's not very technology savy. His phone shocks my ear from time to time.
+  - At all his speeches his mic fails midway.
+>>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   _police_value: 3
   _soul_value: 15
   startLines:
   - Oh hi.
-  - Look, I'm very busy, let's hurry this up.
+  - Look, I'm very busy
+  - let's hurry this up.
   - I'm also a mess.
   - Read my card and you'll see.
-  endLine: Tahnks, bye.
+  endLine: Finally...
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

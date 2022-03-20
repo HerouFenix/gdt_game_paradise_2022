@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientID: -1
-  probabilityOfKilling: 0
+  probabilityOfKilling: 5
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: 2762bf7f34de6824db67c59c37ec87ba, type: 3}
   descriptionSprite: {fileID: 6778009899981076500}
@@ -473,7 +473,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_text: An umbrella. May call down a lighting to its location.
+=======
+  m_text: They call it "Zeus' Bullseye" in Greece.
+>>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}

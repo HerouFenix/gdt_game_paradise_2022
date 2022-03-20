@@ -339,11 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 0
   _hints:
-  - My kids are a huge headache, but my wife is the best when dealing with them.
-  - Although I would rather have a post office car, my trusty bike can get me to
-    most places.
-  - "Every god damn dog can\u2019t stop chasing me down every street. I get bitten
-    every day!"
+  - He got angry kids, that's why he's hair is all gray.
+  - He won't buy any metal items, cause he's allergic.
+  - He's being chased by every dog on the street. Perhaps some more bait will help.
   _police_value: 1
   _soul_value: 5
   startLines:
@@ -368,7 +366,7 @@ BoxCollider:
   m_GameObject: {fileID: 2896912386846034444}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7.4164343, y: 15.608345, z: 0.2}
   m_Center: {x: 0.2782885, y: 1.1264737, z: 0}

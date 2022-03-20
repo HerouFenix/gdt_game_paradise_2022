@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 8
   _hints:
+<<<<<<< HEAD
   - My family is great, but dey don't understand my passion fhr fis'eng... I still
     love dem, but I wish dey could understand.
   - "I always take Bruce, my cat, fis'eng with me. I don\u2019t know how, but 'e
@@ -347,12 +348,20 @@ MonoBehaviour:
     can't cast my line into de water, no matter how hard I try!
   _police_value: 2
   _soul_value: 10
+=======
+  - He's clearly a cop undercover.
+  - He's fate will alert the police, no matter what. Might as well kill him.
+  - Perhaps something to find his enemies will interest him.
+  _police_value: 3
+  _soul_value: 15
+>>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   startLines:
-  - Oh hi.
-  - Look, I'm very busy, let's hurry this up.
-  - I'm also a mess.
-  - Read my card and you'll see.
-  endLine: Tahnks, bye.
+  - Oh, hello there.
+  - I'm a simples customer.
+  - Just browsing your store.
+  - Could you help me catch...
+  - FIND, what I need?
+  endLine: I see...
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0
@@ -371,8 +380,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.0259466, y: 13.939126, z: 0.2}
-  m_Center: {x: -0.6711534, y: 0.29535294, z: 0}
+  m_Size: {x: 9.792858, y: 14.931033, z: 0.2}
+  m_Center: {x: 0.033626158, y: 1.4177811, z: 0}
 --- !u!95 &5552907599142225123
 Animator:
   serializedVersion: 4
@@ -451,7 +460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6655409967500733921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0.33, z: 0}
   m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -499,7 +508,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4794bb3ced6b3544799c026f361aef85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5277abd076ba63640bba07ae97bc21dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -583,7 +592,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8d85153e5ca6f3143a070fa4a3416a3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96f253e0929312242be5f666d66a4a60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

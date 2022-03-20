@@ -316,8 +316,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2896912386846034444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -0.001, z: -0.1}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 2.07, y: -0.34, z: -0.1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 932392514}
@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 7
   _hints:
+<<<<<<< HEAD
   - So what do you sell here buddy?
   - "Y\u2019know, there\u2019ve been some people visiting the store recently that\u2019ve
     gone missing or outright died..."
@@ -352,6 +353,19 @@ MonoBehaviour:
   - Word has come up you're some kind of a miracle maker?
   - I'm looking for one, so here's my card.
   endLine: Eh, you're not gonna get away.
+=======
+  - His doctor prescribed him the wrong glasses. He just stumbled against the door.
+  - He always takes Bruce, his cat, fishing with him. They might be married.
+  - He really, really, REALLY, loves fishing.
+  _police_value: 3
+  _soul_value: 15
+  startLines:
+  - Good'day.
+  - Hope you're havin one.
+  - Cause I'm not...
+  - Help me, trusty friend.
+  endLine: You're a life saver!
+>>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0
@@ -370,8 +384,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.0259466, y: 13.939126, z: 0.2}
-  m_Center: {x: -0.6711534, y: 0.29535294, z: 0}
+  m_Size: {x: 5.8607006, y: 11.752717, z: 0.2}
+  m_Center: {x: -0.5500555, y: 0.17462306, z: 0}
 --- !u!95 &5552907599142225123
 Animator:
   serializedVersion: 4
@@ -416,7 +430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3675972156245530856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.46999997, z: 0}
+  m_LocalPosition: {x: -1.96, y: -0.51, z: 0}
   m_LocalScale: {x: 3.4999995, y: 3.4999995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -498,7 +512,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4794bb3ced6b3544799c026f361aef85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2063d7c82f1da31478eea8f41e6d9ef7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -582,7 +596,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8d85153e5ca6f3143a070fa4a3416a3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f31ac4e13edca7443ac29b28d0ca3fa7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

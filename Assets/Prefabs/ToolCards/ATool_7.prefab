@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientID: -1
-  probabilityOfKilling: 0
+  probabilityOfKilling: 5
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: 82595b26516e9954681f53ba80227891, type: 3}
   descriptionSprite: {fileID: 866348180267326316}
@@ -473,7 +473,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_text: Cellphone. When used, calls an aistrsike to its vicinity.
+=======
+  m_text: The deadliest weapon of the 21st century... if we're talking about killing
+    brain cells.
+>>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
