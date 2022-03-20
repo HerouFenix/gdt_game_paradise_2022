@@ -109,8 +109,11 @@ public class Phase1Manager : MonoBehaviour
         // Put Hand and reserve cards back into deck
         _deckCards.AddRange(_handCards);
         _deckCards.AddRange(_reserveCards);
+        _deckCards.AddRange(_playedCards);
+
         _handCards = new List<InvestigationCardProperties>();
         _reserveCards = new List<InvestigationCardProperties>();
+        _playedCards = new List<InvestigationCardProperties>();
 
         DrawReserveCards();
     }

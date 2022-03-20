@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 841918484412884599}
   - component: {fileID: 2031997615297986904}
   m_Layer: 0
-  m_Name: ATool_1
+  m_Name: ATool_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

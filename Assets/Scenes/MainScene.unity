@@ -2633,7 +2633,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseInvestigationCard: {fileID: 7797010437465436642, guid: 0a034e89d1212c44887cbb786ff40c87, type: 3}
   _deckCards:
-  - {fileID: 11400000, guid: 13d2c2576d14b5043a8dd6d4154630b4, type: 2}
   - {fileID: 11400000, guid: 6e148a2b6c51bef4685f29bca958c96d, type: 2}
   - {fileID: 11400000, guid: dd964ee4b8e9a7d489bc011990eab8c8, type: 2}
   - {fileID: 11400000, guid: 7ac8378619d7bcf4ab6e0a761edd484d, type: 2}
@@ -2665,6 +2664,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01aa9bb764924a74db5099f0885123c2, type: 2}
   - {fileID: 11400000, guid: 64ca6807587bde54aac9852c26862e64, type: 2}
   - {fileID: 11400000, guid: 31b4fd8d519cf914c82f6094bf34632d, type: 2}
+  - {fileID: 11400000, guid: 31b4fd8d519cf914c82f6094bf34632d, type: 2}
+  - {fileID: 11400000, guid: 64ca6807587bde54aac9852c26862e64, type: 2}
+  - {fileID: 11400000, guid: 01aa9bb764924a74db5099f0885123c2, type: 2}
+  - {fileID: 11400000, guid: b9cf1ca3e50a0c64483601d3b31647bf, type: 2}
+  - {fileID: 11400000, guid: 3ca20b29bd0b9a548a5cc6f4696f75ce, type: 2}
+  - {fileID: 11400000, guid: 007a95dbf58de9f4693a1088965d9379, type: 2}
+  - {fileID: 11400000, guid: e347ba318a0e7fe448f0debb6b8b3801, type: 2}
   _cardEffects: {fileID: 1004136030}
   _spawnPosition: {x: 4.11, y: -1.15, z: -0.2}
   cardPositions:
@@ -2674,8 +2680,8 @@ MonoBehaviour:
   - {x: -2.1, y: -2.85, z: -0.3}
   - {x: -1.3, y: -2.85, z: -0.25}
   - {x: -0.5, y: -2.85, z: -0.2}
-  - {x: -0.3, y: -2.85, z: -0.15}
-  - {x: -1.1, y: -2.85, z: -0.1}
+  - {x: 0.3, y: -2.85, z: -0.15}
+  - {x: 1.1, y: -2.85, z: -0.1}
   _clientCard: {fileID: 307384559}
   locked: 0
 --- !u!4 &892848936
@@ -2731,11 +2737,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clientSpecificCards:
+  - {fileID: 7797010437465436642, guid: 8957a737df5bab7499f43e6ec0490c75, type: 3}
   - {fileID: 7797010437465436642, guid: 13ea31b7c35c3434e8107db94b775a41, type: 3}
   - {fileID: 7797010437465436642, guid: 7c17fa96712b15b4cb4e8bc7d096cfe4, type: 3}
+  - {fileID: 7797010437465436642, guid: e2d1dab6a6c512e44a5a4a9efa8b1218, type: 3}
+  - {fileID: 7797010437465436642, guid: 36e1df4b0d567574d9b8fa8039fab998, type: 3}
+  - {fileID: 7797010437465436642, guid: e51cb511c5826ce4fb55af6cac8aa86a, type: 3}
+  - {fileID: 7797010437465436642, guid: 42d60b69dc2bad646bd4d568cb0b8c73, type: 3}
+  - {fileID: 7797010437465436642, guid: e8d284f338ede324aa18eb123c299f3a, type: 3}
+  - {fileID: 7797010437465436642, guid: c3a8a742c45c040428fc6144d2267704, type: 3}
   _clientAgnosticCards:
   - {fileID: 7797010437465436642, guid: 58a774c8e540d65409565527098fc034, type: 3}
   - {fileID: 7797010437465436642, guid: 245dfac98f74d014b8bf7de955a6f0a2, type: 3}
+  - {fileID: 7797010437465436642, guid: 1b2ca9f3b190a094f85d5b1577c52bd2, type: 3}
+  - {fileID: 7797010437465436642, guid: de9d40025ad3d0340975ac11b9bf8aad, type: 3}
+  - {fileID: 7797010437465436642, guid: d2b0164acb01db84aa3455fe0a77d0d3, type: 3}
+  - {fileID: 7797010437465436642, guid: 186a773db067d624daa5913c53f1e2ab, type: 3}
+  - {fileID: 7797010437465436642, guid: 215769e865a856e499bb6233cd8f31f1, type: 3}
+  - {fileID: 7797010437465436642, guid: bf7b8edb25af6544698a6f73cf304848, type: 3}
+  - {fileID: 7797010437465436642, guid: 643c5df47fd9ae54888afc7c3f018108, type: 3}
   _spawnPosition: {x: 4.11, y: -1.15, z: -0.2}
   cardPositions:
   - {x: -4.5, y: -2.85, z: -0.45}

@@ -50,6 +50,22 @@ public class Phase2Manager : MonoBehaviour
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase2 += DrawToolCards;
         _GameManager.StartPhase2 += SetCurrentResults;
+        _GameManager.EndDay += ResetManager;
+    }
+
+    public void ResetManager()
+    {
+        _cardsDrawn = false;
+
+        // Put Non-played agnostic cards back into the deck
+        for(int i = 0; i < _currentToolCards.Count; i++)
+        {
+            if(_currentToolCards[i].GetComponent<ToolCards>().ClientID == -1)
+            {
+                _clientAgnosticCards.Add(_currentToolCards[i]);
+            }
+        }
+        _currentToolCards = new List<GameObject>();
     }
 
     public void SetTodaysClients(List<GameObject> clients)
@@ -97,6 +113,7 @@ public class Phase2Manager : MonoBehaviour
             int cardIndex = UnityEngine.Random.Range(0, _clientAgnosticCards.Count);
 
             _currentToolCards.Add(_clientAgnosticCards[cardIndex]);
+            _clientAgnosticCards.RemoveAt(cardIndex); 
         }
 
         /* Shuffle */
