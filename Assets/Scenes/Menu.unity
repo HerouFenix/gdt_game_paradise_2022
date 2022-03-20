@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 101363720}
+  - component: {fileID: 101363721}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -162,6 +163,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0099182, y: 0.01199}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &101363721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755915c66c2d2d243a6d1241db060747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialScreens:
+  - {fileID: 21300000, guid: 71939e7aa7968b34592bf5d222525b86, type: 3}
+  - {fileID: 21300000, guid: fb856264b91a894499d7c54a1ca8e71b, type: 3}
+  - {fileID: 21300000, guid: 3d3cbb8834b0bc64a90efb26af2de08e, type: 3}
+  - {fileID: 21300000, guid: 7cd6737356828104b8454a3c8f4237ba, type: 3}
+  - {fileID: 21300000, guid: 29263bed88592a5439112c26b32184fd, type: 3}
+  - {fileID: 21300000, guid: 8334a41e6a821fa41a05847a7b2ff78f, type: 3}
+  - {fileID: 21300000, guid: 0f7af8068ff872b448ac911bd7a0fda7, type: 3}
+  - {fileID: 21300000, guid: 239d9433114a9264eb84607e10c186b5, type: 3}
+  - {fileID: 21300000, guid: 909405ad629246246913b68d4312817d, type: 3}
+  - {fileID: 21300000, guid: bddb27951676ffd4492e318963097892, type: 3}
+  - {fileID: 21300000, guid: 9b5c7aac2559090478ea4ae1b350b74c, type: 3}
+  - {fileID: 21300000, guid: cd6082cd7aaeff241a43952b2332bb84, type: 3}
+  - {fileID: 21300000, guid: ebe5578b61ca25d43839b4ba58f4597c, type: 3}
+  - {fileID: 21300000, guid: 3cf65f3c403de084b803dea5388cc365, type: 3}
+  - {fileID: 21300000, guid: 70c4af5b64c1cc2429678483f8df0390, type: 3}
+  - {fileID: 21300000, guid: f9b4d0569a4f9bd46acfe8ce8dd07d15, type: 3}
+  - {fileID: 21300000, guid: 2c02eb26b1c1cbc4b8b3a6083d2db034, type: 3}
+  - {fileID: 21300000, guid: 8b0b6a5d0b3ff8a47b8cfa810d443264, type: 3}
+  - {fileID: 21300000, guid: 50d6210aa084f144497df1768492b14d, type: 3}
+  - {fileID: 21300000, guid: dc4f9f16e1d63814295071c65b258f33, type: 3}
+  - {fileID: 21300000, guid: 8fbbb6c216c23ea4d81cf98db1982e11, type: 3}
+  - {fileID: 21300000, guid: 10218a6a067dcb44a908ca5aa1ee3458, type: 3}
+  - {fileID: 21300000, guid: 3ad362d15da5f144bb0a961ae38d146d, type: 3}
+  - {fileID: 21300000, guid: 87873f854f9e8814bbd6577b74e2b8c0, type: 3}
+  - {fileID: 21300000, guid: 3edad0fee124ef946ba9e1bd5ae3ab4f, type: 3}
+  - {fileID: 21300000, guid: 6063aecea9fbbf44d8ce923b20004422, type: 3}
+  - {fileID: 21300000, guid: e8ab02cc384f14f4fb10537f92c36406, type: 3}
+  - {fileID: 21300000, guid: 1c23afa4d4a0dd946af3cca52df87df3, type: 3}
+  - {fileID: 21300000, guid: 1b077ddfc8a92a5469367c533eddf004, type: 3}
+  - {fileID: 21300000, guid: 8fa4c7cb11e1ac045820b3ef8fda26b9, type: 3}
+  - {fileID: 21300000, guid: 6edeb7d2a7f53334094dd22e87f8afa7, type: 3}
+  imageRenderer: {fileID: 1550734375}
+  menuScreen: {fileID: 509769314}
+  tutorialScreen: {fileID: 101363719}
 --- !u!1 &346139378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,7 +2239,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1833464379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 101363721}
+        m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
+        m_MethodName: GoToNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1833464379
 MonoBehaviour:
   m_ObjectHideFlags: 0
