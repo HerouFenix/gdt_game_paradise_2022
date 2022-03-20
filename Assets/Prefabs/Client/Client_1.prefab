@@ -392,17 +392,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 1
   _hints:
-  - hint 1
-  - hint 2
-  - hint 3
+  - "My car broke down. Thankfully ma\u2019 has been able to get me to the bakery
+    everyday."
+  - "I\u2019ve burned my moustache recently. With a broken oven I\u2019ve been trying
+    to bake with a frying pan."
+  - My oven can only reach 299 degrees!!! I NEED IT AT 300 DEGREES FOR MY CROISSANTS!!!!
   _police_value: 1
-  _soul_value: 1
+  _soul_value: 5
   sprite: {fileID: 21300000, guid: 45db3538e6e8d0541a6b27c8dde4bf13, type: 3}
   startLines:
-  - hi
-  - hello
-  - hey
-  endLine: Goodbye
+  - BONJOUR!
+  - How are you my friend?
+  - See, I need something, but don't know what. Read my card, will ya?
+  endLine: MERC! AU REVOIR!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

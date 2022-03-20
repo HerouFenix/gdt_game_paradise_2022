@@ -392,17 +392,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 4
   _hints:
-  - hint 1
-  - hint 2
-  - hint 3
+  - I got no booty! Nowadays be mighty difficult t' plunder 'n be victorious. I jus'
+    wanted some booty.
+  - Me ship sank, now I gotta use a row ship t' plunder...
+  - I be a pirate wit' 2 eyes! How can I be taken seriously wit' 2 eyes 'n no eyepatch!?
   _police_value: 1
-  _soul_value: 1
+  _soul_value: 5
   sprite: {fileID: 21300000, guid: aa742b07e09b95c41903441892488ab3, type: 3}
   startLines:
-  - hi
-  - hello
-  - hey
-  endLine: Goodbye
+  - Ahoy!
+  - How fares yer day?
+  - Read me card or I'll plunder yer arse!
+  endLine: Godspeed!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0
