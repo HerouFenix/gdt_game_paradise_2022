@@ -298,10 +298,6 @@ public class Phase1Manager : MonoBehaviour
         _currentResultsList = _clientCard.RevealAll();
 
         _GameManager.SwapPhase(2);
-
-        //Debug.Log("cor " + _resultsList[0]);
-        //Debug.Log("naipe " + _resultsList[1]);
-        //Debug.Log("nº " + _resultsList[2]);
     }
 
     public List<int> ReturnResults()

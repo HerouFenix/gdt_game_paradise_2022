@@ -23,11 +23,13 @@ public class CanvasManager : MonoBehaviour
 
     private Phase1Manager _phase1Manager;
     private GameManager _GameManager;
+    private AudioManager _audioManager;
 
 
     void Start()
     {
         _GameManager = GameManager.Instance;
+        _audioManager = AudioManager.Instance;
         _GameManager.StartPhase0 += RemoveCurrentClient;
         _GameManager.StartPhase0 += ResetClientCard;
         _GameManager.FinishGame += RevealEndScreen;
@@ -61,6 +63,7 @@ public class CanvasManager : MonoBehaviour
     {
         _Journal.SetActive(false);
         //_buttonStartDay.SetActive(true);
+        _audioManager.ChangeMusic(UnityEngine.Random.Range(0,3));
         StartCoroutine(_GameManager.WaitForNextClient());
     }
 

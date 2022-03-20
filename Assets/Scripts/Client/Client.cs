@@ -11,7 +11,6 @@ public class Client : MonoBehaviour
     public int _soul_value;
 
     private ClientCard clientCard;
-    [SerializeField] private Sprite sprite;
     [SerializeField] private List<string> startLines = new List<string>();
     private int nextLine = 0;
     [SerializeField] private string endLine = "Goodbye";
@@ -39,7 +38,6 @@ public class Client : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _clickable = true;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     private void Update()
@@ -63,7 +61,7 @@ public class Client : MonoBehaviour
                 else if(manager.GetPhase() == 1)
                 {
                     manager1.GuessCard();
-                    _clickable = false;
+                    SetClickable(false);
                 }
 
             }

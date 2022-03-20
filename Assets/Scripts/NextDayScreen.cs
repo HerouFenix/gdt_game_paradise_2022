@@ -5,9 +5,11 @@ using UnityEngine;
 public class NextDayScreen : MonoBehaviour
 {
     public GameObject journal;
+    private AudioManager _audioManager;
 
     private void OnEnable()
     {
+        _audioManager = AudioManager.Instance;
         Animator animator = this.gameObject.GetComponent<Animator>();
         if(!animator.GetBool("first"))
             animator.SetTrigger("newDay");
@@ -15,6 +17,7 @@ public class NextDayScreen : MonoBehaviour
 
     void DisableScreen()
     {
+        _audioManager.PlaySound(AudioManager.soundList.Newspaper);
         this.gameObject.SetActive(false);
     }
 
