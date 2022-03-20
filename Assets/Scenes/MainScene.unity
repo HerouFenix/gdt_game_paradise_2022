@@ -2633,7 +2633,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseInvestigationCard: {fileID: 7797010437465436642, guid: 0a034e89d1212c44887cbb786ff40c87, type: 3}
   _deckCards:
-  - {fileID: 11400000, guid: 13d2c2576d14b5043a8dd6d4154630b4, type: 2}
   - {fileID: 11400000, guid: 6e148a2b6c51bef4685f29bca958c96d, type: 2}
   - {fileID: 11400000, guid: dd964ee4b8e9a7d489bc011990eab8c8, type: 2}
   - {fileID: 11400000, guid: 7ac8378619d7bcf4ab6e0a761edd484d, type: 2}
@@ -2665,6 +2664,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01aa9bb764924a74db5099f0885123c2, type: 2}
   - {fileID: 11400000, guid: 64ca6807587bde54aac9852c26862e64, type: 2}
   - {fileID: 11400000, guid: 31b4fd8d519cf914c82f6094bf34632d, type: 2}
+  - {fileID: 11400000, guid: 31b4fd8d519cf914c82f6094bf34632d, type: 2}
+  - {fileID: 11400000, guid: 64ca6807587bde54aac9852c26862e64, type: 2}
+  - {fileID: 11400000, guid: 01aa9bb764924a74db5099f0885123c2, type: 2}
+  - {fileID: 11400000, guid: b9cf1ca3e50a0c64483601d3b31647bf, type: 2}
+  - {fileID: 11400000, guid: 3ca20b29bd0b9a548a5cc6f4696f75ce, type: 2}
+  - {fileID: 11400000, guid: 007a95dbf58de9f4693a1088965d9379, type: 2}
+  - {fileID: 11400000, guid: e347ba318a0e7fe448f0debb6b8b3801, type: 2}
   _cardEffects: {fileID: 1004136030}
   _spawnPosition: {x: 4.11, y: -1.15, z: -0.2}
   cardPositions:
