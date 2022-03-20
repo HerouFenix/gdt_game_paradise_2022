@@ -339,11 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 1
   _hints:
-  - "My car broke down. Thankfully ma\u2019 has been able to get me to the bakery
-    everyday."
-  - "I\u2019ve burned my moustache recently. With a broken oven I\u2019ve been trying
-    to bake with a frying pan."
-  - My oven can only reach 299 degrees!!! I NEED IT AT 300 DEGREES FOR MY CROISSANTS!!!!
+  - "His car broke down, now he's ma\u2019 has been driving him to the bakery."
+  - He's very humble, no point in giving him money.
+  - His oven can only reach 299 degrees!!! He need's it at 300 for the perfect croissants.
   _police_value: 1
   _soul_value: 5
   startLines:

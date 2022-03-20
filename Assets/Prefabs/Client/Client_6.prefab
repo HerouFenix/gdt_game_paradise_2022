@@ -339,11 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 6
   _hints:
-  - "I gotta have a bodyguard at all times by my side, including when going in the
-    bathroom... Frank\u2019s cool though."
-  - "Luck isn\u2019t on my side when it comes to technology. My phone shocks my ear
-    from time to time."
-  - At all my speeches my mic fails at the middle of them... So annoying!
+  - He has a bodyguard at all times, including when going to the bathroom.
+  - He's not very technology savy. His phone shocks my ear from time to time.
+  - At all his speeches his mic fails midway.
   _police_value: 3
   _soul_value: 15
   startLines:

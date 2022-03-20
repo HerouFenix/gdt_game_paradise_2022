@@ -423,10 +423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 2
   _hints:
-  - My grandchildren are demons, demons I say! And still so sweet at the same time.
-  - "I can\u2019t hold my back like I used to, but I still make the best chocolate
-    cake!"
-  - Oh what I would give to be young again...
+  - Her grandchildren are demons, but she loves them still. I relate.
+  - She hates animals, won't go near dogs or rivers.
+  - She really wishes she was young again.
   _police_value: 1
   _soul_value: 5
   startLines:

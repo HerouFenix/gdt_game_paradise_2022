@@ -507,11 +507,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 5
   _hints:
-  - "So, do you know W'ifu? He\u2019s my idol."
-  - "I heard there\u2019s a summoning happening soon for W'ifu. Think I could be
-    useful in some way?"
-  - Please let me help you, I know my purpose is to give myself to W'ifu. Just MAKE
-    SURE I die.
+  - He looked at W'ifu picture? Seems he knows him.
+  - I can't get a good read... Might be the head pan.
+  - Does he want to summon a demon too?
   _police_value: 2
   _soul_value: 15
   startLines:

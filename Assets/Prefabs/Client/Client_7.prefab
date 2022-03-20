@@ -339,13 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 7
   _hints:
-  - My docthr prescribed me de wrong glasses - I can't see with hr without dem! I
-    can't cast my line into de water, no matter how hard I try!
-  - "I always take Bruce, my cat, fis'eng with me. I don\u2019t know how, but 'e
-    always gets mhre fish than me (de wans I get, I steal from him...)!My phone shocks
-    my ear from time to time."
-  - My family is great, but dey don't understand my passion fhr fis'eng... I still
-    love dem, but I wish dey could understand.
+  - His doctor prescribed him the wrong glasses. He just stumbled against the door.
+  - He always takes Bruce, his cat, fishing with him. They might be married.
+  - He really, really, REALLY, loves fishing.
   _police_value: 3
   _soul_value: 15
   startLines:
@@ -372,8 +368,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.860701, y: 11.688258, z: 0.2}
-  m_Center: {x: 1.4408553, y: 1.2023063, z: 0}
+  m_Size: {x: 5.8607006, y: 11.752717, z: 0.2}
+  m_Center: {x: -0.5500555, y: 0.17462306, z: 0}
 --- !u!95 &5552907599142225123
 Animator:
   serializedVersion: 4
