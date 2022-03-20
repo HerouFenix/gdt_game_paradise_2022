@@ -392,17 +392,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 0
   _hints:
-  - hint 1
-  - hint 2
-  - hint 3
+  - My kids are a huge headache, but my wife is the best when dealing with them.
+  - Although I would rather have a post office car, my trusty bike can get me to
+    most places.
+  - "Every god damn dog can\u2019t stop chasing me down every street. I get bitten
+    every day!"
   _police_value: 1
-  _soul_value: 1
+  _soul_value: 5
   sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
   startLines:
-  - hi
-  - hello
-  - hey
-  endLine: Goodbye
+  - He.. Hey...
+  - Name's Paul, I'm a postman.
+  - Could you read my card to figure what what I need?
+  endLine: Th.. Thanks!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

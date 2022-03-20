@@ -392,16 +392,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 5
   _hints:
-  - hint 1
-  - hint 2
-  - hint 3
-  _police_value: 1
-  _soul_value: 1
+  - "So, do you know W'ifu? He\u2019s my idol."
+  - "I heard there\u2019s a summoning happening soon for W'ifu. Think I could be
+    useful in some way?"
+  - Please let me help you, I know my purpose is to give myself to W'ifu. Just MAKE
+    SURE I die.
+  _police_value: 2
+  _soul_value: 15
   sprite: {fileID: 21300000, guid: d468a67045b92974f8a903d26618e5ac, type: 3}
   startLines:
-  - hi
-  - hello
-  - hey
+  - Hello hello.
+  - Those alien rays are everywhere man! Where's your head pan?
+  - I found an old book in the library... You should read my card.
   endLine: Goodbye
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}

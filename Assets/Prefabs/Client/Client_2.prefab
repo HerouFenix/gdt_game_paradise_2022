@@ -392,17 +392,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 2
   _hints:
-  - hint 1
-  - hint 2
-  - hint 3
+  - My grandchildren are demons, demons I say! And still so sweet at the same time.
+  - "I can\u2019t hold my back like I used to, but I still make the best chocolate
+    cake!"
+  - Oh what I would give to be young again...
   _police_value: 1
-  _soul_value: 1
+  _soul_value: 5
   sprite: {fileID: 21300000, guid: 14c2504ec4a77b340b2cd812156ae314, type: 3}
   startLines:
-  - hi
-  - hello
-  - hey
-  endLine: Goodbye
+  - Hello there dear.
+  - I hope you're doing well.
+  - Could you read my card please? I've got some predicaments...
+  endLine: Buhbye dear.
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

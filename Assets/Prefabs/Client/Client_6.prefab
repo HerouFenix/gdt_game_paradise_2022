@@ -392,17 +392,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 6
   _hints:
-  - hint 1
-  - hint 2
-  - hint 3
-  _police_value: 1
-  _soul_value: 1
+  - "I gotta have a bodyguard at all times by my side, including when going in the
+    bathroom... Frank\u2019s cool though."
+  - "Luck isn\u2019t on my side when it comes to technology. My phone shocks my ear
+    from time to time."
+  - At all my speeches my mic fails at the middle of them... So annoying!
+  _police_value: 3
+  _soul_value: 15
   sprite: {fileID: 21300000, guid: 8d85153e5ca6f3143a070fa4a3416a3e, type: 3}
   startLines:
-  - hi
-  - hello
-  - hey
-  endLine: Goodbye
+  - Oh hi.
+  - Look, I'm very busy, let's hurry this up.
+  - I need some good stuff, besides being busy, I'm also a mess. Read my card and
+    you'll see.
+  endLine: Tahnks, bye.
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0
