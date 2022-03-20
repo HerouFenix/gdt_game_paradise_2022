@@ -363,7 +363,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8347f19aea7e42749919530fce1f323d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c98c5abd3fbf88d4eaa32ccb9a9bd8cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
   ClientID: 5
   probabilityOfKilling: 0
   _front: {fileID: 7797010437255768045}
-  _image: {fileID: 21300000, guid: 6f038821c0fe6f446b86ba9af0be24c8, type: 3}
+  _image: {fileID: 21300000, guid: c98c5abd3fbf88d4eaa32ccb9a9bd8cb, type: 3}
   descriptionSprite: {fileID: 3299354627454783590}
   _interactible: 0
 --- !u!1 &7797010438242471333
