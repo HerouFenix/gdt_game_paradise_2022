@@ -9,6 +9,14 @@ public class CardEffects : MonoBehaviour
     [SerializeField] private SpriteRenderer _feedbackImage;
     [SerializeField] private Sprite[] _sprites;
 
+    //Managers
+    private AudioManager _audioManager;
+
+    private void Start()
+    {
+        _audioManager = AudioManager.Instance;
+    }
+
     public enum Sprites
     {
         Wrong = 0,
@@ -33,6 +41,7 @@ public class CardEffects : MonoBehaviour
         else
         {
             ChangeImage(Sprites.Correct);
+            _audioManager.PlaySound(AudioManager.soundList.CorrectChoice);
         }
     }
 
@@ -43,10 +52,12 @@ public class CardEffects : MonoBehaviour
         if (clientNumber % 2 == 0)
         {
             ChangeImage(Sprites.Correct);
+            _audioManager.PlaySound(AudioManager.soundList.CorrectChoice);
         }
         else
         {
             ChangeImage(Sprites.Wrong);
+            _audioManager.PlaySound(AudioManager.soundList.WrongChoice);
         }
     }
 
@@ -58,10 +69,12 @@ public class CardEffects : MonoBehaviour
         if(invCardSuit == clienCardSuit)
         {
             ChangeImage(Sprites.Correct);
+            _audioManager.PlaySound(AudioManager.soundList.CorrectChoice);
         }
         else
         {
             ChangeImage(Sprites.Wrong);
+            _audioManager.PlaySound(AudioManager.soundList.WrongChoice);
         }
     }
 
@@ -73,10 +86,12 @@ public class CardEffects : MonoBehaviour
         if (invCardColor == clienCardColor)
         {
             ChangeImage(Sprites.Correct);
+            _audioManager.PlaySound(AudioManager.soundList.CorrectChoice);
         }
         else
         {
             ChangeImage(Sprites.Wrong);
+            _audioManager.PlaySound(AudioManager.soundList.WrongChoice);
         }
     }
 
@@ -87,10 +102,12 @@ public class CardEffects : MonoBehaviour
         if (clientNumber > 9)
         {
             ChangeImage(Sprites.Correct);
+            _audioManager.PlaySound(AudioManager.soundList.CorrectChoice);
         }
         else
         {
             ChangeImage(Sprites.Wrong);
+            _audioManager.PlaySound(AudioManager.soundList.WrongChoice);
         }
     }
 

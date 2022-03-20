@@ -75,6 +75,7 @@ public class JournalManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _gameManager.SetJournalManager();
         _gameManager.EndDay += this.ResetManager;
 
         DailyNews(FirstDay_list, Backup, true);
@@ -90,12 +91,12 @@ public class JournalManager : MonoBehaviour
         {
             if (entry.Value)
             {
-                Clients_list.Add(Death_list[entry.Key - 1]);
+                Clients_list.Add(Death_list[entry.Key]);
             }
 
             else
             {
-                Clients_list.Add(Accidents_list[entry.Key - 1]);
+                Clients_list.Add(Accidents_list[entry.Key]);
             }
         }
 

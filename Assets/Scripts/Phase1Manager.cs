@@ -20,10 +20,8 @@ public class Phase1Manager : MonoBehaviour
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
 
     //TempFix
-    //[SerializeField] public ClientCard clientCard;
     private Client client;
     public ClientCard _clientCard;
-    private GameManager _GameManager;
     List<int> _currentResultsList;
 
 
@@ -31,6 +29,10 @@ public class Phase1Manager : MonoBehaviour
     public event Action StartDayEvent;
     public event Action PlayInvCard;
     public event Action Guess;
+
+    //Managers
+    private GameManager _GameManager;
+    private AudioManager _audioManager;
 
     private bool _cardsDrawn = false;
 
@@ -60,6 +62,7 @@ public class Phase1Manager : MonoBehaviour
 
     public void Start()
     {
+        _audioManager = AudioManager.Instance;
         _GameManager = GameManager.Instance;
         _GameManager.StartPhase1 += ReceiveClient;
         _GameManager.EndDay += ResetManager;
@@ -81,6 +84,7 @@ public class Phase1Manager : MonoBehaviour
     {
         StartDayEvent?.Invoke();
         _GameManager.SwapPhase(1);
+        _audioManager.PlaySound(AudioManager.soundList.ShuffleCards);
     }
 
     public void DrawCards()
@@ -232,6 +236,7 @@ public class Phase1Manager : MonoBehaviour
     {
         InvestigationCardProperties.Type type = card.type;
         PlayInvCard?.Invoke();
+        _audioManager.PlaySound(AudioManager.soundList.PlayCard);
 
         switch (type)
         {
