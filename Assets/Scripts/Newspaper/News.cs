@@ -22,6 +22,5 @@ public class News : ScriptableObject
     public Sprite sprite{get => _sprite; set => _sprite = value; }
     public string text{get => _text; set => _text = value;}
     public int weight{get => _weight; set => _weight = value;}
-
     public int id{get => _characterID; set => _characterID = value;}
 }

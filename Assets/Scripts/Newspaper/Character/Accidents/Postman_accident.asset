@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
-  m_Name: WB_1
+  m_Name: Postman_accident
   m_EditorClassIdentifier: 
   _characterID: 0
   _police: 0
-  _weight: 1
-  _type: 0
-  _sprite: {fileID: 0}
-  _text: '"The solar eclipse may change absolutely nothing" - Famous scientist says.'
+  _weight: 30
+  _type: 1
+  _sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  _text: Postman accident

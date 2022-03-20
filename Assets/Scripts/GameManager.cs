@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public event Action<List<int>> StartPhase2;
     public event Action EndPhase2;
 
+    private JournalManager _journalManager;
+
 
     private int currentPhase = 0;
 
@@ -61,6 +63,8 @@ public class GameManager : MonoBehaviour
     {
         _phase1Manager = this.GetComponent<Phase1Manager>();
         _phase2Manager = this.GetComponent<Phase2Manager>();
+
+        _journalManager = JournalManager.Instance;
 
         _souls = 0;
         _police = 0;
@@ -122,8 +126,22 @@ public class GameManager : MonoBehaviour
 
     public void IncrementValues(int souls, int police)
     {
+        int clientID;
+        bool killed = _souls > 0;
+
         _souls += souls;
         _police += police;
+
+        Debug.Log(_nextClientIndex);
+        clientID =  _currentClients[_nextClientIndex].GetComponent<Client>().ClientID;
+
+
+        _journalManager.ReceivedClientNews(clientID, killed, police);
+    }
+
+    public int GetCurrentPoliceValue()
+    {
+        return _police;
     }
 
     public int GetPhase()

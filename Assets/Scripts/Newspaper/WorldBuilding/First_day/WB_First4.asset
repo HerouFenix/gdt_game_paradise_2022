@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
-  m_Name: Postman
+  m_Name: WB_First4
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: 067c3505a4e45a84e9ca6a22877af180, type: 3}
-  _text: Postman found dead on a street. Local residents say that he got a heart
-    attack while he was running away from a chihuahua after giving it a treat.
+  _characterID: 0
+  _police: 0
+  _weight: 0
+  _type: 0
+  _sprite: {fileID: 0}
+  _text: First day 4

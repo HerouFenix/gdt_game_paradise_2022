@@ -8,11 +8,19 @@ public class JournalManager : MonoBehaviour
 {
     public List <News> Daily_list;
 
-    public List <News> DeadCharacters_list;
+    private Dictionary<int, bool> DailyClientNews = new Dictionary<int, bool>();
+
+    public List <News> Accidents_list;
+
+    public List <News> Clients_list;
+
+    public List <News> Death_list;
 
     public List <News> Final_News;
 
     public List <News> Backup;
+
+    public List <News> FirstDay_list;
 
     public int currentWantedLevel;
 
@@ -21,6 +29,10 @@ public class JournalManager : MonoBehaviour
     public List <News> Cops_list;
 
     public Image News_image;
+
+    private int day = 1;
+
+    private GameManager _gameManager;
 
     [SerializeField] private TextMeshProUGUI _News1_text;
 
@@ -42,96 +54,127 @@ public class JournalManager : MonoBehaviour
 
     private int WB_index;
 
+    #region Singleton
+
+    private static JournalManager _instance;
+    public static JournalManager Instance { get { return _instance; } }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
+    #endregion
+
     void Start()
     {
+        _gameManager = GameManager.Instance;
+        _gameManager.EndDay += this.ResetManager;
+
+        DailyNews(FirstDay_list, Backup, true);
+    }
+
+    void ChooseNews()
+    {
+        Final_News.Clear();
+        Backup.Clear();
+        Clients_list.Clear();
+
+        foreach(KeyValuePair<int, bool> entry in DailyClientNews)
+        {
+            if (entry.Value)
+            {
+                Clients_list.Add(Death_list[entry.Key - 1]);
+            }
+
+            else
+            {
+                Clients_list.Add(Accidents_list[entry.Key - 1]);
+            }
+        }
+
         Clients();
         WBNews();
-        DailyNews(Final_News, Backup, true, 1);
+        DailyNews(Final_News, Backup, WantedLevelChanged);
     }
 
     void Clients()
     {
         int i;
-        Final_News.Add(DeadCharacters_list[0]);
+        Final_News.Add(Clients_list[0]);
 
         
-        for (i = 0; i < DeadCharacters_list.Count; i++)
+        for (i = 0; i < Clients_list.Count; i++)
         {
             
-            if (DeadCharacters_list[i].weight > Final_News[0].weight && DeadCharacters_list[i] != Final_News[0])
+            if (Clients_list[i].weight > Final_News[0].weight && Clients_list[i] != Final_News[0])
             {
                 Backup.Add(Final_News[0]);
-                Final_News[0] = DeadCharacters_list[i];
+                Final_News[0] = Clients_list[i];
             }
 
-            else if (DeadCharacters_list[i] != Final_News[0])
-                Backup.Add(DeadCharacters_list[i]);
-
+            else if (Clients_list[i] != Final_News[0])
+                Backup.Add(Clients_list[i]);
         }
     }
 
     void WBNews()
     {
-        int i;
-        Final_News.Add(Daily_list[0]);
-
-        
-        for (i = 0; i < Daily_list.Count; i++)
-        {
-            
-            if (Daily_list[i].weight > Final_News[1].weight && Daily_list[i] != Final_News[1])
-            {
-                Backup.Add(Final_News[1]);
-                Final_News[1] = Daily_list[i];
-            }
-
-            else if (Daily_list[i] != Final_News[1])
-                Backup.Add(Daily_list[i]);
-
-        }
+        Final_News.Add(Daily_list[day]);
     }
 
-    void DailyNews(List<News> Final, List<News> Backup,  bool WantedLevelChanged, int WantedLevel)
+    void DailyNews(List<News> Final, List<News> Backup, bool custom)
     {
         int i;
 
-        if (WantedLevelChanged)
-            Final.Add(Cops_list[WantedLevel - 1]);
 
-        else
+        if (WantedLevelChanged && !custom)
+            Final.Add(Cops_list[currentWantedLevel - 1]);
+
+        else if (!custom)
         {
-            Final[3] = Backup[0];
+            Final.Add(Backup[0]);
 
             for (i = 0; i < Backup.Count; i++)
             {
-                if (Final[3].weight < Backup[i].weight)
-                    Final[3] = Backup[i];
+                if (Final[2].weight < Backup[i].weight)
+                    Final[2] = Backup[i];
             }
         }
 
         News news1 = Final[0];
         News news2 = Final[1];
-        News news3 = Final[2];  
+        News news3 = Final[2];
 
-        for (i = 0; i < Final.Count; i++)
+        if (!custom)
         {
-            if (news1.weight <= Final[i].weight)
+
+            for (i = 0; i < Final.Count; i++)
             {
-                news1 = Final[i];
+                if (news1.weight <= Final[i].weight)
+                {
+                    news1 = Final[i];
+                }
             }
+
+            Final.Remove(news1);
+
+            for (i = 0; i < Final.Count; i++)
+            {
+                if (news2.weight <= Final[i].weight)
+                    news2 = Final[i];
+            }
+
+            Final.Remove(news2);
+
+            news3 = Final[0];
         }
-
-        Final.Remove(news1);
-
-        for (i = 0; i < Final.Count; i++)
-        {
-            if (news2.weight <= Final[i].weight)
-                news2 = Final[i];
-        }
-
-        Final.Remove(news2);
-
-        news3 = Final[0];
 
         News_image.sprite = news1.sprite;
         _News1_text.text = news1.text;
@@ -139,4 +182,27 @@ public class JournalManager : MonoBehaviour
         _News3_text.text = news3.text;
 
     }
+
+    public void ReceivedClientNews(int clientId, bool killed, int increase)
+    {
+        DailyClientNews.Add(clientId, killed);
+
+
+        if (!WantedLevelChanged)
+        {
+            WantedLevelChanged = increase > 0;
+        }
+
+        currentWantedLevel += increase;
+
+    }
+
+    void ResetManager()
+    {
+        ChooseNews();
+        DailyClientNews = new Dictionary<int, bool>();
+        day++;
+        WantedLevelChanged = false;
+    }
+
 }
