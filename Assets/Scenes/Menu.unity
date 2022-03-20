@@ -194,7 +194,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f9b4d0569a4f9bd46acfe8ce8dd07d15, type: 3}
   - {fileID: 21300000, guid: 2c02eb26b1c1cbc4b8b3a6083d2db034, type: 3}
   - {fileID: 21300000, guid: 8b0b6a5d0b3ff8a47b8cfa810d443264, type: 3}
-  - {fileID: 21300000, guid: 50d6210aa084f144497df1768492b14d, type: 3}
+  - {fileID: 21300000, guid: e0b69a02c0bec314282b21cdab2677ce, type: 3}
   - {fileID: 21300000, guid: dc4f9f16e1d63814295071c65b258f33, type: 3}
   - {fileID: 21300000, guid: 8fbbb6c216c23ea4d81cf98db1982e11, type: 3}
   - {fileID: 21300000, guid: 10218a6a067dcb44a908ca5aa1ee3458, type: 3}
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876263104}
+      - m_Target: {fileID: 509769314}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876263104}
+      - m_Target: {fileID: 509769314}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -3451,7 +3451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876263104}
+      - m_Target: {fileID: 509769314}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -3583,7 +3583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Alexandre Duart....Programming
+  m_text: Alexandre Duarte...Programming
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}

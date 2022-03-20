@@ -15,6 +15,9 @@ public class Phase2Manager : MonoBehaviour
 
     [HideInInspector] public Client client;
     public ClientCard _clientCard;
+
+    //Managers
+    private AudioManager _audioManager;
     private GameManager _GameManager;
 
     [HideInInspector] public List<GameObject> todaysClients = new List<GameObject>();
@@ -48,6 +51,8 @@ public class Phase2Manager : MonoBehaviour
     public void Start()
     {
         _GameManager = GameManager.Instance;
+        _audioManager = AudioManager.Instance;
+
         _GameManager.StartPhase2 += DrawToolCards;
         _GameManager.StartPhase2 += SetCurrentResults;
         _GameManager.EndDay += ResetManager;
@@ -149,6 +154,7 @@ public class Phase2Manager : MonoBehaviour
 
     public void RemoveToolCard(GameObject card)
     {
+        _audioManager.PlaySound(AudioManager.soundList.CashRegister);
         StartCoroutine(RemoveToolCardCor(card));
     }
 
@@ -176,7 +182,6 @@ public class Phase2Manager : MonoBehaviour
         if (toolCard.ClientID == client.ClientID)
         {// Right tool
             soul = client._soul_value;
-            police = client._police_value;
         }
         else
         {
@@ -184,6 +189,9 @@ public class Phase2Manager : MonoBehaviour
             if (number <= toolCard.probabilityOfKilling)
             {
                 soul = client._soul_value;
+            }
+            else
+            {
                 police = client._police_value;
             }
         }

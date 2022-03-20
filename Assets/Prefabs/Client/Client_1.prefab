@@ -349,9 +349,10 @@ MonoBehaviour:
   startLines:
   - BONJOUR!
   - How are you my friend?
-  - See, I need something, but don't know what.
+  - See, I need something...
+  - but don't know what.
   - Read my card, will ya?
-  endLine: MERC! AU REVOIR!
+  endLine: MERCI! AU REVOIR!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

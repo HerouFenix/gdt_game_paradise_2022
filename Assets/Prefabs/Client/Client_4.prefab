@@ -465,7 +465,8 @@ MonoBehaviour:
   startLines:
   - Ahoy!
   - How fares yer day?
-  - Read me card or I'll plunder yer arse!
+  - Read me card or I'll plunder...
+  - yer arse!
   endLine: Godspeed!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}

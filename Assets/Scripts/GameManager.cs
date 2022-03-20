@@ -196,14 +196,14 @@ public class GameManager : MonoBehaviour
     public IEnumerator WaitForNextClient()
     {
         Debug.Log("Waiting for the next client");
-        yield return new WaitForSeconds(UnityEngine.Random.Range(3, 5));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
         _audioManager.PlaySound(AudioManager.soundList.DoorOpen);
         this.SwapPhase(1);
     }
 
     public IEnumerator WaitForNewDay()
     {
-        yield return new WaitForSeconds(UnityEngine.Random.Range(3, 5));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
         StartNewDay();
     }
 }

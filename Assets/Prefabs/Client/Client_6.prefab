@@ -348,10 +348,11 @@ MonoBehaviour:
   _soul_value: 15
   startLines:
   - Oh hi.
-  - Look, I'm very busy, let's hurry this up.
+  - Look, I'm very busy
+  - let's hurry this up.
   - I'm also a mess.
   - Read my card and you'll see.
-  endLine: Tahnks, bye.
+  endLine: Finally...
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

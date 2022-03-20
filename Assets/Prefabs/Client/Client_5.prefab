@@ -516,8 +516,10 @@ MonoBehaviour:
   _soul_value: 15
   startLines:
   - Hello hello.
-  - Those alien rays are everywhere man! Where's your head pan?
-  - I found an old book in the library... You should read my card.
+  - Alien rays are everywhere man!
+  - ' Where''s your head pan?'
+  - I hate books.
+  - You should read my card.
   endLine: Goodbye
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}

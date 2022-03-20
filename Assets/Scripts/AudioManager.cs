@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
         Newspaper = 4,
         PlayCard = 5,
         ShuffleCards = 6,
-        StartDay = 7
+        CashRegister = 7
 
     }
 
@@ -61,6 +61,11 @@ public class AudioManager : MonoBehaviour
     {
         _musicSource.clip = _musicClips[music];
         _musicSource.Play();
+    }
+
+    public void MusicStop()
+    {
+        _musicSource.Stop();
     }
     // Start is called before the first frame update
     void Start()

@@ -381,10 +381,10 @@ MonoBehaviour:
   _police_value: 2
   _soul_value: 10
   startLines:
-  - 'Joe: Hey there bro!'
-  - 'Cathy: Heyoo!'
-  - 'Both: Help us out with a problem please! Do your thing.'
-  endLine: Goodbye
+  - Hey there bro!
+  - Help us out with a problem please!
+  - Do your thing.
+  endLine: Stay cool bro.
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0

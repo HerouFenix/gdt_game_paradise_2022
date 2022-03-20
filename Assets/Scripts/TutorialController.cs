@@ -25,6 +25,10 @@ public class TutorialController : MonoBehaviour
             menuScreen.SetActive(true);
             tutorialScreen.SetActive(false);
         }
-        imageRenderer.sprite = tutorialScreens[currentIndex];
+        else
+        {
+            imageRenderer.sprite = tutorialScreens[currentIndex];
+        }
+        
     }
 }

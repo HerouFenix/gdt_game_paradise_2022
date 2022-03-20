@@ -84,7 +84,6 @@ public class Phase1Manager : MonoBehaviour
     {
         StartDayEvent?.Invoke();
         _GameManager.SwapPhase(1);
-        _audioManager.PlaySound(AudioManager.soundList.ShuffleCards);
     }
 
     public void DrawCards()
@@ -95,6 +94,7 @@ public class Phase1Manager : MonoBehaviour
         {
             locked = true;
             drawCorRunning = true;
+            _audioManager.PlaySound(AudioManager.soundList.ShuffleCards);
             StartCoroutine(DrawInvestigationCardCor(7));
             _cardsDrawn = true;
         }
