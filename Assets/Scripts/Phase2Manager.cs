@@ -9,6 +9,8 @@ public class Phase2Manager : MonoBehaviour
     [SerializeField] private List<GameObject> _clientAgnosticCards;
 
     private List<GameObject> _currentToolCards = new List<GameObject>();
+    private List<GameObject> _currentToolCardInstances = new List<GameObject>();
+
 
     [SerializeField] private Vector3 _spawnPosition = new Vector3(0, 0, 0);
     [SerializeField] public List<Vector3> cardPositions = new List<Vector3>();
@@ -60,6 +62,7 @@ public class Phase2Manager : MonoBehaviour
 
     public void ResetManager()
     {
+        StopAllCoroutines();
         _cardsDrawn = false;
 
         // Put Non-played agnostic cards back into the deck
@@ -69,9 +72,12 @@ public class Phase2Manager : MonoBehaviour
             {
                 _clientAgnosticCards.Add(_currentToolCards[i]);
             }
+
+            Destroy(_currentToolCardInstances[i]);
         }
 
         _currentToolCards = new List<GameObject>();
+        _currentToolCardInstances = new List<GameObject>();
     }
 
     public void SetTodaysClients(List<GameObject> clients)
@@ -144,7 +150,8 @@ public class Phase2Manager : MonoBehaviour
             ToolCards newCard = Instantiate(_currentToolCards[i], _spawnPosition, Quaternion.identity).GetComponent<ToolCards>();
             newCard.SetIndex(i, true);
             newCard.Played += RemoveToolCard;
-            _currentToolCards[i] = newCard.gameObject;
+            //_currentToolCards[i] = newCard.gameObject;
+            _currentToolCardInstances.Add(newCard.gameObject);
             yield return wait;
         }
     }
@@ -162,15 +169,20 @@ public class Phase2Manager : MonoBehaviour
     public IEnumerator RemoveToolCardCor(GameObject card)
     {
         int cardIndex = card.GetComponent<ToolCards>().GetIndex();
-        this._currentToolCards.Remove(card);
+        this._currentToolCards.RemoveAt(cardIndex);
+        this._currentToolCardInstances.RemoveAt(cardIndex);
 
         WaitForSeconds wait = new WaitForSeconds(.05f);
-        for (int i = cardIndex; i < this._currentToolCards.Count; i++)
+        for (int i = cardIndex; i < this._currentToolCardInstances.Count; i++)
         {
-            ToolCards curCard = this._currentToolCards[i].GetComponent<ToolCards>();
+            ToolCards curCard = this._currentToolCardInstances[i].GetComponent<ToolCards>();
 
             curCard.SetIndex(i);
             curCard.MoveCard(this.cardPositions[i]);
+
+            curCard = this._currentToolCards[i].GetComponent<ToolCards>();
+            curCard.SetIndex(i);
+
             yield return wait;
         }
 
@@ -208,7 +220,7 @@ public class Phase2Manager : MonoBehaviour
     {
         WaitForSeconds wait = new WaitForSeconds(.08f);
 
-        foreach (GameObject obj in this._currentToolCards)
+        foreach (GameObject obj in this._currentToolCardInstances)
         {
             ToolCards card = obj.GetComponent<ToolCards>();
             card.HideCard();
@@ -221,7 +233,7 @@ public class Phase2Manager : MonoBehaviour
     {
         WaitForSeconds wait = new WaitForSeconds(.08f);
 
-        foreach (GameObject obj in this._currentToolCards)
+        foreach (GameObject obj in this._currentToolCardInstances)
         {
             ToolCards card = obj.GetComponent<ToolCards>();
             card.ShowCard();

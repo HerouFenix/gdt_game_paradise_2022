@@ -22,6 +22,8 @@ public class ToolCards : MonoBehaviour
 
     public event Action<GameObject> Played;
 
+    private float timeSinceLastHover = 0.0f;
+
     private void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
@@ -31,6 +33,9 @@ public class ToolCards : MonoBehaviour
 
     private void Update()
     {
+        if (timeSinceLastHover >= 0.0f)
+            timeSinceLastHover -= Time.deltaTime;
+
         if (_interactible && _hovered)
         {
             if (Input.GetMouseButtonDown(0))
@@ -44,7 +49,6 @@ public class ToolCards : MonoBehaviour
             _animator = this.gameObject.GetComponent<Animator>();
 
         positionIndex = index;
-        Debug.Log("index position = " + positionIndex);
         if (_animator != null && setAnimator)
             _animator.SetInteger("position_index", positionIndex);
     }
@@ -79,7 +83,7 @@ public class ToolCards : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_interactible)
+        if (_interactible && timeSinceLastHover <= 0f)
         {
             StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
             _hovered = true;
@@ -90,7 +94,7 @@ public class ToolCards : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (_interactible && !_hovered)
+        if (_interactible && !_hovered && timeSinceLastHover <= 0f)
         {
             StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
             _hovered = true;
