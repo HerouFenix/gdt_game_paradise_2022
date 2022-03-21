@@ -36,7 +36,7 @@ public class ToolCards : MonoBehaviour
         if (timeSinceLastHover >= 0.0f)
             timeSinceLastHover -= Time.deltaTime;
 
-        if (_interactible && _hovered)
+        if (_interactible && _hovered && !_phase2Manager.locked)
         {
             if (Input.GetMouseButtonDown(0))
                 SelectCard();
@@ -65,12 +65,12 @@ public class ToolCards : MonoBehaviour
 
     public void HideCard()
     {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -10f, -0.5f), .4f));
+        StartCoroutine(Slide(new Vector3(this._phase2Manager.cardPositions[this.positionIndex].x, -10f, -0.5f), .4f));
     }
 
     public void ShowCard()
     {
-        StartCoroutine(Slide(new Vector3(this.transform.position.x, -2.85f, this._phase2Manager.cardPositions[this.positionIndex].z), .4f));
+        StartCoroutine(Slide(new Vector3(this._phase2Manager.cardPositions[this.positionIndex].x, -2.85f, this._phase2Manager.cardPositions[this.positionIndex].z), .4f));
     }
 
 
@@ -83,9 +83,10 @@ public class ToolCards : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_interactible && timeSinceLastHover <= 0f)
+        if (_interactible && !_phase2Manager.locked && timeSinceLastHover <= 0f)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
+            timeSinceLastHover = .2f;
+            StartCoroutine(LerpPosition(new Vector3(this._phase2Manager.cardPositions[this.positionIndex].x, -2.0f, -0.5f), .1f));
             _hovered = true;
             descriptionSprite.SetActive(true);
 
@@ -94,9 +95,10 @@ public class ToolCards : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (_interactible && !_hovered && timeSinceLastHover <= 0f)
+        if (_interactible && !_hovered && !_phase2Manager.locked && timeSinceLastHover <= 0f)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.0f, -0.5f), .1f));
+            timeSinceLastHover = .2f;
+            StartCoroutine(LerpPosition(new Vector3(this._phase2Manager.cardPositions[this.positionIndex].x, -2.0f, -0.5f), .1f));
             _hovered = true;
             descriptionSprite.SetActive(true);
 
@@ -105,9 +107,9 @@ public class ToolCards : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (_interactible)
+        if (_interactible || _phase2Manager.locked)
         {
-            StartCoroutine(LerpPosition(new Vector3(this.transform.position.x, -2.85f, this._phase2Manager.cardPositions[this.positionIndex].z), .1f));
+            StartCoroutine(LerpPosition(new Vector3(this._phase2Manager.cardPositions[this.positionIndex].x, -2.85f, this._phase2Manager.cardPositions[this.positionIndex].z), .1f));
             _hovered = false;
             descriptionSprite.SetActive(false);
         }
@@ -116,7 +118,7 @@ public class ToolCards : MonoBehaviour
     private void SelectCard()
     {
 
-        StartCoroutine(LerpPositionOffscreen(new Vector3(this.transform.position.x, -6f, -0.5f), .2f));
+        StartCoroutine(LerpPositionOffscreen(new Vector3(this._phase2Manager.cardPositions[this.positionIndex].x, -6f, -0.5f), .2f));
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration, bool lockInteraction=false)

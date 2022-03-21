@@ -27,6 +27,10 @@ public class Phase2Manager : MonoBehaviour
     //Actions
     public event Action PickCard;
 
+    [HideInInspector] public bool locked = false;
+    private bool drawCorRunning = false;
+    private bool removeCorRunning = false;
+
     private bool _cardsDrawn = false;
 
     private List<int> currentResults;
@@ -45,6 +49,14 @@ public class Phase2Manager : MonoBehaviour
         else
         {
             _instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (!drawCorRunning && !removeCorRunning)
+        {
+            locked = false;
         }
     }
 
@@ -89,11 +101,15 @@ public class Phase2Manager : MonoBehaviour
     {
         if (!_cardsDrawn)
         {
+            locked = true;
+            drawCorRunning = true;
             StartCoroutine(DrawToolCardCor());
             _cardsDrawn = true;
         }
         else
         {
+            locked = true;
+            drawCorRunning = true;
             StartCoroutine(ShowCards());
         }
     }
@@ -154,6 +170,8 @@ public class Phase2Manager : MonoBehaviour
             _currentToolCardInstances.Add(newCard.gameObject);
             yield return wait;
         }
+
+        drawCorRunning = false;
     }
 
     #endregion
@@ -162,6 +180,9 @@ public class Phase2Manager : MonoBehaviour
 
     public void RemoveToolCard(GameObject card)
     {
+        locked = true;
+        removeCorRunning = true;
+
         _audioManager.PlaySound(AudioManager.soundList.CashRegister);
         StartCoroutine(RemoveToolCardCor(card));
     }
@@ -212,6 +233,8 @@ public class Phase2Manager : MonoBehaviour
         _GameManager.IncrementValues(soul, police);
         _GameManager.SwapPhase(0);
         Destroy(card);
+
+        removeCorRunning = false;
     }
 
     #endregion

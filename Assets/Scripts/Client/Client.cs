@@ -37,7 +37,7 @@ public class Client : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _clickable = true;
+        _clickable = false;
     }
 
     private void Update()
@@ -154,6 +154,10 @@ public class Client : MonoBehaviour
 
     }
 
+    public void SetClickableTrue()
+    {
+        this._clickable = true;
+    }
     public void SetClickable(bool clickable)
     {
         this._clickable = clickable;
