@@ -339,9 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 8
   _hints:
-  - He's clearly a cop undercover.
-  - He's fate will alert the police, no matter what. Might as well kill him.
-  - Perhaps something to find his enemies will interest him.
+  - He's clearly an undercover cop.
+  - His fate will alert the police, no matter what. Might as well take his soul.
+  - I sense an unresolved cold case... He regrets letting the killer get away.
   _police_value: 3
   _soul_value: 15
   startLines:

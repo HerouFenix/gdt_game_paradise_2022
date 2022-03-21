@@ -456,17 +456,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 4
   _hints:
-  - He's sad cause he has no booty. Not talking about money.
-  - His ship sank, because he doesn't believe in technology.
-  - His greatest regret is having two eyes. All the other pirates make fun of all
-    his eyeballs.
+  - He's sad cause he has no booty (not talking about treasure).
+  - His ship sank. Since he doesn't believe in technology, now he has a row boat.
+  - His greatest regret is having two eyes. All his mates make fun of him for it!
   _police_value: 1
   _soul_value: 5
   startLines:
   - Ahoy!
   - How fares yer day?
   - Read me card or I'll plunder...
-  - yer arse!
+  - yer arse! AHAH!
   endLine: Godspeed!
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}

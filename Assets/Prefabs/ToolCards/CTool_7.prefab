@@ -132,8 +132,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A compass that points to find bad guys and eletrocute the user with a 15k
-    voltage.
+  m_text: A compass that points to the users biggest regret. Upon finding it, the
+    user is eletrocuted with a 15k voltage.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientID: 7
-  probabilityOfKilling: 0
+  probabilityOfKilling: 5
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: 9fe97f236231aa8439b2f3151c072ce0, type: 3}
   descriptionSprite: {fileID: 3995068047320404214}

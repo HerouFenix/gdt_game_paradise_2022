@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientID: -1
-  probabilityOfKilling: 0
+  probabilityOfKilling: 3
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: 9741a3034f6df64429717726ce93dfac, type: 3}
   descriptionSprite: {fileID: 5811058186200914191}

@@ -339,16 +339,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 1
   _hints:
-  - "His car broke down, now he's ma\u2019 has been driving him to the bakery."
+  - "His car broke down, now his ma\u2019 has been driving him to the bakery."
   - He's very humble, no point in giving him money.
-  - His oven can only reach 299 degrees!!! He need's it at 300 for the perfect croissants.
+  - His oven can only reach 299 degrees! He needs it at 300 for the perfect croissants...
   _police_value: 1
   _soul_value: 5
   startLines:
   - BONJOUR!
   - How are you my friend?
   - See, I need something...
-  - but don't know what.
+  - But don't know what!
   - Read my card, will ya?
   endLine: MERCI! AU REVOIR!
   _textBubble: {fileID: 932392513}

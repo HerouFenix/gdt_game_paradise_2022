@@ -339,13 +339,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 7
   _hints:
-  - His doctor prescribed him the wrong glasses. He just stumbled against the door.
+  - His doctor prescribed him the wrong glasses. He stumbled against the door when
+    entering...
   - He always takes Bruce, his cat, fishing with him. They might be married.
-  - He really, really, REALLY, loves fishing.
+  - Besides his love for fishing, his glasses don't allow him to hit the ocean when
+    casting his rod!
   _police_value: 2
   _soul_value: 10
   startLines:
-  - Good'day.
+  - Good'ay.
   - Hope you're havin one.
   - Cause I'm not...
   - Help me, trusty friend.

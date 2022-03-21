@@ -132,7 +132,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A lure that sends it's GPS signal to all the piranhas on the sea.
+  m_text: A lure that always finds its way to sea. After touching the sea, gains
+    5 tons in weight and pulls the user down with it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
@@ -456,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientID: 8
-  probabilityOfKilling: 0
+  probabilityOfKilling: 5
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: cf359a0631030fe4b971b38f4b4dc089, type: 3}
   descriptionSprite: {fileID: 3540915768749944889}

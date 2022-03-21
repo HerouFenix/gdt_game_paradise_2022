@@ -340,8 +340,8 @@ MonoBehaviour:
   ClientID: 6
   _hints:
   - He has a bodyguard at all times, including when going to the bathroom.
-  - He's not very technology savy. His phone shocks my ear from time to time.
-  - At all his speeches his mic fails midway.
+  - He's not a tech savy. He's also very unlucky when it comes to technology.
+  - At all his speeches, his mic fails midway.
   _police_value: 3
   _soul_value: 15
   startLines:

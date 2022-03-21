@@ -373,14 +373,14 @@ MonoBehaviour:
   ClientID: 3
   _hints:
   - His mother is very flatulent, and really, really loud.
-  - They are both horrible cooks. And won't leave the house when it rains.
+  - Besides cooking badly, they refuse to go outside when it rains.
   - Even with 2 jobs each they can't affort a studio in Lisbon.
   _police_value: 2
   _soul_value: 10
   startLines:
   - Hey there bro!
   - Help us out with a problem please!
-  - Do your thing.
+  - Do your thing, man.
   endLine: Stay cool bro.
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}

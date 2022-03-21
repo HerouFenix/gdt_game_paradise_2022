@@ -132,8 +132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A tick tock might drive some people crazy, making them unable to discern
-    right from wrong.
+  m_text: A watch timed to blow up in the future. When? No one knows.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
@@ -372,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientID: -1
-  probabilityOfKilling: 5
+  probabilityOfKilling: 20
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: 10d6825805dd2d9419b685802cbf1c5f, type: 3}
   descriptionSprite: {fileID: 3672848184075017444}
