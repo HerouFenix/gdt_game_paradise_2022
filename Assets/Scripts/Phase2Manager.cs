@@ -254,6 +254,7 @@ public class Phase2Manager : MonoBehaviour
 
     public IEnumerator ShowCards()
     {
+        locked = false;
         WaitForSeconds wait = new WaitForSeconds(.08f);
 
         foreach (GameObject obj in this._currentToolCardInstances)

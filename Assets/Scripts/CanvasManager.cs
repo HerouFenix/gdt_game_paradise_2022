@@ -12,6 +12,7 @@ public class CanvasManager : MonoBehaviour
     private Animator _clientCardAnimator;
     [SerializeField] private GameObject _Journal;
 
+    [SerializeField] private Animator _evilLord;
     [SerializeField] private GameObject _nextDayScreen;
     [SerializeField] private TextMeshPro _soulCounter;
     [SerializeField] private TextMeshPro _dayCounter;
@@ -47,10 +48,12 @@ public class CanvasManager : MonoBehaviour
 
     public void ShowNewDayScreen(int daysLeft, int soulsLeft)
     {
+        _evilLord.SetTrigger("Slide");
         _audioManager.MusicStop();
         _nextDayScreen.gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = daysLeft + " DAYS UNTIL RECKONING";
         _nextDayScreen.gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = soulsLeft + " SOULS REQUIRE HARVESTING";
         _nextDayScreen.SetActive(true);
+        _evilLord.SetTrigger("Slide");
         _nextDayScreen.GetComponent<Animator>().SetBool("first", false);
     }
 
@@ -63,6 +66,7 @@ public class CanvasManager : MonoBehaviour
     
     public void CloseJournal()
     {
+        _evilLord.SetTrigger("Slide");
         _Journal.SetActive(false);
         //_buttonStartDay.SetActive(true);
         _audioManager.ChangeMusic(UnityEngine.Random.Range(0,3));
@@ -130,7 +134,8 @@ public class CanvasManager : MonoBehaviour
 
     public void RevealEndScreen(int type)
     {
-        if(type == 0)
+        _evilLord.SetTrigger("Slide");
+        if (type == 0)
         { // Win
             _WinScreen.SetActive(true);
         }else if(type == 1)

@@ -7,11 +7,13 @@ public class NextDayScreen : MonoBehaviour
     public GameObject journal;
     private AudioManager _audioManager;
 
+    public Animator evil_lord;
+
     private void OnEnable()
     {
         _audioManager = AudioManager.Instance;
         Animator animator = this.gameObject.GetComponent<Animator>();
-        if(!animator.GetBool("first"))
+        if (!animator.GetBool("first"))
             animator.SetTrigger("newDay");
     }
 
