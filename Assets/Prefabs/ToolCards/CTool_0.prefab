@@ -132,11 +132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_text: Doggy treats. Make dogs ultra-agressive to the one who fed them.
-=======
   m_text: Doggy treats that make dogs more agressive.
->>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db5392b457365aa44b54e12db188b3b5, type: 2}
   m_sharedMaterial: {fileID: -3549928656048930987, guid: db5392b457365aa44b54e12db188b3b5, type: 2}

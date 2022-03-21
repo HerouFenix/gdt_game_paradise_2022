@@ -339,21 +339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 7
   _hints:
-<<<<<<< HEAD
-  - So what do you sell here buddy?
-  - "Y\u2019know, there\u2019ve been some people visiting the store recently that\u2019ve
-    gone missing or outright died..."
-  - "I\u2019m gonna discover what you\u2019re hiding, be warned. I\u2019m not gonna
-    let you escape like the other guy from the GDT assassination case... My biggest
-    regret..."
-  _police_value: 3
-  _soul_value: 15
-  startLines:
-  - Hey there.
-  - Word has come up you're some kind of a miracle maker?
-  - I'm looking for one, so here's my card.
-  endLine: Eh, you're not gonna get away.
-=======
   - His doctor prescribed him the wrong glasses. He just stumbled against the door.
   - He always takes Bruce, his cat, fishing with him. They might be married.
   - He really, really, REALLY, loves fishing.
@@ -365,7 +350,6 @@ MonoBehaviour:
   - Cause I'm not...
   - Help me, trusty friend.
   endLine: You're a life saver!
->>>>>>> a2b7272bd734fd7a1d3b2469e2a3008ef14c5b44
   _textBubble: {fileID: 932392513}
   _textBubbleText: {fileID: 1623618587}
   _canGuess: 0
