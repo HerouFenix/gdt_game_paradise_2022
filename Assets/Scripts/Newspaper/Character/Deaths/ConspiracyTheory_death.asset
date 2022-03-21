@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
-  m_Name: WantedLevel_2
+  m_Name: ConspiracyTheory_death
   m_EditorClassIdentifier: 
-  _characterID: 0
-  _police: 2
-  _weight: 0
-  _type: 2
-  _sprite: {fileID: 0}
-  _text: '"Papa John". the chief of police, said that the accidents are related.
-    The police are starting their investigation in the local donut shop.'
+  _characterID: 5
+  _police: 0
+  _weight: 30
+  _type: 1
+  _sprite: {fileID: 21300000, guid: d468a67045b92974f8a903d26618e5ac, type: 3}
+  _text: Josh, mostly know as "Hand-pan-man" has just been brutaly murdered. Seems
+    like he had the pan in the wrong place.

@@ -2937,13 +2937,11 @@ MonoBehaviour:
   Death_list:
   - {fileID: 11400000, guid: 4578c031dbad7aa4fa196ea7c2e44a04, type: 2}
   - {fileID: 11400000, guid: 288f8a2bf9414a340bb1692c0898c2a8, type: 2}
-  - {fileID: 11400000, guid: 9b91e518853fb7946ab0260637f8d71e, type: 2}
+  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
   - {fileID: 11400000, guid: 671156b50a66cc7439775a7e1b38b514, type: 2}
-  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
-  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
-  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
-  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
-  - {fileID: 11400000, guid: d1d7a24eeb4bd3c45a3a1a89baa66f73, type: 2}
+  - {fileID: 11400000, guid: 7503660c58176394fbb12aab377d6c6c, type: 2}
+  - {fileID: 11400000, guid: 9b91e518853fb7946ab0260637f8d71e, type: 2}
+  - {fileID: 11400000, guid: c1ba0520263afcb4eb1860eeffcce358, type: 2}
   Final_News: []
   Backup: []
   FirstDay_list:

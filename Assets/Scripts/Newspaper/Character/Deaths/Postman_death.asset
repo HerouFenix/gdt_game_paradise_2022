@@ -17,5 +17,5 @@ MonoBehaviour:
   _weight: 30
   _type: 1
   _sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
-  _text: Postman found dead on a street. Local residents say that he got a heart
-    attack while he was running away from a chihuahua after giving it a treat.
+  _text: Local postman found dead. Sadly, there's no one to deliver the newspaper
+    with the news to his family.

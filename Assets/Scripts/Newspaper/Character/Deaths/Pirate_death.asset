@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: Pirate_death
   m_EditorClassIdentifier: 
-  _characterID: 3
+  _characterID: 4
   _police: 0
   _weight: 40
   _type: 1
   _sprite: {fileID: 0}
-  _text: Death pirate
+  _text: Sadly, our town's pirate has sailed t'better seas. May he find good booty
+    in the afterlife.

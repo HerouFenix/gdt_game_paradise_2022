@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: OldLady_death
   m_EditorClassIdentifier: 
-  _characterID: 4
+  _characterID: 3
   _police: 0
   _weight: 20
   _type: 1
   _sprite: {fileID: 0}
-  _text: Death oldalady
+  _text: Beth, the kind old lady has met her fate. May she feed the heaven's pigeons
+    in peace

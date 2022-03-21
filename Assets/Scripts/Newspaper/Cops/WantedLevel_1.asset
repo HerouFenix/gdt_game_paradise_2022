@@ -17,4 +17,5 @@ MonoBehaviour:
   _weight: 1000
   _type: 2
   _sprite: {fileID: 0}
-  _text: Local police suspicious of "organized stupid deaths".
+  _text: Local police suspicious of "organized stupid accidents". A taskforce has
+    been created to deal with this lack of intelligence.
