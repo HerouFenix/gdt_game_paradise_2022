@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Phase1Manager _phase1Manager;
     [HideInInspector] public Phase2Manager _phase2Manager;
 
-    public event Action<int, int>  NewDay;
+    public event Action<int, int> NewDay;
     public event Action EndDay;
 
     public event Action<int> FinishGame;
@@ -83,29 +84,28 @@ public class GameManager : MonoBehaviour
     {
         _day++;
         /* Check win/lose conditions */
-        if(_day > numberOfDays)
+        if (_souls >= requiredSouls)
         {
-            if(_souls >= requiredSouls)
-            {
-                FinishGame?.Invoke(0);
-            }
-            else
-            {
-                FinishGame?.Invoke(2);
-            }
+            FinishGame?.Invoke(0);
+            return;
         }
-
-        if (_police > maxPoliceLevel)
+        else if (_day > numberOfDays)
+        {
+            FinishGame?.Invoke(2);
+            return;
+        }
+        else if (_police > maxPoliceLevel)
         {
             FinishGame?.Invoke(1);
+            return;
         }
         else
         {
             // Show start day screen
-            NewDay?.Invoke(numberOfDays-_day+1, requiredSouls-_souls);
+            NewDay?.Invoke(numberOfDays - _day + 1, requiredSouls - _souls);
         }
 
-        
+
 
         /* 1st Pick 3 clients*/
         PickClients(3);
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         _souls += souls;
         _police += police;
 
-        clientID =  _currentClients[_nextClientIndex].GetComponent<Client>().ClientID;
+        clientID = _currentClients[_nextClientIndex].GetComponent<Client>().ClientID;
 
 
         _journalManager.ReceivedClientNews(clientID, killed, police);
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
                 StartPhase0?.Invoke();
                 _nextClientIndex++;
 
-                if(_nextClientIndex >= _currentClients.Count)
+                if (_nextClientIndex >= _currentClients.Count)
                 { // No more clients ; End Day
                     EndDay?.Invoke();
                     StartCoroutine(WaitForNewDay());
@@ -171,22 +171,22 @@ public class GameManager : MonoBehaviour
                 { // There are more clients ; Continue
                     StartCoroutine(WaitForNextClient());
                 }
-                
+
                 break;
-            
+
             case 1:
                 StartPhase1?.Invoke(_currentClients[_nextClientIndex]);
-                
+
                 break;
-            
+
             case 2:
                 EndPhase1?.Invoke();
-                
+
                 StartPhase2?.Invoke(_phase1Manager.ReturnResults());
                 _phase2Manager.client = _currentClients[_nextClientIndex].GetComponent<Client>();
-                
+
                 break;
-        } 
+        }
     }
 
     public IEnumerator WaitForNextClient()
@@ -200,5 +200,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
         StartNewDay();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
