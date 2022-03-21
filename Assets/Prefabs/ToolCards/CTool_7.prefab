@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fefec47477e18449285ca196314112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 7
+  ClientID: 8
   probabilityOfKilling: 5
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: 9fe97f236231aa8439b2f3151c072ce0, type: 3}

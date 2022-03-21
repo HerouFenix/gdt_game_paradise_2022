@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fefec47477e18449285ca196314112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientID: 8
+  ClientID: 7
   probabilityOfKilling: 5
   _front: {fileID: 7797010437255768045}
   _image: {fileID: 21300000, guid: cf359a0631030fe4b971b38f4b4dc089, type: 3}
