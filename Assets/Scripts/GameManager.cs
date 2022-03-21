@@ -87,25 +87,22 @@ public class GameManager : MonoBehaviour
         {
             if(_souls >= requiredSouls)
             {
-                Debug.Log("You win :)");
                 FinishGame?.Invoke(0);
             }
             else
             {
-                Debug.Log("You lose :(");
                 FinishGame?.Invoke(2);
             }
         }
 
         if (_police > maxPoliceLevel)
         {
-            Debug.Log("You lose :( (police)");
             FinishGame?.Invoke(1);
         }
         else
         {
             // Show start day screen
-            NewDay?.Invoke(numberOfDays-_day, requiredSouls-_souls);
+            NewDay?.Invoke(numberOfDays-_day+1, requiredSouls-_souls);
         }
 
         
@@ -138,7 +135,6 @@ public class GameManager : MonoBehaviour
         _souls += souls;
         _police += police;
 
-        Debug.Log("ID proximo cliente: " + _nextClientIndex);
         clientID =  _currentClients[_nextClientIndex].GetComponent<Client>().ClientID;
 
 
@@ -195,7 +191,6 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator WaitForNextClient()
     {
-        Debug.Log("Waiting for the next client");
         yield return new WaitForSeconds(UnityEngine.Random.Range(4, 6));
         _audioManager.PlaySound(AudioManager.soundList.DoorOpen);
         this.SwapPhase(1);

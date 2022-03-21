@@ -342,8 +342,8 @@ MonoBehaviour:
   - His doctor prescribed him the wrong glasses. He just stumbled against the door.
   - He always takes Bruce, his cat, fishing with him. They might be married.
   - He really, really, REALLY, loves fishing.
-  _police_value: 3
-  _soul_value: 15
+  _police_value: 2
+  _soul_value: 10
   startLines:
   - Good'day.
   - Hope you're havin one.

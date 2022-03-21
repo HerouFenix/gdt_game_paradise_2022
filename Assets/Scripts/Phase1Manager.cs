@@ -115,9 +115,19 @@ public class Phase1Manager : MonoBehaviour
         _deckCards.AddRange(_reserveCards);
         _deckCards.AddRange(_playedCards);
 
-        _handCards = new List<InvestigationCardProperties>();
+        /*_handCards = new List<InvestigationCardProperties>();
         _reserveCards = new List<InvestigationCardProperties>();
-        _playedCards = new List<InvestigationCardProperties>();
+        _playedCards = new List<InvestigationCardProperties>();*/
+
+        foreach(GameObject card in GameObject.FindGameObjectsWithTag("Inv Card"))
+        {
+            Destroy(card);
+        }
+
+        _handCards.Clear();
+        _reserveCards.Clear();
+        _playedCards.Clear();
+        _currentInvestigationCards.Clear();
 
         DrawReserveCards();
     }

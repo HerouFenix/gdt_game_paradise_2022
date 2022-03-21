@@ -102,7 +102,7 @@ public class JournalManager : MonoBehaviour
 
         Clients();
         WBNews();
-        DailyNews(Final_News, Backup, WantedLevelChanged);
+        DailyNews(Final_News, Backup, false);
     }
 
     void Clients()

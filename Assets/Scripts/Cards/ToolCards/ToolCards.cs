@@ -44,7 +44,7 @@ public class ToolCards : MonoBehaviour
             _animator = this.gameObject.GetComponent<Animator>();
 
         positionIndex = index;
-
+        Debug.Log("index position = " + positionIndex);
         if (_animator != null && setAnimator)
             _animator.SetInteger("position_index", positionIndex);
     }

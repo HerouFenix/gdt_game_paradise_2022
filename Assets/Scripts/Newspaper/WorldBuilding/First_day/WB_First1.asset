@@ -16,5 +16,7 @@ MonoBehaviour:
   _police: 0
   _weight: 0
   _type: 0
-  _sprite: {fileID: 21300000, guid: 067c3505a4e45a84e9ca6a22877af180, type: 3}
-  _text: First day 1
+  _sprite: {fileID: 21300000, guid: 400a705450235d9479be79c63e2e4c28, type: 3}
+  _text: Tired of having the sun on it's back, the moon is going behind him. The
+    solar eclipse of the Moon will happen in 3 days, and it's perfect for summoning
+    demons!

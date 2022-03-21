@@ -70,6 +70,7 @@ public class Phase2Manager : MonoBehaviour
                 _clientAgnosticCards.Add(_currentToolCards[i]);
             }
         }
+
         _currentToolCards = new List<GameObject>();
     }
 

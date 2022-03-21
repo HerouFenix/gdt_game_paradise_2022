@@ -110,27 +110,16 @@ public class ClientCard : MonoBehaviour
 
         if (_currentColor == _color)
         {
-            Debug.Log("Acertou na cor");
             _list[0] = 1;
-        }
-        else
-        {
-            Debug.Log("Cor errada");
         }
         if (_currentSuit == _suit)
         {
-            Debug.Log("Acertou no naipe");
             _list[1] = 1;
-        }
-        else
-        {
-            Debug.Log("Naipe errado");
         }
 
         int difNumber = Mathf.Abs(_currentNumber - _number);
         _list[2] = difNumber;
 
-        Debug.Log("falhou por " + difNumber);
         return _list;
     }
 

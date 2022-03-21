@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 841918484412884599}
   m_Layer: 0
   m_Name: BaseInvestigationCard
-  m_TagString: Untagged
+  m_TagString: Inv Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

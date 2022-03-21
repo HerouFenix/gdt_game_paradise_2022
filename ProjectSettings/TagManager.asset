@@ -6,6 +6,8 @@ TagManager:
   tags:
   - client_card
   - client
+  - Inv Card
+  - Tool Card
   layers:
   - Default
   - TransparentFX
