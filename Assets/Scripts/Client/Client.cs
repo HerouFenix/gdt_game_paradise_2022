@@ -48,7 +48,7 @@ public class Client : MonoBehaviour
             {
                 if(nextLine < startLines.Count)
                 {
-                    StopCoroutine(TypeSentence(""));
+                    StopAllCoroutines();
                     StartCoroutine(TypeSentence(startLines[nextLine]));
                     nextLine++;
                 }
@@ -136,7 +136,7 @@ public class Client : MonoBehaviour
 
             if (_canGuess)
             {
-                StopCoroutine(TypeSentence(""));
+                StopAllCoroutines();
                 StartCoroutine(TypeSentence("Are you done with the reading?"));
             }
         }
