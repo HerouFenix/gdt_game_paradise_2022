@@ -136,7 +136,7 @@ public class JournalManager : MonoBehaviour
 
 
         if (WantedLevelChanged && !custom)
-            Final.Add(Cops_list[currentWantedLevel /*- 1*/]);
+            Final.Add(Cops_list[Mathf.Clamp(currentWantedLevel, 0, 5) /*- 1*/]);
 
         else if (!custom)
         {

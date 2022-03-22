@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
   m_Name: OldLady_accident
   m_EditorClassIdentifier: 
-  _characterID: 4
+  _characterID: 2
   _police: 0
   _weight: 20
   _type: 1
   _sprite: {fileID: 0}
-  _text: Oldlady accident
+  _text: It's a miracle! Old lady survives terrible accident. May continue to feed
+    the pigeons in peace.

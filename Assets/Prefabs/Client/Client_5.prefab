@@ -507,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientID: 5
   _hints:
-  - has he looked at W'ifu's picture? Seems like he knows him.
+  - Has he looked at W'ifu's picture? Seems like he knows him.
   - I can't get a good read... Might be the head pan.
   - I believe he also wants to summon a demon?
   _police_value: 2
@@ -515,7 +515,7 @@ MonoBehaviour:
   startLines:
   - Hello hello.
   - Alien rays are everywhere man!
-  - ' Where''s your head pan?'
+  - Where's your head pan?
   - I've got a proposal...
   - You should read my card.
   endLine: Goodbye

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472cdd2b020c80c4a977e2ab22a63bed, type: 3}
-  m_Name: Baker_accident
+  m_Name: Police_accident 1
   m_EditorClassIdentifier: 
-  _characterID: 1
+  _characterID: 8
   _police: 0
-  _weight: 35
+  _weight: 30
   _type: 1
-  _sprite: {fileID: 0}
-  _text: Ducasse, local head baker, has an accident in the kitchen! Luckily, the
-    croissants didn't get burnt.
+  _sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  _text: Chief of police survives a terrible accident. Paramedics took their time
+    to identify him because of his diguise.
