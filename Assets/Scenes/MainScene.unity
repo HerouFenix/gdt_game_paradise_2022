@@ -2700,7 +2700,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5ee370dfb8f46a49ba8520ca44ed5f0, type: 2}
   - {fileID: 11400000, guid: ae61c95dda918b84695d35e4b3525f82, type: 2}
   - {fileID: 11400000, guid: ae61c95dda918b84695d35e4b3525f82, type: 2}
-  - {fileID: 11400000, guid: ae61c95dda918b84695d35e4b3525f82, type: 2}
   News_image: {fileID: 153709978}
   _News1_text: {fileID: 199380119}
   _News2_text: {fileID: 1772501213}
