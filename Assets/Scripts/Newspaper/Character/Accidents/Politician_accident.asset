@@ -16,5 +16,5 @@ MonoBehaviour:
   _police: 0
   _weight: 100
   _type: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 8d85153e5ca6f3143a070fa4a3416a3e, type: 3}
   _text: Famous politician evades death! Will this boost his campaign

@@ -16,6 +16,6 @@ MonoBehaviour:
   _police: 0
   _weight: 20
   _type: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 14c2504ec4a77b340b2cd812156ae314, type: 3}
   _text: It's a miracle! Old lady survives terrible accident. May continue to feed
     the pigeons in peace.

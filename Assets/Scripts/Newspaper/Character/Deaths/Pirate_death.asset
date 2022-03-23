@@ -16,6 +16,6 @@ MonoBehaviour:
   _police: 0
   _weight: 40
   _type: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: aa742b07e09b95c41903441892488ab3, type: 3}
   _text: Sadly, our town's pirate has sailed t'better seas. May he find good booty
     in the afterlife.

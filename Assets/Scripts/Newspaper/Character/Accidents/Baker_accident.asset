@@ -16,6 +16,6 @@ MonoBehaviour:
   _police: 0
   _weight: 35
   _type: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 45db3538e6e8d0541a6b27c8dde4bf13, type: 3}
   _text: Ducasse, local head baker, has an accident in the kitchen! Luckily, the
     croissants didn't get burnt.

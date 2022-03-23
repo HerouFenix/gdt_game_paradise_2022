@@ -16,5 +16,5 @@ MonoBehaviour:
   _police: 0
   _weight: 40
   _type: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: aa742b07e09b95c41903441892488ab3, type: 3}
   _text: Local pirate faces death in the eye, but with both eyes.
