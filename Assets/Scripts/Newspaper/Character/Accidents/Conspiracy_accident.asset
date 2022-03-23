@@ -16,6 +16,6 @@ MonoBehaviour:
   _police: 0
   _weight: 30
   _type: 1
-  _sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  _sprite: {fileID: 21300000, guid: d468a67045b92974f8a903d26618e5ac, type: 3}
   _text: A crazy man almost dies! Police say he was being persuaded in sacrificing
     himself.

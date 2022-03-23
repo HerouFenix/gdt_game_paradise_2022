@@ -16,6 +16,6 @@ MonoBehaviour:
   _police: 0
   _weight: 30
   _type: 1
-  _sprite: {fileID: 21300000, guid: 587bdddf26306274b888cd29ebd44651, type: 3}
+  _sprite: {fileID: 21300000, guid: f31ac4e13edca7443ac29b28d0ca3fa7, type: 3}
   _text: Local irish fisherman is a living four leaf clover! Even death can't get
     him!
